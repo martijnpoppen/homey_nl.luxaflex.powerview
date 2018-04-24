@@ -1,0 +1,146 @@
+<script>
+Homey.setTitle( __('pair.start.title') );
+Homey.on('error', function( errortype, callback ){
+	if (errortype == 'error') {
+		Homey.alert(__('pair.start.error'), 'error');
+		Homey.done();
+	}
+	if (errortype == 'nosettings') {
+		Homey.alert(__('pair.start.nosettings'), 'error');
+		Homey.done();
+	}
+})
+
+function GetGUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+        return v.toString(16);
+    });
+}
+
+Homey.on('foundDevices', function( ip, callback ){	
+    	setNewIP(ip);	
+});
+
+function setNewIP(ip){
+
+	console.log('add ip ' + ip);
+
+	var selectIP = $('#selectIP');
+	selectIP.children("option[value='0']").remove();
+	
+	if (ValidateIPaddress(ip)){
+		selectIP.append($('<option></option>').val(ip).html(ip));
+	}
+	
+	selectIP.append($('<option></option>').val("0").html("Other"));	
+	selectIP.children("option[value='-1']").remove();
+	selectIP.val($("#selectIP option:first").val()).change();
+
+	Homey.setTitle(__('pair.start.titleSelect'));
+	
+}
+
+$(function() {
+   	
+	  $('#selectIP').change(function () {
+			var selectedIP = $('#selectIP').val();
+			if (selectedIP == 0){
+				$('#ipAddress').show();
+			}else if (selectedIP != "-1"){
+				$('#ipAddress').hide();
+				$('#ipAddress').val(selectedIP);
+			}				
+	  });
+	  
+	  //fallback to manual input after 4 seconds.
+	  setTimeout(function(){ 
+			setNewIP('');
+	  }, 4000);
+
+		
+}); 
+
+function saveSettings () {
+	$('.ssh-err-msg').text('');
+
+	var inputIPAddress = $('#ipAddress').val();
+	var inputDeviceName = $('#deviceName').val();
+
+	//should check if this is a real IPv4 address
+	if (inputIPAddress == '') {
+		$('.ssh-err-msg').text(__('pair.start.required'));
+		return;
+	}
+	
+	if (!ValidateIPaddress(inputIPAddress)) {
+		$('.ssh-err-msg').text(__('pair.start.invalidIP'));
+		return;
+	}	  
+
+		var device = {
+			data: {
+				id: GetGUID()       // Trying to keep this the same when you delete a device doesn't help keep flows intact.
+			},                      // So we just get a GUID so there is no weirdness when you change IP addresses but the ID stays the same.
+			name: inputDeviceName,  // So a second device cannot be added because the first still uses the old IP based ID. 
+			settings: {
+				"nl.luxaflex.powerview.settings.ip": inputIPAddress				
+			}
+		};
+		Homey.emit( 'list_devices', device, function ( err, result ) {
+			if(err !== null) {
+				$('.ssh-err-msg').text(err);
+			} else {
+				//Successfully connected
+				Homey.addDevice(device, function( err, result ){
+					if( err ) return console.error(err);
+					console.log( result);
+				});
+				//Done pairing
+				Homey.done();
+			}
+		} );
+}
+
+function ValidateIPaddress(ipaddress) 
+{
+ if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipaddress))
+  {
+    return (true)
+  }  
+  return (false)
+}
+
+</script>
+    <p data-i18n="pair.start.intro">Enter IP address and name</p>	
+		<style>
+			.pairSettings {
+				font-size:16px;
+				border:none;
+			}
+			input {
+				font-size:16px;
+				border: 1px solid #ccc;
+			}
+		</style>
+		<table class="pairSettings">
+			<tr>
+				<td style="width:100px;" data-i18n="pair.start.ipAddress">IP</td>
+				<td>
+				<select id="selectIP" >
+					<option value="-1">Loading...</option>
+				</select>
+				<input id="ipAddress" type="text" value="" placeholder="192.168.1.1" style="display:none;"/></td>
+			</tr>
+			<tr>
+				<td style="width:100px;" data-i18n="pair.start.deviceName">Name</td>
+				<td><input id="deviceName" type="text" value="Powerview Hub" placeholder="Powerview Hub"/></td>
+			</tr>			
+		</table>
+		<p>
+		&nbsp;
+	  </p>
+<fieldset>
+    <button class="button" data-i18n="pair.start.saveSettings" onclick="saveSettings()">Save</button>
+</fieldset>
+<p class="ssh-err-msg" style="color: #ff6300;"></p>
