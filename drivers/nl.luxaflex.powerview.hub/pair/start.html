@@ -30,6 +30,9 @@ function setNewIP(ip){
 	selectIP.children("option[value='0']").remove();
 	
 	if (ValidateIPaddress(ip)){
+		//prevent doubles
+		selectIP.children("option[value='" + ip +"']").remove();
+		
 		selectIP.append($('<option></option>').val(ip).html(ip));
 	}
 	
