@@ -63,7 +63,7 @@ sceneSetActionArg.registerAutocompleteListener( ( query, args ) => {
 	//console.log("getSceneList" + JSON.stringify(args));
 	
 	let ip = ((args || {}).device || {}).ip;
-	let url = "http://" + ip +"/api/scenes";
+	let url = "http://" + ip +"/api/scenes?";
 	//console.log("url" + url);
 	return http.json(url).then((data) => {
 		//console.log(JSON.stringify(data));
@@ -96,7 +96,7 @@ sceneCollectionSetActionArg.registerAutocompleteListener( ( query, args ) => {
 	//console.log("getSceneList" + JSON.stringify(args));
 	
 	let ip = ((args || {}).device || {}).ip;
-	let url = "http://" + ip +"/api/scenecollections";
+	let url = "http://" + ip +"/api/scenecollections?";
 	//console.log("url" + url);
 	return http.json(url).then((data) => {
 		//console.log(JSON.stringify(data));
