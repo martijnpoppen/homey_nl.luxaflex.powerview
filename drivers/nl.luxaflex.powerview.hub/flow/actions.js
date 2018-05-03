@@ -63,32 +63,46 @@ sceneSetActionArg.registerAutocompleteListener( ( query, args ) => {
 	//console.log("getSceneList" + JSON.stringify(args));
 	
 	let ip = ((args || {}).device || {}).ip;
-	let url = "http://" + ip +"/api/scenes?";
-	//console.log("url" + url);
-	return http.json(url).then((data) => {
-		//console.log(JSON.stringify(data));
-		let results = [];
-		 if (data.sceneData){
-		    data.sceneData.forEach((scene) => {
-				 let sceneName = new Buffer(scene.name, 'base64').toString('utf8');
-				 results.push(
-					 {
-					   "id": scene.id,
-					   "name": sceneName + " (" + scene.id + ")"
-					 }
-				 );
+	let urlRooms = "http://" + ip + "/api/rooms?";
+
+	return http.json(urlRooms).then((dataRooms) => {
+		let rooms = {};
+		 if (dataRooms.roomData){
+			dataRooms.roomData.forEach((room) => {
+				let roomName = new Buffer(room.name, 'base64').toString('utf8');
+				rooms[room.id] = roomName;
 			});
 		 }
-
-		return results = results.filter(( resultsItem ) => {
-					return resultsItem.name.toLowerCase().indexOf( query.toLowerCase() ) > -1;
-				}).sort((a,b) => { return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);});
 		
-    }).catch(() => {
-		console.log('Cannot get scenes');
-		throw new Error('Cannot get scenes');
+		let url = "http://" + ip +"/api/scenes?";
+		//console.log("url" + url);
+		return http.json(url).then((data) => {
+			//console.log(JSON.stringify(data));
+			let results = [];
+			 if (data.sceneData){
+				data.sceneData.forEach((scene) => {
+					 let sceneName = new Buffer(scene.name, 'base64').toString('utf8');
+					 results.push(
+						 {
+						   "id": scene.id,
+						   "name": rooms[scene.roomId] + " - " + sceneName + " (" + scene.id + ")"
+						 }
+					 );
+				});
+			 }
+
+			return results = results.filter(( resultsItem ) => {
+						return resultsItem.name.toLowerCase().indexOf( query.toLowerCase() ) > -1;
+					}).sort((a,b) => { return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);});
+
+		}).catch(() => {
+			console.log('Cannot get scenes');
+			throw new Error('Cannot get scenes');
+		});
+	}).catch(() => {
+		console.log('Cannot get rooms');
+		throw new Error('Cannot get rooms');
 	});
-	
 });
 
 let sceneCollectionSetActionArg = sceneCollectionSetAction.getArgument('nl.luxaflex.powerview.sceneCollectionAutocomplete');
