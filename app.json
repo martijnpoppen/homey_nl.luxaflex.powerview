@@ -1,6 +1,6 @@
 {
 	"id": "nl.luxaflex.powerview",
-	"version": "0.0.9",
+	"version": "0.0.10",
 	"compatibility": ">=1.5.0",
 	"sdk": 2,
 	"name": {
@@ -132,6 +132,10 @@
 		"developers": [{
 			"name": "HUSS BV",
 			"email": "support@huss.nl"
+		},
+		{
+			"name": "Rogier Hofboer",
+			"email": "rogier@hofboer.nl"
 		}]
 	}
 }
