@@ -82,7 +82,7 @@ sceneSetActionArg.registerAutocompleteListener( ( query, args ) => {
 
 		return results = results.filter(( resultsItem ) => {
 					return resultsItem.name.toLowerCase().indexOf( query.toLowerCase() ) > -1;
-				});
+				}).sort((a,b) => { return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);});
 		
     }).catch(() => {
 		console.log('Cannot get scenes');
@@ -115,7 +115,7 @@ sceneCollectionSetActionArg.registerAutocompleteListener( ( query, args ) => {
 
 		return results = results.filter(( resultsItem ) => {
 					return resultsItem.name.toLowerCase().indexOf( query.toLowerCase() ) > -1;
-				});
+				}).sort((a,b) => { return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);});
 		
     }).catch(() => {
 		console.log('Cannot get sceneCollections');
