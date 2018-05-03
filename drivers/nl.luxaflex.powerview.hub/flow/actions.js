@@ -60,7 +60,7 @@ sceneCollectionSetAction.register().registerRunListener(( args, state ) => {
 
 let sceneSetActionArg = sceneSetAction.getArgument('nl.luxaflex.powerview.sceneAutocomplete');
 sceneSetActionArg.registerAutocompleteListener( ( query, args ) => {
-	console.log("getSceneList" + JSON.stringify(args));
+	//console.log("getSceneList" + JSON.stringify(args));
 	
 	let ip = ((args || {}).device || {}).ip;
 	let url = "http://" + ip +"/api/scenes";
@@ -93,7 +93,7 @@ sceneSetActionArg.registerAutocompleteListener( ( query, args ) => {
 
 let sceneCollectionSetActionArg = sceneCollectionSetAction.getArgument('nl.luxaflex.powerview.sceneCollectionAutocomplete');
 sceneCollectionSetActionArg.registerAutocompleteListener( ( query, args ) => {
-	console.log("getSceneList" + JSON.stringify(args));
+	//console.log("getSceneList" + JSON.stringify(args));
 	
 	let ip = ((args || {}).device || {}).ip;
 	let url = "http://" + ip +"/api/sceneCollections";
