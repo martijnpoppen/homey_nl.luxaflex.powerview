@@ -70,7 +70,7 @@ sceneSetActionArg.registerAutocompleteListener( ( query, args ) => {
 		let results = [];
 		 if (data.sceneData){
 		    data.sceneData.forEach((scene) => {
-				 let sceneName = new Buffer(scene.name, 'base64').toString('ascii');
+				 let sceneName = new Buffer(scene.name, 'base64').toString('utf8');
 				 results.push(
 					 {
 					   "id": scene.id,
@@ -103,7 +103,7 @@ sceneCollectionSetActionArg.registerAutocompleteListener( ( query, args ) => {
 		let results = [];
 		 if (data.sceneCollectionData){
 		    data.sceneCollectionData.forEach((sceneCollection) => {
-				 let sceneCollectionName = new Buffer(sceneCollection.name, 'base64').toString('ascii');
+				 let sceneCollectionName = new Buffer(sceneCollection.name, 'base64').toString('utf8');
 				 results.push(
 					 {
 					   "id": sceneCollection.id,
