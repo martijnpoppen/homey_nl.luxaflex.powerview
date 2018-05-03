@@ -96,7 +96,7 @@ sceneCollectionSetActionArg.registerAutocompleteListener( ( query, args ) => {
 	//console.log("getSceneList" + JSON.stringify(args));
 	
 	let ip = ((args || {}).device || {}).ip;
-	let url = "http://" + ip +"/api/sceneCollections";
+	let url = "http://" + ip +"/api/scenecollections";
 	//console.log("url" + url);
 	return http.json(url).then((data) => {
 		//console.log(JSON.stringify(data));
