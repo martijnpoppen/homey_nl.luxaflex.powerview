@@ -63,45 +63,51 @@ sceneSetActionArg.registerAutocompleteListener( ( query, args ) => {
 	//console.log("getSceneList" + JSON.stringify(args));
 	
 	let ip = ((args || {}).device || {}).ip;
-	let urlRooms = "http://" + ip + "/api/rooms?";
 
-	return http.json(urlRooms).then((dataRooms) => {
-		let rooms = {};
-		 if (dataRooms.roomData){
-			dataRooms.roomData.forEach((room) => {
-				let roomName = new Buffer(room.name, 'base64').toString('utf8');
-				rooms[room.id] = roomName;
-			});
-		 }
-		
-		let url = "http://" + ip +"/api/scenes?";
-		//console.log("url" + url);
-		return http.json(url).then((data) => {
-			//console.log(JSON.stringify(data));
+	let url = "http://" + ip +"/api/scenes?";
+	//console.log("url" + url);
+	return http.json(url).then((data) => {
+		//console.log(JSON.stringify(data));
+		if (data.sceneData) {
+			data.sceneData.sort((a,b) => { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0);});
+		}
+
+		let urlRooms = "http://" + ip + "/api/rooms?";
+		return http.json(urlRooms).then((dataRooms) => {
+			//console.log(JSON.stringify(dataRooms));
 			let results = [];
-			 if (data.sceneData){
-				data.sceneData.forEach((scene) => {
-					 let sceneName = new Buffer(scene.name, 'base64').toString('utf8');
-					 results.push(
-						 {
-						   "id": scene.id,
-						   "name": rooms[scene.roomId] + " - " + sceneName + " (" + scene.id + ")"
-						 }
-					 );
+
+			if (dataRooms.roomData) {
+				dataRooms.roomData.sort((a,b) => { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0);});
+				dataRooms.roomData.forEach((room) => {
+					let roomName = new Buffer(room.name, 'base64').toString('utf8');
+					 if (data.sceneData) {
+						data.sceneData.forEach((scene) => {
+							if (scene.roomId === room.id) {
+								let sceneName = new Buffer(scene.name, 'base64').toString('utf8');
+								results.push(
+									 {
+									   "id": scene.id,
+									   "name": roomName + " - " + sceneName + " (" + scene.id + ")"
+									 }
+								);
+							}
+						});
+					 }
 				});
-			 }
+			}
 
 			return results = results.filter(( resultsItem ) => {
 						return resultsItem.name.toLowerCase().indexOf( query.toLowerCase() ) > -1;
-					}).sort((a,b) => { return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);});
+					});
 
 		}).catch(() => {
-			console.log('Cannot get scenes');
-			throw new Error('Cannot get scenes');
+			console.log('Cannot get rooms');
+			throw new Error('Cannot get rooms');
 		});
 	}).catch(() => {
-		console.log('Cannot get rooms');
-		throw new Error('Cannot get rooms');
+		console.log('Cannot get scenes');
+		throw new Error('Cannot get scenes');
 	});
 });
 
@@ -115,8 +121,10 @@ sceneCollectionSetActionArg.registerAutocompleteListener( ( query, args ) => {
 	return http.json(url).then((data) => {
 		//console.log(JSON.stringify(data));
 		let results = [];
-		 if (data.sceneCollectionData){
-		    data.sceneCollectionData.forEach((sceneCollection) => {
+
+		if (data.sceneCollectionData){
+			data.sceneCollectionData.sort((a,b) => { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0);});
+			data.sceneCollectionData.forEach((sceneCollection) => {
 				 let sceneCollectionName = new Buffer(sceneCollection.name, 'base64').toString('utf8');
 				 results.push(
 					 {
@@ -125,11 +133,11 @@ sceneCollectionSetActionArg.registerAutocompleteListener( ( query, args ) => {
 					 }
 				 );
 			});
-		 }
+		}
 
 		return results = results.filter(( resultsItem ) => {
 					return resultsItem.name.toLowerCase().indexOf( query.toLowerCase() ) > -1;
-				}).sort((a,b) => { return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);});
+				});
 		
     }).catch(() => {
 		console.log('Cannot get sceneCollections');
