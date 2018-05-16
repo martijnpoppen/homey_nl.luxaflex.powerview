@@ -49,14 +49,7 @@ sceneCollectionSetAction.register().registerRunListener(( args, state ) => {
 			return false;
 		});
 		
-        // let isChanged = true; // // true or false - should be a function check
-        // return Promise.resolve( isChanged );
-
 });
-
-//http://192.168.150.13/api/scenecollections?sceneCollectionId=1408
-
-
 
 let sceneSetActionArg = sceneSetAction.getArgument('nl.luxaflex.powerview.sceneAutocomplete');
 sceneSetActionArg.registerAutocompleteListener( ( query, args ) => {
@@ -88,7 +81,7 @@ sceneSetActionArg.registerAutocompleteListener( ( query, args ) => {
 								results.push(
 									 {
 									   "id": scene.id,
-									   "name": roomName + " - " + sceneName + " (" + scene.id + ")"
+									   "name": roomName + " - " + sceneName
 									 }
 								);
 							}
@@ -129,7 +122,7 @@ sceneCollectionSetActionArg.registerAutocompleteListener( ( query, args ) => {
 				 results.push(
 					 {
 					   "id": sceneCollection.id,
-					   "name": sceneCollectionName + " (" + sceneCollection.id + ")"
+					   "name": sceneCollectionName
 					 }
 				 );
 			});
