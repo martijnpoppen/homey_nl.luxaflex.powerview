@@ -5,4 +5,4 @@ Adds support for Luxaflex PowerView devices over the PowerView Hub
 - Setting Scene in flowcard
 - Setting SceneCollection in flowcard
 
-Use a Virtual Devices or other event to trigger a flow that activates a Scene.
+Use a Virtual Device or other event to trigger a flow that activates a Scene.
