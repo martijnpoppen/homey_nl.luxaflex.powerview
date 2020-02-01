@@ -19,8 +19,8 @@ sceneSetAction.register().registerRunListener(( args, state ) => {
 			console.log('Response: ' + result.data)
 			
 			return (result.response.statusCode == 200);			
-		}).catch(() => {
-			console.log('cannot set scene');
+		}).catch((e) => {
+			console.log('cannot set scene: ' + e);
 			return false;
 		});
 		
@@ -44,8 +44,8 @@ sceneCollectionSetAction.register().registerRunListener(( args, state ) => {
 			console.log('Response: ' + result.data)
 			
 			return (result.response.statusCode == 200);			
-		}).catch(() => {
-			console.log('cannot set sceneCollection');
+		}).catch((e) => {
+			console.log('cannot set sceneCollection: ' + e);
 			return false;
 		});
 		
@@ -94,13 +94,13 @@ sceneSetActionArg.registerAutocompleteListener( ( query, args ) => {
 						return resultsItem.name.toLowerCase().indexOf( query.toLowerCase() ) > -1;
 					});
 
-		}).catch(() => {
-			console.log('Cannot get rooms');
-			throw new Error('Cannot get rooms');
+		}).catch((e) => {
+			console.log('Unable to retreive rooms: ' + e);
+			throw new Error('Unable to retreive rooms');
 		});
-	}).catch(() => {
-		console.log('Cannot get scenes');
-		throw new Error('Cannot get scenes');
+	}).catch((e) => {
+		console.log('Unable to retreive scenes: ' + e);
+		throw new Error('Unable to retreive scenes');
 	});
 });
 
@@ -132,9 +132,9 @@ sceneCollectionSetActionArg.registerAutocompleteListener( ( query, args ) => {
 					return resultsItem.name.toLowerCase().indexOf( query.toLowerCase() ) > -1;
 				});
 		
-    }).catch(() => {
-		console.log('Cannot get sceneCollections');
-		throw new Error('Cannot get sceneCollections');
+    }).catch((e) => {
+		console.log('Unable to retreive sceneCollections: ' + e );
+		throw new Error('Unable to retreive sceneCollections');
 	});
 	
 });

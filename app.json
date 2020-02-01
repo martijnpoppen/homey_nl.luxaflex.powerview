@@ -1,7 +1,7 @@
 {
 	"id": "nl.luxaflex.powerview",
-	"version": "0.0.12",
-	"compatibility": ">=1.5.0",
+	"version": "1.0.0",
+	"compatibility": ">=2.4.0",
 	"sdk": 2,
 	"name": {
 		"en": "Luxaflex Powerview",
@@ -29,15 +29,7 @@
 			"small": "/drivers/nl.luxaflex.powerview.hub/assets/images/small.png"
 		},
 		"class": "other",
-		"capabilities": [ "onoff" ],
-
-		"mobile": {
-			"components": [ {
-					"id": "icon",
-					"capabilities": [ "onoff" ]
-				}
-			]
-		},
+		"capabilities": [],
 		"pair": [
 			{
                 "id": "start"
@@ -92,7 +84,7 @@
 					"name": "nl.luxaflex.powerview.sceneAutocomplete",
 					"placeholder": {
 						"en": "Choose a scene",
-						"en": "Kies a scène"
+						"nl": "Kies a scène"
 					}
 				}
 			]
@@ -116,7 +108,7 @@
 					"name": "nl.luxaflex.powerview.sceneCollectionAutocomplete",
 					"placeholder": {
 						"en": "Choose a scene collection",
-						"en": "Kies a scène collectie"
+						"nl": "Kies a scène collectie"
 					}
 				}
 			]
