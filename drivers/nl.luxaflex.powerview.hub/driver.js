@@ -1,78 +1,40 @@
-"use strict";
-
 const Homey = require('homey');
-const NBName = require('netbios-name');
-const Service = require('netbios-name-service');
 
-var serv = null;
- 
-class PowerviewDriver extends Homey.Driver {
-
- 
-
-	onPair( socket ) {
-       
-		
-		var nbname = new NBName({name: 'PDBU-Hub3.0', suffix: 0x20});
-		var nbname2 = new NBName({name: 'PowerView-Hub', suffix: 0x20});
-		 
-		 if (serv == null){
-			   serv = new Service({tcpDisable:true, broadcastAddress: "255.255.255.255", udpPort:8127});
-		
-			   serv.start(function() {
- 
-			   serv.find(nbname, function(state, address){
-				  console.log('Found NetBIOS name at ', address, state);
-					if (ValidateIPaddress(address)){
-						socket.emit('foundDevices', address, function( err, result ){
-							console.log( result ) 
-						});
-					}
-			   });
-			  
-			   serv.find(nbname2, function(state, address){
-				  console.log('Found NetBIOS name at ', address, state);	
-				  if (ValidateIPaddress(address)){
-						socket.emit('foundDevices', address, function( err, result ){
-							console.log( result ) 
-						});
-					}
-			   });			  		 
-		    });
-			
-			//stop after 4 seconds
-			setTimeout(function(){  serv.stop(function() { serv = null }); }, 4000);
-			
-		}
-		
-		socket.on('list_devices', function( data, callback ) {
-				console.log("Device Pairing method called.");
-				console.log(data);				
-				
-				callback( null, [
-					{
-						name: "New Powerview Hub",
-						data: {
-							id: data.id
-						}
-					}
-				]);
-        });
-		
-		
-		
-		function ValidateIPaddress(ipaddress) 
-		{
-		 if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipaddress))
-		  {
-			return (true)
-		  }  
-		  return (false)
-		}
-		
+module.exports = class PowerviewDriver extends Homey.Driver {
+    onInit() {
+        this.homey.app.log('[Driver] - init', this.id);
+        this.homey.app.log(`[Driver] - version`, Homey.manifest.version);
     }
 
-	
-}
+    async onPair(session) {
+        const discoveryStrategy = this.homey.discovery.getStrategy('powerview');
+        const discoveryResults = discoveryStrategy.getDiscoveryResults();
 
-module.exports = PowerviewDriver;
+        this.homey.app.log(`[Driver] ${this.id} - searching for Powerview`);
+
+        session.setHandler('list_devices', async (data) => {
+            console.log(data);
+            try {
+                const devices = Object.values(discoveryResults).map((discoveryResult) => {
+                    console.log(discoveryResult);
+                    return {
+                        name: discoveryResult.name ? discoveryResult.name : 'Powerview',
+                        data: {
+                            id: data.id
+                        },
+                        settings: {
+                            ip: `${discoveryResult.host.toLowerCase()}.local`,
+                        }
+                    };
+                });
+
+                this.homey.app.log(`[Driver] ${this.id} - Found devices - `, devices);
+
+                return devices;
+            } catch (error) {
+                this.homey.app.log(error);
+                return Promise.reject(error);
+            }
+        });
+    }
+};

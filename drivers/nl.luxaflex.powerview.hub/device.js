@@ -2,7 +2,6 @@
 
 const net = require('net');
 const Homey = require('homey');
-const flowActions = require('./flow/actions.js');
 
 const DEFAULT_IP =  "192.168.0.1";
 const SETTING_KEY_IP = "nl.luxaflex.powerview.settings.ip";

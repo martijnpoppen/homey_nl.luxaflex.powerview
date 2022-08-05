@@ -1,0 +1,51 @@
+{
+  "id": "nl.luxaflex.powerview",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "name": {
+    "en": "Luxaflex Powerview",
+    "nl": "Luxaflex Powerview"
+  },
+  "description": {
+    "en": "Adds support for Luxaflex Powerview devices",
+    "nl": "Ondersteuning voor Luxaflex Powerview apparaten"
+  },
+  "tags": {
+    "en": [
+      "Hunter Douglas",
+      "Luxaflex",
+      "Powerview",
+      "Windows dressing",
+      "Duette",
+      "Plisse"
+    ]
+  },
+  "category": [
+    "appliances"
+  ],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Luxaflex Nederland",
+    "email": "support.homey@luxaflex-nederland.nl"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "HUSS BV",
+        "email": "support@huss.nl"
+      },
+      {
+        "name": "Rogier Hofboer",
+        "email": "rogier@hofboer.nl"
+      },
+      {
+        "name": "Martijn Poppen",
+        "email": "luxaflex@martijnpoppen.nl"
+      }
+    ]
+  }
+}

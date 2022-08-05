@@ -1,4 +1,5 @@
 {
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.luxaflex.powerview",
   "version": "1.0.0",
   "compatibility": ">=5.0.0",
@@ -21,14 +22,83 @@
       "Plisse"
     ]
   },
-  "category": ["appliances"],
+  "category": [
+    "appliances"
+  ],
   "images": {
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"
   },
+  "author": {
+    "name": "Luxaflex Nederland",
+    "email": "support.homey@luxaflex-nederland.nl"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "HUSS BV",
+        "email": "support@huss.nl"
+      },
+      {
+        "name": "Rogier Hofboer",
+        "email": "rogier@hofboer.nl"
+      },
+      {
+        "name": "Martijn Poppen",
+        "email": "luxaflex@martijnpoppen.nl"
+      }
+    ]
+  },
+  "flow": {
+    "actions": [
+      {
+        "id": "nl.luxaflex.powerview.actions.sceneSet",
+        "title": {
+          "en": "Set scene",
+          "nl": "Activeer Scène"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=nl.luxaflex.powerview.hub"
+          },
+          {
+            "type": "autocomplete",
+            "name": "nl.luxaflex.powerview.sceneAutocomplete",
+            "placeholder": {
+              "en": "Choose a scene",
+              "nl": "Kies a scène"
+            }
+          }
+        ]
+      },
+      {
+        "id": "nl.luxaflex.powerview.actions.sceneCollectionSet",
+        "title": {
+          "en": "Set scene collection",
+          "nl": "Activeer Scène collectie"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=nl.luxaflex.powerview.hub"
+          },
+          {
+            "type": "autocomplete",
+            "name": "nl.luxaflex.powerview.sceneCollectionAutocomplete",
+            "placeholder": {
+              "en": "Choose a scene collection",
+              "nl": "Kies a scène collectie"
+            }
+          }
+        ]
+      }
+    ]
+  },
   "drivers": [
     {
-      "id": "nl.luxaflex.powerview.hub",
       "name": {
         "en": "Powerview Hub"
       },
@@ -39,9 +109,6 @@
       "class": "other",
       "capabilities": [],
       "pair": [
-        {
-          "id": "start"
-        },
         {
           "id": "list_hubs",
           "template": "list_devices",
@@ -73,83 +140,18 @@
             }
           ]
         }
-      ]
+      ],
+      "id": "nl.luxaflex.powerview.hub"
     }
   ],
-  "flow": {
-    "actions": [
-      {
-        "id": "nl.luxaflex.powerview.actions.sceneSet",
-        "title": {
-          "en": "Set scene",
-          "nl": "Activeer Scène"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=nl.luxaflex.powerview.hub",
-            "placeholder": {
-              "en": "Select hub",
-              "nl": "Selecteer hub"
-            }
-          },
-          {
-            "type": "autocomplete",
-            "name": "nl.luxaflex.powerview.sceneAutocomplete",
-            "placeholder": {
-              "en": "Choose a scene",
-              "nl": "Kies a scène"
-            }
-          }
-        ]
+  "discovery": {
+    "powerview": {
+      "type": "mdns-sd",
+      "mdns-sd": {
+        "protocol": "tcp",
+        "name": "_powerview"
       },
-      {
-        "id": "nl.luxaflex.powerview.actions.sceneCollectionSet",
-        "title": {
-          "en": "Set scene collection",
-          "nl": "Activeer Scène collectie"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=nl.luxaflex.powerview.hub",
-            "placeholder": {
-              "en": "Select hub",
-              "nl": "Selecteer hub"
-            }
-          },
-          {
-            "type": "autocomplete",
-            "name": "nl.luxaflex.powerview.sceneCollectionAutocomplete",
-            "placeholder": {
-              "en": "Choose a scene collection",
-              "nl": "Kies a scène collectie"
-            }
-          }
-        ]
-      }
-    ]
-  },
-  "author": {
-    "name": "Luxaflex Nederland",
-    "email": "support.homey@luxaflex-nederland.nl"
-  },
-  "contributors": {
-    "developers": [
-      {
-        "name": "HUSS BV",
-        "email": "support@huss.nl"
-      },
-      {
-        "name": "Rogier Hofboer",
-        "email": "rogier@hofboer.nl"
-      },
-      {
-        "name": "Martijn Poppen",
-        "email": "luxaflex@martijnpoppen.nl"
-      }
-    ]
+      "id": "{{txt.id}}"
+    }
   }
 }
