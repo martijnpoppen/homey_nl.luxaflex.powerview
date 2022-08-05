@@ -1,133 +1,155 @@
 {
-	"id": "nl.luxaflex.powerview",
-	"version": "1.0.0",
-	"compatibility": ">=2.4.0",
-	"sdk": 2,
-	"name": {
-		"en": "Luxaflex Powerview",
-		"nl": "Luxaflex Powerview"
-	},
-	"description": {
-		"en": "Adds support for Luxaflex Powerview devices",
-		"nl": "Ondersteuning voor Luxaflex Powerview apparaten"
-	},
-	"tags": {
-		"en": ["Hunter Douglas", "Luxaflex", "Powerview", "Windows dressing"]
-	},
-	"category": ["appliances"],
-	"images": {
-		"large": "/assets/images/large.png",
-		"small": "/assets/images/small.png"
-	},
-	"drivers": [{
-		"id": "nl.luxaflex.powerview.hub",
-		"name": {
-			"en": "Powerview Hub"
-		},
-		"images": {
-			"large": "/drivers/nl.luxaflex.powerview.hub/assets/images/large.png",
-			"small": "/drivers/nl.luxaflex.powerview.hub/assets/images/small.png"
-		},
-		"class": "other",
-		"capabilities": [],
-		"pair": [
-			{
-                "id": "start"
-            },
-			{
-				"id": "list_hubs",
-				"template": "list_devices",
-				"navigation": {
-					"next": "add_hub"
-				}
-			},
-			{
-				"id": "add_hub",
-				"template": "add_devices"
-			}
-		],
-		"settings": [{
-			"type": "group",
-			"label": {
-				"en": "Powerview Settings",
-				"nl": "Powerview instellingen"
-			},
-			"children": [{
-				"id": "nl.luxaflex.powerview.settings.ip",
-				"type": "text",
-				"label": {
-					"en": "IP address of your Powerview hub",
-					"nl": "IP adres van de Powerview Hub"
-				},
-				"value": ""
-			}]
-		}]
-	}],
-	"flow": {
-		"actions": [
-		{
-			"id": "nl.luxaflex.powerview.actions.sceneSet",
-			"title": {
-				"en": "Set scene",
-				"nl": "Activeer Scène"
-			},
-			"args": [{
-					"name": "device",
-					"type": "device",
-					"filter": "driver_id=nl.luxaflex.powerview.hub",
-					"placeholder": {
-						"en": "Select hub",
-						"nl": "Selecteer hub"
-					}
-				}, {
-					"type": "autocomplete",
-					"name": "nl.luxaflex.powerview.sceneAutocomplete",
-					"placeholder": {
-						"en": "Choose a scene",
-						"nl": "Kies a scène"
-					}
-				}
-			]
-		},
-		{
-			"id": "nl.luxaflex.powerview.actions.sceneCollectionSet",
-			"title": {
-				"en": "Set scene collection",
-				"nl": "Activeer Scène collectie"
-			},
-			"args": [{
-					"name": "device",
-					"type": "device",
-					"filter": "driver_id=nl.luxaflex.powerview.hub",
-					"placeholder": {
-						"en": "Select hub",
-						"nl": "Selecteer hub"
-					}
-				}, {
-					"type": "autocomplete",
-					"name": "nl.luxaflex.powerview.sceneCollectionAutocomplete",
-					"placeholder": {
-						"en": "Choose a scene collection",
-						"nl": "Kies a scène collectie"
-					}
-				}
-			]
-		}
-		
-		]
-	},
-	"author": {
-		"name": "Luxaflex Nederland",
-		"email": "support.homey@luxaflex-nederland.nl"
-	},
-	"contributors": {
-		"developers": [{
-			"name": "HUSS BV",
-			"email": "support@huss.nl"
-		},
-		{
-			"name": "Rogier Hofboer",
-			"email": "rogier@hofboer.nl"
-		}]
-	}
+  "id": "nl.luxaflex.powerview",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "name": {
+    "en": "Luxaflex Powerview",
+    "nl": "Luxaflex Powerview"
+  },
+  "description": {
+    "en": "Adds support for Luxaflex Powerview devices",
+    "nl": "Ondersteuning voor Luxaflex Powerview apparaten"
+  },
+  "tags": {
+    "en": [
+      "Hunter Douglas",
+      "Luxaflex",
+      "Powerview",
+      "Windows dressing",
+      "Duette",
+      "Plisse"
+    ]
+  },
+  "category": ["appliances"],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "drivers": [
+    {
+      "id": "nl.luxaflex.powerview.hub",
+      "name": {
+        "en": "Powerview Hub"
+      },
+      "images": {
+        "large": "/drivers/nl.luxaflex.powerview.hub/assets/images/large.png",
+        "small": "/drivers/nl.luxaflex.powerview.hub/assets/images/small.png"
+      },
+      "class": "other",
+      "capabilities": [],
+      "pair": [
+        {
+          "id": "start"
+        },
+        {
+          "id": "list_hubs",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_hub"
+          }
+        },
+        {
+          "id": "add_hub",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Powerview Settings",
+            "nl": "Powerview instellingen"
+          },
+          "children": [
+            {
+              "id": "nl.luxaflex.powerview.settings.ip",
+              "type": "text",
+              "label": {
+                "en": "IP address of your Powerview hub",
+                "nl": "IP adres van de Powerview Hub"
+              },
+              "value": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "flow": {
+    "actions": [
+      {
+        "id": "nl.luxaflex.powerview.actions.sceneSet",
+        "title": {
+          "en": "Set scene",
+          "nl": "Activeer Scène"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=nl.luxaflex.powerview.hub",
+            "placeholder": {
+              "en": "Select hub",
+              "nl": "Selecteer hub"
+            }
+          },
+          {
+            "type": "autocomplete",
+            "name": "nl.luxaflex.powerview.sceneAutocomplete",
+            "placeholder": {
+              "en": "Choose a scene",
+              "nl": "Kies a scène"
+            }
+          }
+        ]
+      },
+      {
+        "id": "nl.luxaflex.powerview.actions.sceneCollectionSet",
+        "title": {
+          "en": "Set scene collection",
+          "nl": "Activeer Scène collectie"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=nl.luxaflex.powerview.hub",
+            "placeholder": {
+              "en": "Select hub",
+              "nl": "Selecteer hub"
+            }
+          },
+          {
+            "type": "autocomplete",
+            "name": "nl.luxaflex.powerview.sceneCollectionAutocomplete",
+            "placeholder": {
+              "en": "Choose a scene collection",
+              "nl": "Kies a scène collectie"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "author": {
+    "name": "Luxaflex Nederland",
+    "email": "support.homey@luxaflex-nederland.nl"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "HUSS BV",
+        "email": "support@huss.nl"
+      },
+      {
+        "name": "Rogier Hofboer",
+        "email": "rogier@hofboer.nl"
+      },
+      {
+        "name": "Martijn Poppen",
+        "email": "luxaflex@martijnpoppen.nl"
+      }
+    ]
+  }
 }
