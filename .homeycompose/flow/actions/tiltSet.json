@@ -1,0 +1,38 @@
+{
+  "id": "windowcoverings_tilt_set",
+  "highlight": true,
+  "title": {
+    "en": "Set position 2 to",
+    "nl": "Zet positie 2 naar"
+  },
+  "titleFormatted": {
+    "en": "Set position 2 to  [[windowcoverings_tilt_set]]",
+    "nl": "Zet positie 2 naar [[windowcoverings_tilt_set]]"
+  },
+  "hint": {
+    "en": "Change the position to open (100%), closed (0%), or a value in between.",
+    "nl": "Verander de positie naar open (100%), gesloten (0%), of een een waarde daartussen."
+  },
+  "args": [
+    {
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=nl.luxaflex.powerview.shade",
+        "placeholder": {
+          "en": "Select shade",
+          "nl": "Selecteer shade"
+        }
+      },
+    {
+      "name": "windowcoverings_tilt_set",
+      "type": "range",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "value": 0.5,
+      "label": "%",
+      "labelMultiplier": 100,
+      "labelDecimals": 0
+    }
+  ]
+}

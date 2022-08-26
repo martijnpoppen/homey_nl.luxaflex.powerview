@@ -1,0 +1,31 @@
+{
+  "id": "nl.luxaflex.powerview.actions.sceneSet",
+  "title": {
+    "en": "Set scene",
+    "nl": "Activeer Scène"
+  },
+  "titleFormatted": {
+    "en": "Set [[nl.luxaflex.powerview.sceneAutocomplete]] scene",
+    "nl": "Activeer [[nl.luxaflex.powerview.sceneAutocomplete]] scene"
+  },
+  "args": [
+    {
+      "name": "device",
+      "type": "device",
+      "filter": "driver_id=nl.luxaflex.powerview.hub",
+      "placeholder": {
+        "en": "Select hub",
+        "nl": "Selecteer hub"
+      }
+    },
+    {
+      "type": "autocomplete",
+      "name": "nl.luxaflex.powerview.sceneAutocomplete",
+      "placeholder": {
+        "en": "Choose a scene",
+        "nl": "Kies a scène"
+      }
+    }
+  ],
+  "platforms": ["local"]
+}

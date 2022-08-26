@@ -1,7 +1,7 @@
 'use strict';
 
 const Homey = require('homey');
-const flowActions = require('./flow/actions.js');
+const flowActions = require('./lib/flows/actions.js');
 
 class App extends Homey.App {
 

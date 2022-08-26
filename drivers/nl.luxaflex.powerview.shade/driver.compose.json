@@ -1,0 +1,153 @@
+{
+  "name": {
+    "en": "Powerview Shade"
+  },
+  "images": {
+    "large": "/drivers/nl.luxaflex.powerview.hub/assets/images/large.png",
+    "small": "/drivers/nl.luxaflex.powerview.hub/assets/images/small.png"
+  },
+  "class": "blinds",
+  "capabilities": [
+    "measure_battery",
+    "windowcoverings_set",
+    "windowcoverings_tilt_set"
+  ],
+  "capabilitiesOptions": {
+    "windowcoverings_set": {
+      "title": {
+        "nl": "Positie 1",
+        "en": "Position 1"
+      }
+    },
+    "windowcoverings_tilt_set": {
+      "title": {
+        "nl": "Positie 2",
+        "en": "Position 2"
+      }
+    }
+  },
+  "energy": {
+    "batteries": ["INTERNAL"]
+  },
+  "pair": [
+    {
+      "id": "list_hubs",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_hub"
+      }
+    },
+    {
+      "id": "add_hub",
+      "template": "add_devices"
+    }
+  ],
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "en": "Powerview Settings",
+        "nl": "Powerview instellingen"
+      },
+      "children": [
+        {
+          "id": "ip",
+          "type": "text",
+          "label": {
+            "en": "IP address of your Powerview hub",
+            "nl": "IP adres van de Powerview Hub"
+          },
+          "value": ""
+        },
+        {
+          "id": "invertPosition1",
+          "type": "checkbox",
+          "label": {
+            "en": "Invert position 1 ",
+            "nl": "Draai positie 1 om"
+          },
+          "value": false
+        },
+        {
+          "id": "invertPosition2",
+          "type": "checkbox",
+          "label": {
+            "en": "Invert position 2 ",
+            "nl": "Draai positie 2 om"
+          },
+          "value": false
+        },
+        {
+          "id": "posKind1",
+          "type": "dropdown",
+          "value": "0",
+          "label": {
+            "en": "Positionkind 1"
+          },
+
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "None"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Primary Rail"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Secondary Rail"
+              }
+            },
+            {
+              "id": "3",
+              "label": {
+                "en": "Vane Tilt"
+              }
+            }
+          ]
+        },
+        {
+          "id": "posKind2",
+          "type": "dropdown",
+          "value": "0",
+          "label": {
+            "en": "Positionkind 2"
+          },
+
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "None"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Primary Rail"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Secondary Rail"
+              }
+            },
+            {
+              "id": "3",
+              "label": {
+                "en": "Vane Tilt"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
