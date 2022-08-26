@@ -76,7 +76,7 @@
             "name": "nl.luxaflex.powerview.sceneCollectionAutocomplete",
             "placeholder": {
               "en": "Choose a scene collection",
-              "nl": "Kies a scène collectie"
+              "nl": "Kies een  scène collectie"
             }
           }
         ],
@@ -109,7 +109,7 @@
             "name": "nl.luxaflex.powerview.sceneAutocomplete",
             "placeholder": {
               "en": "Choose a scene",
-              "nl": "Kies a scène"
+              "nl": "Kies een  scène"
             }
           }
         ],
