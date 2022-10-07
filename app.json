@@ -65,10 +65,10 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=nl.luxaflex.powerview.hub",
+            "filter": "driver_id=nl.luxaflex.powerview.hub|nl.luxaflex.powerview.shade",
             "placeholder": {
-              "en": "Select hub",
-              "nl": "Selecteer hub"
+              "en": "Select shade",
+              "nl": "Selecteer shade"
             }
           },
           {
@@ -98,10 +98,10 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=nl.luxaflex.powerview.hub",
+            "filter": "driver_id=nl.luxaflex.powerview.hub|nl.luxaflex.powerview.shade",
             "placeholder": {
-              "en": "Select hub",
-              "nl": "Selecteer hub"
+              "en": "Select shade",
+              "nl": "Selecteer shade"
             }
           },
           {
