@@ -2,6 +2,7 @@
 
 const Homey = require('homey');
 const flowActions = require('./lib/flows/actions.js');
+const apiClient = require('./lib/api-client.js');
 
 class App extends Homey.App {
 
@@ -17,6 +18,8 @@ class App extends Homey.App {
 
     async onInit() {
         this.log(`${this.homey.manifest.id} - ${this.homey.manifest.version} started...`);
+
+        this.apiClient = apiClient
 
         await flowActions.init(this.homey);
     }	

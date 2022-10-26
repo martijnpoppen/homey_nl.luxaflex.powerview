@@ -7,6 +7,7 @@
     "en": "Luxaflex Powerview",
     "nl": "Luxaflex Powerview"
   },
+  "brandColor": "#b3bb3c",
   "description": {
     "en": "Adds support for Luxaflex Powerview devices",
     "nl": "Ondersteuning voor Luxaflex Powerview apparaten"
@@ -21,16 +22,14 @@
       "Plisse"
     ]
   },
-  "category": [
-    "appliances"
-  ],
+  "category": ["appliances"],
   "images": {
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"
   },
   "author": {
-    "name": "Luxaflex Nederland",
-    "email": "support.homey@luxaflex-nederland.nl"
+    "name": "Martijn Poppen",
+    "email": "luxaflex@martijnpoppen.nl"
   },
   "contributors": {
     "developers": [
@@ -46,6 +45,30 @@
         "name": "Martijn Poppen",
         "email": "luxaflex@martijnpoppen.nl"
       }
+    ],
+    "translators": [
+      {
+        "name": "🇬🇧 Martijn Poppen"
+      },
+      {
+        "name": "🇳🇱 Martijn Poppen"
+      }
     ]
-  }
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "martijnpoppen"
+      },
+      "bunq": {
+        "username": "martijnpoppen"
+      }
+    }
+  },
+  "bugs": {
+    "url": "https://community.homey.app/t/app-pro-we-connect-myaudi-myskoda-my-seat-my-cupra/62196"
+  },
+  "source": "https://github.com/martijnpoppen/com.we-volkswagen.connect",
+  "homeyCommunityTopicId": 62196,
+  "support": "https://community.homey.app/t/app-pro-we-connect-myaudi-myskoda-my-seat-my-cupra/62196"
 }

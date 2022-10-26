@@ -1,0 +1,36 @@
+{
+    "id": "windowcoverings_tilt_set_changed",
+    "title": {
+      "en": "Position 2 changed",
+      "nl": "Positie 2 veranderd",
+      "de": "Position 2 hat sich geändert",
+      "fr": "Position 2 a été modifiée",
+      "it": "Posizione 2 cambiata",
+      "sv": "Position 2 ändrad",
+      "no": "Posisjon 2 endret",
+      "es": "La posición 2 ha cambiado",
+      "da": "Position 2 ændret",
+      "ru": "Расположение 2 изменилось",
+      "pl": "Zmiana pozycji 2"
+    },
+    "tokens": [
+      {
+        "name": "windowcoverings_tilt_set",
+        "type": "number",
+        "title": {
+          "en": "Position 2",
+          "nl": "Positie 2",
+          "de": "Position 2",
+          "fr": "Position 2",
+          "it": "Posizione 2",
+          "sv": "Position 2",
+          "no": "Posisjon 2",
+          "es": "Posición 2",
+          "da": "Position 2",
+          "ru": "Позиция 2",
+          "pl": "Pozycja 2"
+        },
+        "example": 0.5
+      }
+    ]
+  }

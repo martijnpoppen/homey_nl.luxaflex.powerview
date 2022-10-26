@@ -22,7 +22,7 @@ module.exports = class mainDriver extends Homey.Driver {
                     this.homey.app.log(`[Driver] ${this.id} - discoveryResult `, discoveryResult);
 
                     const ip = `${discoveryResult.host.toLowerCase()}.local`;
-                    const shades = await getShades(ip);
+                    const shades = await getShades(ip, this.homey.app.apiClient);
 
                     this.homey.app.log(`[Driver] ${this.id} - Found shades - `, shades);
 

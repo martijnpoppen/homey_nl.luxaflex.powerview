@@ -2,7 +2,7 @@
 
 const Homey = require('homey');
 const { sleep } = require('../lib/helpers');
-const { setShade, getShade } = require('../lib/api');
+const { setShade, getShade, getScenes, getSceneCollection } = require('../lib/api');
 
 class mainDevice extends Homey.Device {
     async onInit() {
@@ -13,22 +13,25 @@ class mainDevice extends Homey.Device {
             const driverData = this.homey.drivers.getDriver('nl.luxaflex.powerview.shade');
             const driverDevices = driverData.getDevices();
             const deviceObject = this.getData();
-            const sleepIndex = driverDevices.findIndex(device => {
+            const sleepIndex = driverDevices.findIndex((device) => {
                 const driverDeviceObject = device.getData();
-                return deviceObject.id === driverDeviceObject.id
-            })
+                return deviceObject.id === driverDeviceObject.id;
+            });
 
-            await sleep((sleepIndex + 1) * 5000)
+            await sleep((sleepIndex + 1) * 5000);
 
             this.homey.app.log('[Device] - init - after sleep =>', sleepIndex, this.getName());
 
             await this.checkCapabilities();
-            await this.setCapabilityValues(true);
-            await this.setCapabilityListeners();
+
+            if (this.getClass() === 'blinds') {
+                await this.setCapabilityValues(true);
+                await this.setCapabilityListeners();
+
+                await this.setIntervalsAndFlows();
+            }
 
             await this.setAvailable();
-
-            await this.setIntervalsAndFlows();
         } catch (error) {
             this.homey.app.error(`[Device] ${this.getName()} - OnInit Error`, error);
         }
@@ -63,7 +66,7 @@ class mainDevice extends Homey.Device {
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET request: `, request);
 
-            const shadeResponse = await setShade(ip, request, deviceObject.id);
+            const shadeResponse = await setShade(ip, this.homey.app.apiClient, request, deviceObject.id);
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET shadeResponse: `, shadeResponse);
 
@@ -90,19 +93,19 @@ class mainDevice extends Homey.Device {
             const setValue2 = settings.invertPosition2 ? 1 - value : value;
 
             const request = {
-                    shade: {
-                        positions: {
-                            posKind1: parseInt(settings.posKind1),
-                            position1: parseInt((65535 * setValue1).toFixed()),
-                            posKind2: parseInt(settings.posKind2),
-                            position2: parseInt((65535 * setValue2).toFixed())
-                        }
+                shade: {
+                    positions: {
+                        posKind1: parseInt(settings.posKind1),
+                        position1: parseInt((65535 * setValue1).toFixed()),
+                        posKind2: parseInt(settings.posKind2),
+                        position2: parseInt((65535 * setValue2).toFixed())
                     }
-                };
+                }
+            };
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_TILT_SET request: `, request);
 
-            const shadeResponse = await setShade(ip, request, deviceObject.id);
+            const shadeResponse = await setShade(ip, this.homey.app.apiClient, request, deviceObject.id);
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_TILT_SET shadeResponse: `, shadeResponse);
 
@@ -118,11 +121,9 @@ class mainDevice extends Homey.Device {
             const settings = await this.getSettings();
             const ip = settings.ip || settings['nl.luxaflex.powerview.settings.ip'];
 
-    
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneSet`, value);
 
-
-            const sceneResponse = await getScenes(ip, value);
+            const sceneResponse = await getScenes(ip, this.homey.app.apiClient, value);
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneSet sceneResponse: `, sceneResponse);
 
@@ -138,11 +139,9 @@ class mainDevice extends Homey.Device {
             const settings = await this.getSettings();
             const ip = settings.ip || settings['nl.luxaflex.powerview.settings.ip'];
 
-    
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneCollectionSet`, value);
 
-
-            const sceneResponse = await getSceneCollection(ip, value);
+            const sceneResponse = await getSceneCollection(ip, this.homey.app.apiClient, value);
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneCollectionSet sceneResponse: `, sceneResponse);
 
@@ -160,7 +159,7 @@ class mainDevice extends Homey.Device {
             const deviceObject = await this.getData();
             const settings = await this.getSettings();
             const ip = settings.ip;
-            const deviceInfo = await getShade(ip, deviceObject.id);
+            const deviceInfo = await getShade(ip, this.homey.app.apiClient, deviceObject.id);
             const { positions } = deviceInfo;
             const { batteryStatus } = deviceInfo;
             const batteryTypes = {
@@ -218,20 +217,23 @@ class mainDevice extends Homey.Device {
 
             await this.setCapabilityValue(key, value);
 
-            // if (typeof value === 'boolean' && key.startsWith('is_') && oldVal !== value) {
-            //     await this.homey.flow
-            //         .getDeviceTriggerCard(`${key}_changed`)
-            //         .trigger(this, { [`${key}`]: value })
-            //         .catch(this.error)
-            //         .then(this.homey.app.log(`[Device] ${this.getName()} - setValue ${key}_changed - Triggered: "${key} | ${value}"`));
-            // }
+            const triggers = this.homey.manifest.flow.triggers;
+            const triggerExists = triggers.find((trigger) => trigger.id === `${key}_changed`);
+
+            if (triggerExists) {
+                await this.homey.flow
+                    .getDeviceTriggerCard(`${key}_changed`)
+                    .trigger(this, { [`${key}`]: value })
+                    .catch(this.error)
+                    .then(this.homey.app.log(`[Device] ${this.getName()} - setValue ${key}_changed - Triggered: "${key} | ${value}"`));
+            }
         }
     }
 
     // ------------- Intervals -------------
-    async setIntervalsAndFlows() {
+    async setIntervalsAndFlows(override = false) {
         try {
-            if (this.getAvailable()) {
+            if (override || this.getAvailable()) {
                 await this.setCapabilityValuesInterval(2000);
             }
         } catch (error) {

@@ -8,6 +8,7 @@
     "en": "Luxaflex Powerview",
     "nl": "Luxaflex Powerview"
   },
+  "brandColor": "#b3bb3c",
   "description": {
     "en": "Adds support for Luxaflex Powerview devices",
     "nl": "Ondersteuning voor Luxaflex Powerview apparaten"
@@ -30,8 +31,8 @@
     "small": "/assets/images/small.png"
   },
   "author": {
-    "name": "Luxaflex Nederland",
-    "email": "support.homey@luxaflex-nederland.nl"
+    "name": "Martijn Poppen",
+    "email": "luxaflex@martijnpoppen.nl"
   },
   "contributors": {
     "developers": [
@@ -47,9 +48,71 @@
         "name": "Martijn Poppen",
         "email": "luxaflex@martijnpoppen.nl"
       }
+    ],
+    "translators": [
+      {
+        "name": "🇬🇧 Martijn Poppen"
+      },
+      {
+        "name": "🇳🇱 Martijn Poppen"
+      }
     ]
   },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "martijnpoppen"
+      },
+      "bunq": {
+        "username": "martijnpoppen"
+      }
+    }
+  },
+  "bugs": {
+    "url": "https://community.homey.app/t/app-pro-we-connect-myaudi-myskoda-my-seat-my-cupra/62196"
+  },
+  "source": "https://github.com/martijnpoppen/com.we-volkswagen.connect",
+  "homeyCommunityTopicId": 62196,
+  "support": "https://community.homey.app/t/app-pro-we-connect-myaudi-myskoda-my-seat-my-cupra/62196",
   "flow": {
+    "triggers": [
+      {
+        "id": "windowcoverings_tilt_set_changed",
+        "title": {
+          "en": "Position 2 changed",
+          "nl": "Positie 2 veranderd",
+          "de": "Position 2 hat sich geändert",
+          "fr": "Position 2 a été modifiée",
+          "it": "Posizione 2 cambiata",
+          "sv": "Position 2 ändrad",
+          "no": "Posisjon 2 endret",
+          "es": "La posición 2 ha cambiado",
+          "da": "Position 2 ændret",
+          "ru": "Расположение 2 изменилось",
+          "pl": "Zmiana pozycji 2"
+        },
+        "tokens": [
+          {
+            "name": "windowcoverings_tilt_set",
+            "type": "number",
+            "title": {
+              "en": "Position 2",
+              "nl": "Positie 2",
+              "de": "Position 2",
+              "fr": "Position 2",
+              "it": "Posizione 2",
+              "sv": "Position 2",
+              "no": "Posisjon 2",
+              "es": "Posición 2",
+              "da": "Position 2",
+              "ru": "Позиция 2",
+              "pl": "Pozycja 2"
+            },
+            "example": 0.5
+          }
+        ]
+      }
+    ],
     "actions": [
       {
         "id": "nl.luxaflex.powerview.actions.sceneCollectionSet",
@@ -121,16 +184,36 @@
         "id": "windowcoverings_tilt_set",
         "highlight": true,
         "title": {
-          "en": "Set position 2 to",
-          "nl": "Zet positie 2 naar"
+          "en": "Set the position 2 to",
+          "nl": "Zet de positie 2 naar",
+          "de": "Setze die Position 2 auf",
+          "fr": "Mettre la position 2 sur",
+          "it": "Imposta la posizione 2 su",
+          "sv": "Ställ in positionen 2 till",
+          "no": "Innstill posisjonen 2 til",
+          "es": "Configurar la posición c2 omo",
+          "da": "Indstil positionen 2 til",
+          "ru": "Установите позицию 2 на",
+          "pl": "Ustaw pozycję 2 na"
         },
         "titleFormatted": {
-          "en": "Set position 2 to  [[windowcoverings_tilt_set]]",
-          "nl": "Zet positie 2 naar [[windowcoverings_tilt_set]]"
+          "en": "Set the position 2 to [[windowcoverings_tilt_set]]",
+          "nl": "Zet de positie 2 naar [[windowcoverings_tilt_set]]",
+          "de": "Setze die Position 2 auf [[windowcoverings_tilt_set]]",
+          "fr": "Mettre la position 2 sur [[windowcoverings_tilt_set]]",
+          "it": "Imposta la posizione 2 su [[windowcoverings_tilt_set]]",
+          "sv": "Ställ in positionen 2 till [[windowcoverings_tilt_set]]",
+          "no": "Innstill posisjonen 2 til [[windowcoverings_tilt_set]]",
+          "es": "Configurar la posición c2 omo [[windowcoverings_tilt_set]]",
+          "da": "Indstil positionen 2 til [[windowcoverings_tilt_set]]",
+          "ru": "Установите позицию 2 на [[windowcoverings_tilt_set]]",
+          "pl": "Ustaw pozycję 2 na [[windowcoverings_tilt_set]]"
         },
         "hint": {
-          "en": "Change the position to open (100%), closed (0%), or a value in between.",
-          "nl": "Verander de positie naar open (100%), gesloten (0%), of een een waarde daartussen."
+          "en": "Change the position 2 to open (100%), closed (0%), or a value in between.",
+          "nl": "Verander de positie 2 naar open (100%), gesloten (0%), of een een waarde daartussen.",
+          "ru": "Измените позицию на открытую (100%), закрытую (0%) или между этими значениями.",
+          "pl": "Zmień pozycję na rozchylone (100%), zasunięte (0%) lub wartość pomiędzy."
         },
         "args": [
           {
@@ -207,9 +290,10 @@
       "name": {
         "en": "Powerview Shade"
       },
+      "icon": "/drivers/nl.luxaflex.powerview.shade/assets/icon.svg",
       "images": {
-        "large": "/drivers/nl.luxaflex.powerview.hub/assets/images/large.png",
-        "small": "/drivers/nl.luxaflex.powerview.hub/assets/images/small.png"
+        "large": "/drivers/nl.luxaflex.powerview.shade/assets/images/large.png",
+        "small": "/drivers/nl.luxaflex.powerview.shade/assets/images/small.png"
       },
       "class": "blinds",
       "capabilities": [

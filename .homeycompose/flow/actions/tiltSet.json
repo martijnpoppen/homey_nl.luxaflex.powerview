@@ -2,27 +2,47 @@
   "id": "windowcoverings_tilt_set",
   "highlight": true,
   "title": {
-    "en": "Set position 2 to",
-    "nl": "Zet positie 2 naar"
+    "en": "Set the position 2 to",
+    "nl": "Zet de positie 2 naar",
+    "de": "Setze die Position 2 auf",
+    "fr": "Mettre la position 2 sur",
+    "it": "Imposta la posizione 2 su",
+    "sv": "Ställ in positionen 2 till",
+    "no": "Innstill posisjonen 2 til",
+    "es": "Configurar la posición c2 omo",
+    "da": "Indstil positionen 2 til",
+    "ru": "Установите позицию 2 на",
+    "pl": "Ustaw pozycję 2 na"
   },
   "titleFormatted": {
-    "en": "Set position 2 to  [[windowcoverings_tilt_set]]",
-    "nl": "Zet positie 2 naar [[windowcoverings_tilt_set]]"
+    "en": "Set the position 2 to [[windowcoverings_tilt_set]]",
+    "nl": "Zet de positie 2 naar [[windowcoverings_tilt_set]]",
+    "de": "Setze die Position 2 auf [[windowcoverings_tilt_set]]",
+    "fr": "Mettre la position 2 sur [[windowcoverings_tilt_set]]",
+    "it": "Imposta la posizione 2 su [[windowcoverings_tilt_set]]",
+    "sv": "Ställ in positionen 2 till [[windowcoverings_tilt_set]]",
+    "no": "Innstill posisjonen 2 til [[windowcoverings_tilt_set]]",
+    "es": "Configurar la posición c2 omo [[windowcoverings_tilt_set]]",
+    "da": "Indstil positionen 2 til [[windowcoverings_tilt_set]]",
+    "ru": "Установите позицию 2 на [[windowcoverings_tilt_set]]",
+    "pl": "Ustaw pozycję 2 na [[windowcoverings_tilt_set]]"
   },
   "hint": {
-    "en": "Change the position to open (100%), closed (0%), or a value in between.",
-    "nl": "Verander de positie naar open (100%), gesloten (0%), of een een waarde daartussen."
+    "en": "Change the position 2 to open (100%), closed (0%), or a value in between.",
+    "nl": "Verander de positie 2 naar open (100%), gesloten (0%), of een een waarde daartussen.",
+    "ru": "Измените позицию на открытую (100%), закрытую (0%) или между этими значениями.",
+    "pl": "Zmień pozycję na rozchylone (100%), zasunięte (0%) lub wartość pomiędzy."
   },
   "args": [
     {
-        "name": "device",
-        "type": "device",
-        "filter": "driver_id=nl.luxaflex.powerview.shade",
-        "placeholder": {
-          "en": "Select shade",
-          "nl": "Selecteer shade"
-        }
-      },
+      "name": "device",
+      "type": "device",
+      "filter": "driver_id=nl.luxaflex.powerview.shade",
+      "placeholder": {
+        "en": "Select shade",
+        "nl": "Selecteer shade"
+      }
+    },
     {
       "name": "windowcoverings_tilt_set",
       "type": "range",

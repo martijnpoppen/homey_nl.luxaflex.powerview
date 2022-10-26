@@ -2,9 +2,10 @@
   "name": {
     "en": "Powerview Shade"
   },
+  "icon": "{{driverAssetsPath}}/icon.svg",
   "images": {
-    "large": "/drivers/nl.luxaflex.powerview.hub/assets/images/large.png",
-    "small": "/drivers/nl.luxaflex.powerview.hub/assets/images/small.png"
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "small": "{{driverAssetsPath}}/images/small.png"
   },
   "class": "blinds",
   "capabilities": [
