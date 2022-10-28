@@ -7,5 +7,8 @@
   },
   "2.0.2": {
     "en": "FIX: app name"
+  },
+  "2.0.3": {
+    "en": "FIX: flowcards and driver image"
   }
 }

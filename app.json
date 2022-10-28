@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.luxaflex.powerview",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -137,7 +137,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=nl.luxaflex.powerview.hub|nl.luxaflex.powerview.shade",
+            "filter": "driver_id=nl.luxaflex.powerview.hub",
             "placeholder": {
               "en": "Select shade",
               "nl": "Selecteer shade"
@@ -170,7 +170,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=nl.luxaflex.powerview.hub|nl.luxaflex.powerview.shade",
+            "filter": "driver_id=nl.luxaflex.powerview.hub",
             "placeholder": {
               "en": "Select shade",
               "nl": "Selecteer shade"
@@ -301,8 +301,8 @@
       },
       "icon": "/drivers/nl.luxaflex.powerview.shade/assets/icon.svg",
       "images": {
-        "large": "/drivers/nl.luxaflex.powerview.shade/assets/images/large.png",
-        "small": "/drivers/nl.luxaflex.powerview.shade/assets/images/small.png"
+        "large": "/drivers/nl.luxaflex.powerview.shade/assets/images/large.jpg",
+        "small": "/drivers/nl.luxaflex.powerview.shade/assets/images/small.jpg"
       },
       "class": "blinds",
       "capabilities": [
