@@ -10,5 +10,8 @@
   },
   "2.0.3": {
     "en": "FIX: flowcards and driver image"
+  },
+  "2.0.4": {
+    "en": "FIX: support links"
   }
 }
