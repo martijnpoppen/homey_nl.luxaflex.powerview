@@ -13,6 +13,17 @@
       "ru": "Расположение 2 изменилось",
       "pl": "Zmiana pozycji 2"
     },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=nl.luxaflex.powerview.shade",
+            "placeholder": {
+              "en": "Select shade",
+              "nl": "Selecteer shade"
+            }
+          }
+    ],
     "tokens": [
       {
         "name": "windowcoverings_tilt_set",
