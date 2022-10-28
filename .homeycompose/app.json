@@ -1,16 +1,14 @@
 {
   "id": "nl.luxaflex.powerview",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
-    "en": "Luxaflex Powerview",
-    "nl": "Luxaflex Powerview"
+    "en": "Powerview - Luxaflex / Hunter Douglas"
   },
   "brandColor": "#b3bb3c",
   "description": {
-    "en": "Adds support for Luxaflex Powerview devices",
-    "nl": "Ondersteuning voor Luxaflex Powerview apparaten"
+    "en": "Moving To Your Schedule"
   },
   "tags": {
     "en": [
@@ -22,7 +20,9 @@
       "Plisse"
     ]
   },
-  "category": ["appliances"],
+  "category": [
+    "appliances"
+  ],
   "images": {
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"
