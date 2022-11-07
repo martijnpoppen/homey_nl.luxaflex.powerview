@@ -13,5 +13,8 @@
   },
   "2.0.4": {
     "en": "FIX: support links"
+  },
+  "2.0.5": {
+    "en": "FIX: Hub pairing | FIX: IP resolve - Instead of hostname + local"
   }
 }
