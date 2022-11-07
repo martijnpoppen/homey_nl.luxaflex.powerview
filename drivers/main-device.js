@@ -8,11 +8,12 @@ class mainDevice extends Homey.Device {
     async onInit() {
         try {
             this.homey.app.log('[Device] - init =>', this.getName());
-            this.setUnavailable(`Initializing ${this.getName()}`);
+            this.setUnavailable(`Starting ${this.getName()} ...`);
 
             const driverData = this.homey.drivers.getDriver('nl.luxaflex.powerview.shade');
             const driverDevices = driverData.getDevices();
             const deviceObject = this.getData();
+
             const sleepIndex = driverDevices.findIndex((device) => {
                 const driverDeviceObject = device.getData();
                 return deviceObject.id === driverDeviceObject.id;
@@ -21,6 +22,8 @@ class mainDevice extends Homey.Device {
             await sleep((sleepIndex + 1) * 5000);
 
             this.homey.app.log('[Device] - init - after sleep =>', sleepIndex, this.getName());
+
+            await this.fixSettings();
 
             await this.checkCapabilities();
 
@@ -34,6 +37,15 @@ class mainDevice extends Homey.Device {
             await this.setAvailable();
         } catch (error) {
             this.homey.app.error(`[Device] ${this.getName()} - OnInit Error`, error);
+        }
+    }
+
+    async fixSettings() {
+        const settings = await this.getSettings();
+        if (settings['nl.luxaflex.powerview.settings.ip'] && this.driver.id === 'nl.luxaflex.powerview.hub') {
+            this.homey.app.log(`[Device] ${this.getName()} - fixSettings - set IP`, { ip: settings['nl.luxaflex.powerview.settings.ip'] });
+
+            await this.setSettings({ ip: settings['nl.luxaflex.powerview.settings.ip'] });
         }
     }
 

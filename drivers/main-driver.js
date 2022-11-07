@@ -8,6 +8,17 @@ module.exports = class mainDriver extends Homey.Driver {
         this.homey.app.log(`[Driver] - version`, Homey.manifest.version);
     }
 
+    driverType() {
+        return 'other';
+    }
+
+    GetGUID() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+            return v.toString(16);
+        });
+    }
+
     async onPair(session) {
         const discoveryStrategy = this.homey.discovery.getStrategy('powerview');
         const discoveryResults = discoveryStrategy.getDiscoveryResults();
@@ -21,26 +32,38 @@ module.exports = class mainDriver extends Homey.Driver {
                 for (const discoveryResult of Object.values(discoveryResults)) {
                     this.homey.app.log(`[Driver] ${this.id} - discoveryResult `, discoveryResult);
 
-                    const ip = `${discoveryResult.host.toLowerCase()}.local`;
-                    const shades = await getShades(ip, this.homey.app.apiClient);
+                    const ip = discoveryResult.address;                   
 
-                    this.homey.app.log(`[Driver] ${this.id} - Found shades - `, shades);
+                    if(this.driverType() === 'shade') {
+                        const shades = await getShades(ip, this.homey.app.apiClient);
+                        this.homey.app.log(`[Driver] ${this.id} - Found shades - `, shades);
+    
+                        for (const shade of shades) {
+                            devices.push({
+                                name: shade.shadeName,
+                                data: {
+                                    id: shade.id
+                                },
+                                settings: {
+                                    'ip': ip,
+                                    type: shade.type,
+                                    dualmotor: !!(shade.positions && shade.positions.posKind2)
+                                }
+                            })
+                        }
+                    } else {
+                        this.homey.app.log(`[Driver] ${this.id} - Found hub - `, ip);
 
-                    for (const shade of shades) {
                         devices.push({
-                            name: shade.shadeName,
+                            name: discoveryResult.name,
                             data: {
-                                id: shade.id
+                                id: this.GetGUID()
                             },
                             settings: {
-                                'ip': ip,
-                                type: shade.type,
-                                dualmotor: !!(shade.positions && shade.positions.posKind2)
+                                'ip': ip
                             }
                         })
                     }
-
-                    console.log(devices)
                 }
 
                 this.homey.app.log(`[Driver] ${this.id} - Found devices - `, devices);

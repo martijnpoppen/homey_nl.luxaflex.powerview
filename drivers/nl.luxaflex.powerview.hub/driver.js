@@ -1,4 +1,7 @@
 const mainDriver = require('../main-driver');
 
-
-module.exports = class PowerviewHubDriver extends mainDriver {};
+module.exports = class PowerviewHubDriver extends mainDriver {
+    driverType() {
+        return 'hub';
+    }
+};
