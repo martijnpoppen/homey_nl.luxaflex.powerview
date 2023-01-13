@@ -19,5 +19,8 @@
   },
   "2.0.6": {
     "en": "FIX: remove battery if shades are powered | FIX: improve app page"
+  },
+  "2.0.7": {
+    "en": "FIX: remove battery from app page"
   }
 }
