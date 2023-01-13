@@ -8,7 +8,7 @@ class mainDevice extends Homey.Device {
     async onInit() {
         try {
             this.homey.app.log('[Device] - init =>', this.getName());
-            this.setUnavailable(`Starting ${this.getName()} ...`);
+            this.setUnavailable(`Connecting to: ${this.getName()} ...`);
 
             const driverData = this.homey.drivers.getDriver('nl.luxaflex.powerview.shade');
             const driverDevices = driverData.getDevices();
@@ -37,6 +37,16 @@ class mainDevice extends Homey.Device {
             await this.setAvailable();
         } catch (error) {
             this.homey.app.error(`[Device] ${this.getName()} - OnInit Error`, error);
+        }
+    }
+
+    // ------------- Settings -------------
+    async onSettings({ oldSettings, newSettings, changedKeys }) {
+        this.log(`[Device] ${this.getName()} - oldSettings`, { ...oldSettings });
+        this.log(`[Device] ${this.getName()} - newSettings`, { ...newSettings });
+
+        if (changedKeys.length) {
+            await this.setCapabilityValues(false, newSettings);
         }
     }
 
@@ -164,12 +174,12 @@ class mainDevice extends Homey.Device {
         }
     }
 
-    async setCapabilityValues(check = false) {
+    async setCapabilityValues(check = false, overrideSettings = null) {
         this.homey.app.log(`[Device] ${this.getName()} - setCapabilityValues`);
 
         try {
             const deviceObject = await this.getData();
-            const settings = await this.getSettings();
+            const settings = overrideSettings ? overrideSettings : this.getSettings();
             const ip = settings.ip;
             const deviceInfo = await getShade(ip, this.homey.app.apiClient, deviceObject.id);
             const { positions } = deviceInfo;
@@ -202,7 +212,17 @@ class mainDevice extends Homey.Device {
 
             // // ------------ Get values --------------
 
-            await this.setValue('measure_battery', batteryTypes[batteryStatus]);
+            if (settings.measure_battery) {
+                if(!this.hasCapability('measure_battery')) {
+                    this.homey.app.log(`[Device] ${this.getName()} - adding measure_battery =>`, settings);
+                    await this.addCapability('measure_battery');
+                }
+
+                await this.setValue('measure_battery', batteryTypes[batteryStatus]);
+            } else {
+                this.homey.app.log(`[Device] ${this.getName()} - removing measure_battery =>`, settings);
+                await this.removeCapability('measure_battery');
+            }
 
             const { position1 } = positions;
 

@@ -1,0 +1,15 @@
+{
+    "pair": [
+        {
+          "id": "list_hubs",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_hub"
+          }
+        },
+        {
+          "id": "add_hub",
+          "template": "add_devices"
+        }
+      ]
+}

@@ -1,26 +1,10 @@
 {
+  "$extends": ["device", "pair"],
   "name": {
     "en": "Powerview Hub"
   },
-  "images": {
-    "large": "/drivers/nl.luxaflex.powerview.hub/assets/images/large.png",
-    "small": "/drivers/nl.luxaflex.powerview.hub/assets/images/small.png"
-  },
   "class": "other",
   "capabilities": [],
-  "pair": [
-    {
-      "id": "list_hubs",
-      "template": "list_devices",
-      "navigation": {
-        "next": "add_hub"
-      }
-    },
-    {
-      "id": "add_hub",
-      "template": "add_devices"
-    }
-  ],
   "settings": [
     {
       "type": "group",
