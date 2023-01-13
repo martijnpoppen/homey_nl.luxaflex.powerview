@@ -16,5 +16,8 @@
   },
   "2.0.5": {
     "en": "FIX: Hub pairing | FIX: IP resolve - Instead of hostname + local"
+  },
+  "2.0.6": {
+    "en": "FIX: remove battery if shades are powered | FIX: improve app page"
   }
 }

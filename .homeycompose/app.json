@@ -1,6 +1,6 @@
 {
   "id": "nl.luxaflex.powerview",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -34,16 +34,16 @@
   "contributors": {
     "developers": [
       {
+        "name": "Martijn Poppen",
+        "email": "luxaflex@martijnpoppen.nl"
+      },
+      {
         "name": "HUSS BV",
         "email": "support@huss.nl"
       },
       {
         "name": "Rogier Hofboer",
         "email": "rogier@hofboer.nl"
-      },
-      {
-        "name": "Martijn Poppen",
-        "email": "luxaflex@martijnpoppen.nl"
       }
     ],
     "translators": [
