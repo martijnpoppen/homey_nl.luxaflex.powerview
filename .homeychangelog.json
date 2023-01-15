@@ -25,5 +25,8 @@
   },
   "2.1.0": {
     "en": "NEW: manual ip step in pairing process"
+  },
+  "2.1.1": {
+    "en": "FIX: HUB settings, show powerview IP"
   }
 }
