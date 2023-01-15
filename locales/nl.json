@@ -1,15 +1,9 @@
 {
-	"pair": {
-		"start": {
-			"intro": "Select het IP address van de Powerview Hub en geef hem een naam.",
-			"title": "Zoeken naar Powerview Hub...",
-			"titleSelect" : "Selecteer Powerview Hub",
-			"error": "Er is een fout opgetreden.",
-			"required": "IP address is een verplicht veld.",
-			"invalidIP": "Geef een geldig IP adres op. bijv. 192.168.1.10",
-			"ipAddress": "IP adres",
-			"deviceName": "Hub Naam",
-			"saveSettings": "Instellingen opslaan"		
-		}
-   }
-}
+    "pair": {
+      "intro": "Voor je Powerview Hub IP adres in",
+      "login": "Powerview IP address",
+      "save": "Opslaan",
+      "loading": "Laden"
+    }
+  }
+  

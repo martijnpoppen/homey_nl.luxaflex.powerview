@@ -2,7 +2,7 @@
     "type": "mdns-sd",
       "mdns-sd": {
         "protocol": "tcp",
-        "name": "_powerview"
+        "name": "_ppowerview"
       },
       "id": "{{txt.id}}"
   }

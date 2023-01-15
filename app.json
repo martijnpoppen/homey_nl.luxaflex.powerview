@@ -264,15 +264,36 @@
       },
       "pair": [
         {
-          "id": "list_hubs",
-          "template": "list_devices",
-          "navigation": {
-            "next": "add_hub"
+          "id": "loading",
+          "template": "loading"
+        },
+        {
+          "id": "set_ip"
+        },
+        {
+          "id": "get_data",
+          "template": "loading",
+          "options": {
+            "text": {
+              "en": "Searching devices",
+              "nl": "Zoeken naar apparaten"
+            }
           }
         },
         {
-          "id": "add_hub",
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
           "template": "add_devices"
+        },
+        {
+          "id": "done",
+          "template": "done"
         }
       ],
       "name": {
@@ -462,15 +483,36 @@
       },
       "pair": [
         {
-          "id": "list_hubs",
-          "template": "list_devices",
-          "navigation": {
-            "next": "add_hub"
+          "id": "loading",
+          "template": "loading"
+        },
+        {
+          "id": "set_ip"
+        },
+        {
+          "id": "get_data",
+          "template": "loading",
+          "options": {
+            "text": {
+              "en": "Searching devices",
+              "nl": "Zoeken naar apparaten"
+            }
           }
         },
         {
-          "id": "add_hub",
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
           "template": "add_devices"
+        },
+        {
+          "id": "done",
+          "template": "done"
         }
       ],
       "name": {
@@ -485,7 +527,7 @@
       "type": "mdns-sd",
       "mdns-sd": {
         "protocol": "tcp",
-        "name": "_powerview"
+        "name": "_ppowerview"
       },
       "id": "{{txt.id}}"
     }
