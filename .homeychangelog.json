@@ -28,5 +28,8 @@
   },
   "2.1.1": {
     "en": "FIX: HUB settings, show powerview IP"
+  },
+  "2.1.2": {
+    "en": "FIX: HUB settings, show powerview IP"
   }
 }
