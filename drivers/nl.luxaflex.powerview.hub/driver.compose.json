@@ -14,7 +14,7 @@
       },
       "children": [
         {
-          "id": "nl.luxaflex.powerview.settings.ip",
+          "id": "ip",
           "type": "text",
           "label": {
             "en": "IP address of your Powerview hub",
