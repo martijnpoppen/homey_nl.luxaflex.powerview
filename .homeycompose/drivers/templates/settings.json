@@ -91,7 +91,6 @@
           },
           "value": false
         },
-
         {
           "id": "posKind2",
           "type": "dropdown",
@@ -130,7 +129,20 @@
               }
             }
           ]
-        }
+        },
+        {
+            "id": "updatePosition2",
+            "type": "checkbox",
+            "hint": {
+              "en": "When setting Position 1, then Position 2 will always go back to the state it was set to. Disabling this will allow the user to close/open both motors with one command. (Useful with Google Home)",
+              "nl": "Wanner Positie 1 ingesteld wordt zal Positie 2 altijd terug gaan in de laatste stand waar deze in stond. Het uitschakelen van deze optie zal beide motoren openen/sluiten met 1 commando. (Handig in gebruik met Google Home)"
+            },
+            "label": {
+              "en": "Sync Position 2",
+              "nl": "Sync positie 2"
+            },
+            "value": true
+          }
       ]
     },
     {

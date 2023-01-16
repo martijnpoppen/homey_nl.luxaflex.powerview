@@ -86,8 +86,8 @@ class mainDevice extends Homey.Device {
                     positions: {
                         posKind1: parseInt(settings.posKind1),
                         position1: parseInt((65535 * setValue1).toFixed()),
-                        ...(settings.dualmotor && {posKind2: parseInt(settings.posKind2)}),
-                        ...(settings.dualmotor && {position2: parseInt((65535 * setValue2).toFixed())})
+                        ...(settings.dualmotor && settings.updatePosition2 && {posKind2: parseInt(settings.posKind2)}),
+                        ...(settings.dualmotor && settings.updatePosition2 && {position2: parseInt((65535 * setValue2).toFixed())})
                     }
                 }
             };
