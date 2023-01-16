@@ -34,5 +34,8 @@
   },
   "2.2.0": {
     "en": "NEW: Detect if Shade has DualMotor | FIX: api request for second motor | NEW: add sync option for Position2"
+  },
+  "2.2.1": {
+    "en": "FIX: update position2 when sync is off"
   }
 }
