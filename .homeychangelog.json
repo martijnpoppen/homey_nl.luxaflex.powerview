@@ -31,5 +31,8 @@
   },
   "2.1.2": {
     "en": "FIX: HUB settings, show powerview IP"
+  },
+  "2.2.0": {
+    "en": "NEW: Detect if Shade has DualMotor | FIX: api request for second motor | NEW: add sync option for Position2"
   }
 }

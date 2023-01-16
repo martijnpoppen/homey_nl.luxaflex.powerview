@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.luxaflex.powerview",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -468,12 +468,12 @@
               "id": "updatePosition2",
               "type": "checkbox",
               "hint": {
-                "en": "Position 2 will always go back to the state it was set to. (Disabling this will allow the user to close/open both motors with one command)",
-                "nl": "Positie 2 zal altijd terug gaan in de laatste stand waar deze in stond. (Het uitschakelen van deze optie zal beide motoren openen/sluiten met 1 commando)"
+                "en": "When setting Position 1, then Position 2 will always go back to the state it was set to. Disabling this will allow the user to close/open both motors with one command. (Useful with Google Home)",
+                "nl": "Wanner Positie 1 ingesteld wordt zal Positie 2 altijd terug gaan in de laatste stand waar deze in stond. Het uitschakelen van deze optie zal beide motoren openen/sluiten met 1 commando. (Handig in gebruik met Google Home)"
               },
               "label": {
-                "en": "Update position 2 when setting position 1",
-                "nl": "Update positie 2 als positie 1 ingesteld wordt"
+                "en": "Sync Position 2",
+                "nl": "Sync positie 2"
               },
               "value": true
             }
