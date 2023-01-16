@@ -42,11 +42,12 @@ class mainDevice extends Homey.Device {
 
     // ------------- Settings -------------
     async onSettings({ oldSettings, newSettings, changedKeys }) {
-        this.log(`[Device] ${this.getName()} - oldSettings`, { ...oldSettings });
-        this.log(`[Device] ${this.getName()} - newSettings`, { ...newSettings });
+        this.homey.app.log(`[Device] ${this.getName()} - oldSettings`, { ...oldSettings });
+        this.homey.app.log(`[Device] ${this.getName()} - newSettings`, { ...newSettings });
 
-        if (changedKeys.length) {
-            await this.setCapabilityValues(false, newSettings);
+        if (changedKeys.length && this.getClass() === 'blinds') {
+            await sleep(1000);
+            this.setCapabilityValues(true, newSettings);
         }
     }
 
@@ -73,7 +74,10 @@ class mainDevice extends Homey.Device {
             const settings = await this.getSettings();
             const ip = settings.ip || settings['nl.luxaflex.powerview.settings.ip'];
 
-            const setValue = settings.invertPosition1 ? 1 - value : value;
+            const pos2 = this.getCapabilityValue('windowcoverings_tilt_set');
+
+            const setValue1 = settings.invertPosition1 ? 1 - value : value;
+            const setValue2 = settings.invertPosition2 ? 1 - pos2 : pos2;
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET`, value);
 
@@ -81,7 +85,9 @@ class mainDevice extends Homey.Device {
                 shade: {
                     positions: {
                         posKind1: parseInt(settings.posKind1),
-                        position1: parseInt((65535 * setValue).toFixed())
+                        position1: parseInt((65535 * setValue1).toFixed()),
+                        ...(settings.dualmotor && {posKind2: parseInt(settings.posKind2)}),
+                        ...(settings.dualmotor && {position2: parseInt((65535 * setValue2).toFixed())})
                     }
                 }
             };
@@ -196,34 +202,11 @@ class mainDevice extends Homey.Device {
 
             // // Check for existence
             if (check) {
-                if (!settings.dualmotor) {
-                    await this.removeCapability('windowcoverings_tilt_set');
-
-                    await this.setSettings({
-                        posKind1: positions.posKind1.toFixed()
-                    });
-                } else {
-                    await this.setSettings({
-                        posKind1: positions.posKind1.toFixed(),
-                        posKind2: positions.posKind2.toFixed()
-                    });
-                }
+                await this.addOrRemoveCapability(settings.dualmotor, 'windowcoverings_tilt_set');
+                await this.addOrRemoveCapability(settings.measure_battery, 'measure_battery')
             }
 
             // // ------------ Get values --------------
-
-            if (settings.measure_battery) {
-                if(!this.hasCapability('measure_battery')) {
-                    this.homey.app.log(`[Device] ${this.getName()} - adding measure_battery =>`, settings);
-                    await this.addCapability('measure_battery');
-                }
-
-                await this.setValue('measure_battery', batteryTypes[batteryStatus]);
-            } else {
-                this.homey.app.log(`[Device] ${this.getName()} - removing measure_battery =>`, settings);
-                await this.removeCapability('measure_battery');
-            }
-
             const { position1 } = positions;
 
             await this.setValue('windowcoverings_set', position1 / 65535);
@@ -232,6 +215,8 @@ class mainDevice extends Homey.Device {
                 const { position2 } = positions;
                 await this.setValue('windowcoverings_tilt_set', position2 / 65535);
             }
+
+            await this.setValue('measure_battery', batteryTypes[batteryStatus]);
         } catch (error) {
             this.homey.app.error(error);
         }
@@ -240,6 +225,11 @@ class mainDevice extends Homey.Device {
     async setValue(key, value, delay = 0) {
         if (this.hasCapability(key)) {
             const oldVal = await this.getCapabilityValue(key);
+
+            if (value === null || isNaN(value)) {
+                this.homey.app.log(`[Device] ${this.getName()} - setValue => ${key} => invalid!`, oldVal, value);
+                return false;
+            }
 
             this.homey.app.log(`[Device] ${this.getName()} - setValue => ${key} => `, oldVal, value);
 
@@ -291,9 +281,13 @@ class mainDevice extends Homey.Device {
     }
 
     // ------------- Capabilities -------------
-    async checkCapabilities() {
-        const driverCapabilities = this.driver.manifest.capabilities;
+    async checkCapabilities(filterCapability = null) {
+        let driverCapabilities = this.driver.manifest.capabilities;
         const deviceCapabilities = this.getCapabilities();
+
+        if (filterCapability) {
+            driverCapabilities = driverCapabilities.filter((k) => k !== filterCapability);
+        }
 
         this.homey.app.log(`[Device] ${this.getName()} - Device capabilities =>`, deviceCapabilities);
         this.homey.app.log(`[Device] ${this.getName()} - Driver capabilities =>`, driverCapabilities);
@@ -323,6 +317,16 @@ class mainDevice extends Homey.Device {
             await sleep(2000);
         } catch (error) {
             this.homey.app.log(error);
+        }
+    }
+
+    async addOrRemoveCapability(add = true, key) {
+        if(add && !this.hasCapability(key)) {
+            this.homey.app.log(`[Device] ${this.getName()} - addOrRemoveCapability => Add =>`, key);
+            await this.addCapability(key)
+        } else if(!add) {
+            this.homey.app.log(`[Device] ${this.getName()} - addOrRemoveCapability => Remove =>`, key);
+            await this.removeCapability(key)
         }
     }
 }

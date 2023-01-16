@@ -1,6 +1,7 @@
 const Homey = require('homey');
 const { getShades } = require('../lib/api');
 const { sleep } = require('../lib/helpers');
+const { getDeviceByType } = require('../constants/device-types');
 
 module.exports = class mainDriver extends Homey.Driver {
     onInit() {
@@ -100,6 +101,9 @@ module.exports = class mainDriver extends Homey.Driver {
                 const ip = device.address;
 
                 if (ctx.driverType() === 'shade') {
+                    const typeSettings = getDeviceByType(device.type);
+                    const { positions } = device;
+
                     devices.push({
                         name: device.shadeName,
                         data: {
@@ -108,7 +112,9 @@ module.exports = class mainDriver extends Homey.Driver {
                         settings: {
                             ip: ip,
                             type: device.type,
-                            dualmotor: !!(device.positions && device.positions.posKind2),
+                            posKind1: positions.posKind1.toFixed(),
+                            ...(positions.posKind2 && {posKind2: positions.posKind2.toFixed()}),
+                            ...typeSettings.options
                         }
                     });
                 } else {

@@ -1,5 +1,6 @@
 {
   "capabilities": [
+    "measure_battery",
     "windowcoverings_set",
     "windowcoverings_tilt_set"
   ],

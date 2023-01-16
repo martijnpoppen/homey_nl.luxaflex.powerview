@@ -3,6 +3,9 @@
     "name": {
         "en": "Powerview Shade (Requires Hub)"
     },
-    "class": "blinds"
+    "class": "blinds",
+    "energy": {
+        "batteries": ["INTERNAL", "OTHER"]
+    }
   }
   

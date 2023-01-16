@@ -15,22 +15,22 @@
             "nl": "IP adres van de Powerview Hub"
           },
           "value": ""
-        },
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": {
+        "en": "Motor 1 Settings",
+        "nl": "Motor 1 instellingen"
+      },
+      "children": [
         {
           "id": "invertPosition1",
           "type": "checkbox",
           "label": {
             "en": "Invert position 1 ",
             "nl": "Draai positie 1 om"
-          },
-          "value": false
-        },
-        {
-          "id": "invertPosition2",
-          "type": "checkbox",
-          "label": {
-            "en": "Invert position 2 ",
-            "nl": "Draai positie 2 om"
           },
           "value": false
         },
@@ -68,10 +68,37 @@
               }
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": {
+        "en": "Motor 2 Settings",
+        "nl": "Motor 2 instellingen"
+      },
+      "children": [
+        {
+          "id": "invertPosition2",
+          "type": "checkbox",
+          "hint": {
+            "en": "These options will only affect the app if DualMotor setting is enabled",
+            "nl": "Deze opties zullen van kracht worden als de DualMotor optie is aangevinkt"
+          },
+          "label": {
+            "en": "Invert position 2 ",
+            "nl": "Draai positie 2 om"
+          },
+          "value": false
         },
+
         {
           "id": "posKind2",
           "type": "dropdown",
+          "hint": {
+            "en": "These options will only affect the app if DualMotor setting is enabled",
+            "nl": "Deze opties zullen van kracht worden als de DualMotor optie is aangevinkt"
+          },
           "value": "0",
           "label": {
             "en": "Positionkind 2"
@@ -113,6 +140,19 @@
         "nl": "App opties"
       },
       "children": [
+        {
+            "id": "dualmotor",
+            "type": "checkbox",
+            "label": {
+              "en": "Setting: Dualmotor",
+              "nl": "Instelling: Dualmotor"
+            },
+            "hint": {
+              "en": "Checking this box will add the option to control a extra motor on this device (e.g. Duette Top-Down-Bottom-Up)",
+              "nl": "Het aanzetten van deze instelling zal het mogelijk maken een extra motor te gebruiken op dit apparaat (bijv Duette Top-Down-Bottom-Up)"
+            },
+            "value": true
+        },
         {
           "id": "measure_battery",
           "type": "checkbox",

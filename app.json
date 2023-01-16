@@ -1,11 +1,11 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
-  "id": "nl.luxaflex.powerview",
+  "id": "nl.luxaflex.powerview2",
   "version": "2.1.2",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
-    "en": "Powerview"
+    "en": "Powerview 2"
   },
   "brandColor": "#b3bb3c",
   "description": {
@@ -351,22 +351,22 @@
                 "nl": "IP adres van de Powerview Hub"
               },
               "value": ""
-            },
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Motor 1 Settings",
+            "nl": "Motor 1 instellingen"
+          },
+          "children": [
             {
               "id": "invertPosition1",
               "type": "checkbox",
               "label": {
                 "en": "Invert position 1 ",
                 "nl": "Draai positie 1 om"
-              },
-              "value": false
-            },
-            {
-              "id": "invertPosition2",
-              "type": "checkbox",
-              "label": {
-                "en": "Invert position 2 ",
-                "nl": "Draai positie 2 om"
               },
               "value": false
             },
@@ -403,10 +403,36 @@
                   }
                 }
               ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Motor 2 Settings",
+            "nl": "Motor 2 instellingen"
+          },
+          "children": [
+            {
+              "id": "invertPosition2",
+              "type": "checkbox",
+              "hint": {
+                "en": "These options will only affect the app if DualMotor setting is enabled",
+                "nl": "Deze opties zullen van kracht worden als de DualMotor optie is aangevinkt"
+              },
+              "label": {
+                "en": "Invert position 2 ",
+                "nl": "Draai positie 2 om"
+              },
+              "value": false
             },
             {
               "id": "posKind2",
               "type": "dropdown",
+              "hint": {
+                "en": "These options will only affect the app if DualMotor setting is enabled",
+                "nl": "Deze opties zullen van kracht worden als de DualMotor optie is aangevinkt"
+              },
               "value": "0",
               "label": {
                 "en": "Positionkind 2"
@@ -448,6 +474,19 @@
           },
           "children": [
             {
+              "id": "dualmotor",
+              "type": "checkbox",
+              "label": {
+                "en": "Setting: Dualmotor",
+                "nl": "Instelling: Dualmotor"
+              },
+              "hint": {
+                "en": "Checking this box will add the option to control a extra motor on this device (e.g. Duette Top-Down-Bottom-Up)",
+                "nl": "Het aanzetten van deze instelling zal het mogelijk maken een extra motor te gebruiken op dit apparaat (bijv Duette Top-Down-Bottom-Up)"
+              },
+              "value": true
+            },
+            {
               "id": "measure_battery",
               "type": "checkbox",
               "label": {
@@ -464,6 +503,7 @@
         }
       ],
       "capabilities": [
+        "measure_battery",
         "windowcoverings_set",
         "windowcoverings_tilt_set"
       ],
@@ -519,6 +559,12 @@
         "en": "Powerview Shade (Requires Hub)"
       },
       "class": "blinds",
+      "energy": {
+        "batteries": [
+          "INTERNAL",
+          "OTHER"
+        ]
+      },
       "id": "nl.luxaflex.powerview.shade"
     }
   ],
