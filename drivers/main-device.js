@@ -31,7 +31,7 @@ class mainDevice extends Homey.Device {
                 await this.setCapabilityValues(true);
                 await this.setCapabilityListeners();
 
-                await this.setIntervalsAndFlows();
+                await this.setIntervalsAndFlows(true);
             }
 
             await this.setAvailable();
@@ -97,6 +97,11 @@ class mainDevice extends Homey.Device {
             const shadeResponse = await setShade(ip, this.homey.app.apiClient, request, deviceObject.id);
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET shadeResponse: `, shadeResponse);
+
+            if(!settings.updatePosition2) {
+                await sleep(10000);
+                this.setCapabilityValues();
+            }
 
             return Promise.resolve(true);
         } catch (e) {
@@ -186,8 +191,18 @@ class mainDevice extends Homey.Device {
         try {
             const deviceObject = await this.getData();
             const settings = overrideSettings ? overrideSettings : this.getSettings();
-            const ip = settings.ip;
-            const deviceInfo = await getShade(ip, this.homey.app.apiClient, deviceObject.id);
+
+            const updateBattery = check;
+            const now = (new Date()).getTime();
+
+            if ((now - this.lastBatteryUpdate) >= 3600000) {
+                updateBattery = true;
+                this.lastBatteryUpdate = now;
+            }
+
+            this.homey.app.log(`[Device] ${this.getName()} - setCapabilityValues => shouldUpdateBattery? => `, updateBattery);
+
+            const deviceInfo = await getShade(settings.ip, this.homey.app.apiClient, deviceObject.id);
             const { positions } = deviceInfo;
             const { batteryStatus } = deviceInfo;
             const batteryTypes = {
@@ -203,7 +218,9 @@ class mainDevice extends Homey.Device {
             // // Check for existence
             if (check) {
                 await this.addOrRemoveCapability(settings.dualmotor, 'windowcoverings_tilt_set');
-                await this.addOrRemoveCapability(settings.measure_battery, 'measure_battery')
+                await this.addOrRemoveCapability(settings.measure_battery, 'measure_battery');
+
+                this.lastBatteryUpdate = now;
             }
 
             // // ------------ Get values --------------
@@ -256,7 +273,7 @@ class mainDevice extends Homey.Device {
     async setIntervalsAndFlows(override = false) {
         try {
             if (override || this.getAvailable()) {
-                await this.setCapabilityValuesInterval(2000);
+                await this.setCapabilityValuesInterval(15);
             }
         } catch (error) {
             this.homey.app.log(`[Device] ${this.getName()} - OnInit Error`, error);
@@ -265,7 +282,7 @@ class mainDevice extends Homey.Device {
 
     async setCapabilityValuesInterval(update_interval) {
         try {
-            const REFRESH_INTERVAL = 1000 * update_interval;
+            const REFRESH_INTERVAL = 1000 * (update_interval * 60);
 
             this.homey.app.log(`[Device] ${this.getName()} - onPollInterval =>`, REFRESH_INTERVAL, update_interval);
             this.onPollInterval = setInterval(this.setCapabilityValues.bind(this), REFRESH_INTERVAL);
