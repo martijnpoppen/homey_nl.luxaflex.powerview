@@ -246,6 +246,83 @@
             "labelDecimals": 0
           }
         ]
+      },
+      {
+        "id": "windowcoverings_set_both",
+        "highlight": true,
+        "title": {
+          "en": "Set the positions to",
+          "nl": "Zet de posities naar",
+          "de": "Setze die Positions auf",
+          "fr": "Mettre la positions sur",
+          "it": "Imposta la posiziones su",
+          "sv": "Ställ in positionens till",
+          "no": "Innstill posisjonens til",
+          "es": "Configurar la posición c2 omo",
+          "da": "Indstil positionens til",
+          "ru": "Установите позициюs на",
+          "pl": "Ustaw pozycjęs na"
+        },
+        "titleFormatted": {
+          "en": "Set the positions to [[windowcoverings_set]] [[windowcoverings_tilt_set]]",
+          "nl": "Zet de posities naar [[windowcoverings_set]] [[windowcoverings_tilt_set]]",
+          "de": "Setze die Positions auf [[windowcoverings_set]] [[windowcoverings_tilt_set]]",
+          "fr": "Mettre la positions sur [[windowcoverings_set]] [[windowcoverings_tilt_set]]",
+          "it": "Imposta la posiziones su [[windowcoverings_set]] [[windowcoverings_tilt_set]]",
+          "sv": "Ställ in positionens till [[windowcoverings_set]] [[windowcoverings_tilt_set]]",
+          "no": "Innstill posisjonens til [[windowcoverings_set]] [[windowcoverings_tilt_set]]",
+          "es": "Configurar la posición c2 omo [[windowcoverings_set]] [[windowcoverings_tilt_set]]",
+          "da": "Indstil positionens til [[windowcoverings_set]] [[windowcoverings_tilt_set]]",
+          "ru": "Установите позициюs на [[windowcoverings_set]] [[windowcoverings_tilt_set]]",
+          "pl": "Ustaw pozycjęs na [[windowcoverings_set]] [[windowcoverings_tilt_set]]"
+        },
+        "hint": {
+          "en": "Change the positions to open (100%), closed (0%), or a value in between.",
+          "nl": "Verander de posities naar open (100%), gesloten (0%), of een een waarde daartussen.",
+          "ru": "Измените позицию на открытую (100%), закрытую (0%) или между этими значениями.",
+          "pl": "Zmień pozycję na rozchylone (100%), zasunięte (0%) lub wartość pomiędzy."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=nl.luxaflex.powerview.shade",
+            "placeholder": {
+              "en": "Select shade",
+              "nl": "Selecteer shade"
+            }
+          },
+          {
+            "name": "windowcoverings_set",
+            "title": {
+              "en": "Position 1",
+              "nl": "Positie 1"
+            },
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "value": 0.5,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "name": "windowcoverings_tilt_set",
+            "title": {
+              "en": "Position 2",
+              "nl": "Positie 2"
+            },
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "value": 0.5,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
       }
     ]
   },
