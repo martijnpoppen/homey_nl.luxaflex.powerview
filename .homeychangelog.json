@@ -37,5 +37,8 @@
   },
   "2.2.1": {
     "en": "FIX: update position2 when sync is off"
+  },
+  "2.2.2": {
+    "en": "FIX: interval to update data"
   }
 }
