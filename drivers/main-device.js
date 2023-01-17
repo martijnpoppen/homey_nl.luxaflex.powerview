@@ -96,7 +96,18 @@ class mainDevice extends Homey.Device {
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET shadeResponse: `, shadeResponse);
 
-            this.manualSetCapabilityValues(false, null, { ...shadeResponse, positions: request.shade.positions });
+            if (settings.updatePosition2) {
+                this.manualSetCapabilityValues(false, null, { ...shadeResponse, positions: request.shade.positions });
+            } else {
+                this.manualSetCapabilityValues(false, null, {
+                    ...shadeResponse,
+                    positions: {
+                        ...request.shade.positions,
+                        posKind2: parseInt(settings.posKind2),
+                        position2: settings.invertPosition2 ? 1 - 0 : 0
+                    }
+                });
+            }
 
             return Promise.resolve(true);
         } catch (e) {
@@ -227,7 +238,7 @@ class mainDevice extends Homey.Device {
     }
 
     async setCapabilityValues(check = false, overrideSettings = null, overrideDeviceInfo = null) {
-        this.homey.app.log(`[Device] ${this.getName()} - setCapabilityValues`, check, overrideSettings, overrideDeviceInfo);
+        this.homey.app.log(`[Device] ${this.getName()} - setCapabilityValues`, check, !!overrideSettings, !!overrideDeviceInfo);
 
         try {
             const deviceObject = await this.getData();
