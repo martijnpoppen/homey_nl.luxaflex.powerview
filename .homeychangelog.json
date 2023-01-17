@@ -40,5 +40,8 @@
   },
   "2.2.2": {
     "en": "FIX: interval to update data"
+  },
+  "2.2.3": {
+    "en": "NEW: Add FlowCard to set Both positions"
   }
 }
