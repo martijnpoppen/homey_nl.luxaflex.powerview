@@ -46,5 +46,8 @@
   },
   "2.2.4": {
     "en": "FIX: device settings"
+  },
+  "2.3.0": {
+    "en": "NEW: update shades on global level | NEW: add manual update button & flowcard"
   }
 }
