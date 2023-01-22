@@ -225,6 +225,8 @@ class mainDevice extends rootDevice {
         this.homey.app.log(`[Device] ${this.getName()} - setCapabilityValues`, check, !!overrideSettings, !!overrideDeviceInfo);
 
         try {
+            if(!check) this.homey.app.homeyEvents.emit('setCapabilityValues');
+
             const deviceObject = await this.getData();
             const settings = overrideSettings ? overrideSettings : this.getSettings();
 
