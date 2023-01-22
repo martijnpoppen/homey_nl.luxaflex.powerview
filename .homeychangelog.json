@@ -49,5 +49,8 @@
   },
   "2.3.0": {
     "en": "NEW: update shades on global level | NEW: add manual update button & flowcard"
+  },
+  "2.3.1": {
+    "en": "FIX: prevent double update"
   }
 }
