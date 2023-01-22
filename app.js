@@ -3,6 +3,7 @@
 const Homey = require('homey');
 const flowActions = require('./lib/flows/actions.js');
 const apiClient = require('./lib/api-client.js');
+const { EventEmitter } = require('events');
 
 class App extends Homey.App {
 
@@ -20,6 +21,9 @@ class App extends Homey.App {
         this.log(`${this.homey.manifest.id} - ${this.homey.manifest.version} started...`);
 
         this.apiClient = apiClient
+
+        this.homeyEvents = new EventEmitter();
+        this.homeyEvents.setMaxListeners(100);
 
         await flowActions.init(this.homey);
     }	

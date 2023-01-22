@@ -1,0 +1,23 @@
+{
+  "id": "update_data",
+  "title": {
+    "en": "Update Shades",
+    "nl": "Shades updaten"
+  },
+  "titleFormatted": {
+    "en": "Update Shades",
+    "nl": "Shades updaten"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "placeholder": {
+        "en": "Select device",
+        "nl": "Selecteer apparaat"
+      },
+      "filter": "driver_id=nl.luxaflex.powerview.hub&capabilities=update_data"
+    }
+  ],
+  "platforms": ["local"]
+}

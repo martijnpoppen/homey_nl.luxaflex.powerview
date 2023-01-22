@@ -190,61 +190,28 @@
         ]
       },
       {
-        "id": "windowcoverings_tilt_set",
-        "highlight": true,
+        "id": "update_data",
         "title": {
-          "en": "Set the position 2 to",
-          "nl": "Zet de positie 2 naar",
-          "de": "Setze die Position 2 auf",
-          "fr": "Mettre la position 2 sur",
-          "it": "Imposta la posizione 2 su",
-          "sv": "Ställ in positionen 2 till",
-          "no": "Innstill posisjonen 2 til",
-          "es": "Configurar la posición c2 omo",
-          "da": "Indstil positionen 2 til",
-          "ru": "Установите позицию 2 на",
-          "pl": "Ustaw pozycję 2 na"
+          "en": "Update Shades",
+          "nl": "Shades updaten"
         },
         "titleFormatted": {
-          "en": "Set the position 2 to [[windowcoverings_tilt_set]]",
-          "nl": "Zet de positie 2 naar [[windowcoverings_tilt_set]]",
-          "de": "Setze die Position 2 auf [[windowcoverings_tilt_set]]",
-          "fr": "Mettre la position 2 sur [[windowcoverings_tilt_set]]",
-          "it": "Imposta la posizione 2 su [[windowcoverings_tilt_set]]",
-          "sv": "Ställ in positionen 2 till [[windowcoverings_tilt_set]]",
-          "no": "Innstill posisjonen 2 til [[windowcoverings_tilt_set]]",
-          "es": "Configurar la posición c2 omo [[windowcoverings_tilt_set]]",
-          "da": "Indstil positionen 2 til [[windowcoverings_tilt_set]]",
-          "ru": "Установите позицию 2 на [[windowcoverings_tilt_set]]",
-          "pl": "Ustaw pozycję 2 na [[windowcoverings_tilt_set]]"
-        },
-        "hint": {
-          "en": "Change the position 2 to open (100%), closed (0%), or a value in between.",
-          "nl": "Verander de positie 2 naar open (100%), gesloten (0%), of een een waarde daartussen.",
-          "ru": "Измените позицию на открытую (100%), закрытую (0%) или между этими значениями.",
-          "pl": "Zmień pozycję na rozchylone (100%), zasunięte (0%) lub wartość pomiędzy."
+          "en": "Update Shades",
+          "nl": "Shades updaten"
         },
         "args": [
           {
-            "name": "device",
             "type": "device",
-            "filter": "driver_id=nl.luxaflex.powerview.shade",
+            "name": "device",
             "placeholder": {
-              "en": "Select shade",
-              "nl": "Selecteer shade"
-            }
-          },
-          {
-            "name": "windowcoverings_tilt_set",
-            "type": "range",
-            "min": 0,
-            "max": 1,
-            "step": 0.01,
-            "value": 0.5,
-            "label": "%",
-            "labelMultiplier": 100,
-            "labelDecimals": 0
+              "en": "Select device",
+              "nl": "Selecteer apparaat"
+            },
+            "filter": "driver_id=nl.luxaflex.powerview.hub&capabilities=update_data"
           }
+        ],
+        "platforms": [
+          "local"
         ]
       },
       {
@@ -323,6 +290,64 @@
             "labelDecimals": 0
           }
         ]
+      },
+      {
+        "id": "windowcoverings_tilt_set",
+        "highlight": true,
+        "title": {
+          "en": "Set the position 2 to",
+          "nl": "Zet de positie 2 naar",
+          "de": "Setze die Position 2 auf",
+          "fr": "Mettre la position 2 sur",
+          "it": "Imposta la posizione 2 su",
+          "sv": "Ställ in positionen 2 till",
+          "no": "Innstill posisjonen 2 til",
+          "es": "Configurar la posición c2 omo",
+          "da": "Indstil positionen 2 til",
+          "ru": "Установите позицию 2 на",
+          "pl": "Ustaw pozycję 2 na"
+        },
+        "titleFormatted": {
+          "en": "Set the position 2 to [[windowcoverings_tilt_set]]",
+          "nl": "Zet de positie 2 naar [[windowcoverings_tilt_set]]",
+          "de": "Setze die Position 2 auf [[windowcoverings_tilt_set]]",
+          "fr": "Mettre la position 2 sur [[windowcoverings_tilt_set]]",
+          "it": "Imposta la posizione 2 su [[windowcoverings_tilt_set]]",
+          "sv": "Ställ in positionen 2 till [[windowcoverings_tilt_set]]",
+          "no": "Innstill posisjonen 2 til [[windowcoverings_tilt_set]]",
+          "es": "Configurar la posición c2 omo [[windowcoverings_tilt_set]]",
+          "da": "Indstil positionen 2 til [[windowcoverings_tilt_set]]",
+          "ru": "Установите позицию 2 на [[windowcoverings_tilt_set]]",
+          "pl": "Ustaw pozycję 2 na [[windowcoverings_tilt_set]]"
+        },
+        "hint": {
+          "en": "Change the position 2 to open (100%), closed (0%), or a value in between.",
+          "nl": "Verander de positie 2 naar open (100%), gesloten (0%), of een een waarde daartussen.",
+          "ru": "Измените позицию на открытую (100%), закрытую (0%) или между этими значениями.",
+          "pl": "Zmień pozycję na rozchylone (100%), zasunięte (0%) lub wartość pomiędzy."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=nl.luxaflex.powerview.shade",
+            "placeholder": {
+              "en": "Select shade",
+              "nl": "Selecteer shade"
+            }
+          },
+          {
+            "name": "windowcoverings_tilt_set",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "value": 0.5,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
       }
     ]
   },
@@ -377,7 +402,9 @@
         "en": "Powerview Hub"
       },
       "class": "other",
-      "capabilities": [],
+      "capabilities": [
+        "update_data"
+      ],
       "settings": [
         {
           "type": "group",
@@ -394,6 +421,25 @@
                 "nl": "IP adres van de Powerview Hub"
               },
               "value": ""
+            },
+            {
+              "id": "update_interval",
+              "type": "number",
+              "label": {
+                "en": "Update interval",
+                "nl": "Update interval"
+              },
+              "hint": {
+                "en": "Interval (in minutes) to update all Powerview Shades (0 = OFF)",
+                "nl": "Interval (in minuten) om alle Powerview Shades te updaten (0 = UIT)"
+              },
+              "min": 0,
+              "max": 3600,
+              "units": {
+                "en": "minutes",
+                "nl": "minuten"
+              },
+              "value": 15
             }
           ]
         }
@@ -646,7 +692,8 @@
         }
       ],
       "name": {
-        "en": "Powerview Shade (Requires Hub)"
+        "en": "Powerview Shade (Requires Hub)",
+        "nl": "Powerview Shade (Vereist Hub)"
       },
       "class": "blinds",
       "energy": {
@@ -658,6 +705,22 @@
       "id": "nl.luxaflex.powerview.shade"
     }
   ],
+  "capabilities": {
+    "update_data": {
+      "type": "boolean",
+      "title": {
+        "en": "Update Shades",
+        "nl": "Shades updaten"
+      },
+      "titleFormatted": {
+        "en": "Update Shades",
+        "nl": "Shades updaten"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "button"
+    }
+  },
   "discovery": {
     "powerview": {
       "type": "mdns-sd",

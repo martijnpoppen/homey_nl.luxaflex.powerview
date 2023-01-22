@@ -1,6 +1,6 @@
-const mainDevice = require('../main-device');
+const mainHub = require('../main-hub');
 
-class PowerviewHub extends mainDevice {}
+class PowerviewHub extends mainHub {}
 
 
 module.exports = PowerviewHub;

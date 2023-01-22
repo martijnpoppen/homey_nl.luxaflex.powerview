@@ -1,0 +1,14 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Update Shades",
+    "nl": "Shades updaten"
+  },
+  "titleFormatted": {
+    "en": "Update Shades",
+    "nl": "Shades updaten"
+  },
+  "getable": true,
+  "setable": true,
+  "uiComponent": "button"
+}

@@ -4,7 +4,9 @@
     "en": "Powerview Hub"
   },
   "class": "other",
-  "capabilities": [],
+  "capabilities": [
+    "update_data"
+  ],
   "settings": [
     {
       "type": "group",
@@ -21,6 +23,25 @@
             "nl": "IP adres van de Powerview Hub"
           },
           "value": ""
+        },
+        {
+          "id": "update_interval",
+          "type": "number",
+          "label": {
+            "en": "Update interval",
+            "nl": "Update interval"
+          },
+          "hint": {
+            "en": "Interval (in minutes) to update all Powerview Shades (0 = OFF)",
+            "nl": "Interval (in minuten) om alle Powerview Shades te updaten (0 = UIT)"
+          },
+          "min": 0,
+          "max": 3600,
+          "units": {
+            "en": "minutes",
+            "nl": "minuten"
+          },
+          "value": 15
         }
       ]
     }
