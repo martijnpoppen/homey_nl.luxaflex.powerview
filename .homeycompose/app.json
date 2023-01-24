@@ -1,6 +1,6 @@
 {
   "id": "nl.luxaflex.powerview",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -70,5 +70,9 @@
   },
   "source": "https://github.com/martijnpoppen/homey_nl.luxaflex.powerview",
   "homeyCommunityTopicId": 71319,
-  "support": "https://community.homey.app/t/app-pro-powerview-luxaflex-hunter-douglas/71319"
+  "support": "https://community.homey.app/t/app-pro-powerview-luxaflex-hunter-douglas/71319",
+  "platforms": [
+    "local"
+  ],
+  "homepage": "https://www.hunterdouglas.com/smart-automation"
 }
