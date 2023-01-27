@@ -4,9 +4,7 @@
     "en": "Powerview Hub"
   },
   "class": "other",
-  "capabilities": [
-    "update_data"
-  ],
+  "capabilities": ["update_data"],
   "settings": [
     {
       "type": "group",
@@ -23,7 +21,16 @@
             "nl": "IP adres van de Powerview Hub"
           },
           "value": ""
-        },
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": {
+        "en": "Warning! Setting this to a low value might cause dropouts to your Powerview Hub. (Suggested value is 15)",
+        "nl": "Let op! Deze waarde instellen op een lage waarde kan leiden tot het uitvallen van de Powerview Hub. (Aanbevolen waarde is 15)"
+      },
+      "children": [
         {
           "id": "update_interval",
           "type": "number",
