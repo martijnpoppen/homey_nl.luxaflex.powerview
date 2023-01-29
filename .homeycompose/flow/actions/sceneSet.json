@@ -2,28 +2,64 @@
   "id": "nl.luxaflex.powerview.actions.sceneSet",
   "title": {
     "en": "Set scene",
-    "nl": "Activeer Scène"
+    "nl": "Activeer Scène",
+    "de": "Szene setzen",
+    "fr": "Définir une scène",
+    "it": "Imposta scena",
+    "sv": "Ställ in scen",
+    "no": "Sett scene",
+    "es": "Configurar escena",
+    "da": "Indstil scene",
+    "ru": "Установить сцену",
+    "pl": "Ustaw scenę"
   },
   "titleFormatted": {
     "en": "Set [[nl.luxaflex.powerview.sceneAutocomplete]] scene",
-    "nl": "Activeer [[nl.luxaflex.powerview.sceneAutocomplete]] scene"
+    "nl": "Activeer [[nl.luxaflex.powerview.sceneAutocomplete]] scene",
+    "de": "Setze [[nl.luxaflex.powerview.sceneAutocomplete]] Szene",
+    "fr": "Définir [[nl.luxaflex.powerview.sceneAutocomplete]] scène",
+    "it": "Imposta [[nl.luxaflex.powerview.sceneAutocomplete]] scena",
+    "sv": "Ställ in [[nl.luxaflex.powerview.sceneAutocomplete]] scen",
+    "no": "Sett [[nl.luxaflex.powerview.sceneAutocomplete]] scene",
+    "es": "Configurar [[nl.luxaflex.powerview.sceneAutocomplete]] escena",
+    "da": "Indstil [[nl.luxaflex.powerview.sceneAutocomplete]] scene",
+    "ru": "Установить [[nl.luxaflex.powerview.sceneAutocomplete]] сцену",
+    "pl": "Ustaw [[nl.luxaflex.powerview.sceneAutocomplete]] scenę"
   },
   "args": [
     {
-        "name": "device",
-        "type": "device",
-        "filter": "driver_id=nl.luxaflex.powerview.hub",
-        "placeholder": {
-          "en": "Select shade",
-          "nl": "Selecteer shade"
-        }
-      },
+      "name": "device",
+      "type": "device",
+      "filter": "driver_id=nl.luxaflex.powerview.hub",
+      "placeholder": {
+        "en": "Select window covering",
+        "nl": "Selecteer raamdecoratie",
+        "de": "Wähle Fensterdekoration",
+        "fr": "Sélectionnez la décoration de fenêtre",
+        "it": "Seleziona decorazione finestra",
+        "sv": "Välj fönsterdekoration",
+        "no": "Velg vindusdekorasjon",
+        "es": "Selecciona decoración de ventana",
+        "da": "Vælg vinduets dekoration",
+        "ru": "Выберите декорацию окна",
+        "pl": "Wybierz dekorację okna"
+      }
+    },
     {
       "type": "autocomplete",
       "name": "nl.luxaflex.powerview.sceneAutocomplete",
       "placeholder": {
         "en": "Choose a scene",
-        "nl": "Kies een  scène"
+        "nl": "Kies een scène",
+        "de": "Wähle eine Szene",
+        "fr": "Choisissez une scène",
+        "it": "Scegli una scena",
+        "sv": "Välj en scen",
+        "no": "Velg en scene",
+        "es": "Elige una escena",
+        "da": "Vælg en scene",
+        "ru": "Выберите сцену",
+        "pl": "Wybierz scenę"
       }
     }
   ],

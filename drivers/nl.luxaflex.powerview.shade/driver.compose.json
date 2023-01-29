@@ -1,9 +1,18 @@
 {
     "$extends": ["device", "settings", "capabilities", "pair"],
     "name": {
-        "en": "Powerview Shade (Requires Hub)",
-        "nl": "Powerview Shade (Vereist Hub)"
-    },
+        "en": "Powerview Window Covering (Requires Hub)",
+        "nl": "Powerview Raambekleding (vereist Hub)",
+        "de": "Powerview Fensterbekleidung (erfordert Hub)",
+        "fr": "Revêtement de fenêtre Powerview (nécessite un hub)",
+        "it": "Rivestimento finestra Powerview (richiede un hub)",
+        "sv": "Powerview fönsterbeklädnad (kräver hub)",
+        "no": "Powerview vindu-deksel (krever hub)",
+        "es": "Cubrimiento de ventana Powerview (requiere centro)",
+        "da": "Powerview vindu-beklædning (kræver Hub)",
+        "ru": "Обтяжка оконного проема Powerview (требуется хаб)",
+        "pl": "Osłona okien Powerview (wymaga centrum)"
+      },
     "class": "blinds",
     "energy": {
         "batteries": ["INTERNAL", "OTHER"]

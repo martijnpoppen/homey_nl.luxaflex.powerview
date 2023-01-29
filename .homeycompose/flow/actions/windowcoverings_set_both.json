@@ -35,14 +35,23 @@
   },
   "args": [
     {
-      "name": "device",
-      "type": "device",
+        "name": "device",
+        "type": "device",
       "filter": "driver_id=nl.luxaflex.powerview.shade",
-      "placeholder": {
-        "en": "Select shade",
-        "nl": "Selecteer shade"
-      }
-    },
+        "placeholder": {
+          "en": "Select window covering",
+          "nl": "Selecteer raamdecoratie",
+          "de": "Wähle Fensterdekoration",
+          "fr": "Sélectionnez la décoration de fenêtre",
+          "it": "Seleziona decorazione finestra",
+          "sv": "Välj fönsterdekoration",
+          "no": "Velg vindusdekorasjon",
+          "es": "Selecciona decoración de ventana",
+          "da": "Vælg vinduets dekoration",
+          "ru": "Выберите декорацию окна",
+          "pl": "Wybierz dekorację okna"
+        }
+      },
     {
       "name": "windowcoverings_set",
       "title": {

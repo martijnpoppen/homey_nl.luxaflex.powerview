@@ -7,14 +7,32 @@
   "capabilitiesOptions": {
     "windowcoverings_set": {
       "title": {
+        "en": "Position 1",
         "nl": "Positie 1",
-        "en": "Position 1"
+        "de": "Position 1",
+        "fr": "Position 1",
+        "it": "Posizione 1",
+        "sv": "Position 1",
+        "no": "Posisjon 1",
+        "es": "Posición 1",
+        "da": "Position 1",
+        "ru": "Положение 1",
+        "pl": "Pozycja 1"
       }
     },
     "windowcoverings_tilt_set": {
       "title": {
+        "en": "Position 2",
         "nl": "Positie 2",
-        "en": "Position 2"
+        "de": "Position 2",
+        "fr": "Position 2",
+        "it": "Posizione 2",
+        "sv": "Position 2",
+        "no": "Posisjon 2",
+        "es": "Posición 2",
+        "da": "Position 2",
+        "ru": "Положение 2",
+        "pl": "Pozycja 2"
       }
     }
   }

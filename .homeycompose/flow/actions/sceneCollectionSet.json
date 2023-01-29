@@ -2,28 +2,64 @@
   "id": "nl.luxaflex.powerview.actions.sceneCollectionSet",
   "title": {
     "en": "Set scene collection",
-    "nl": "Activeer Scène collectie"
+    "nl": "Stel scene collecite in",
+    "de": "Szenensammlung festlegen",
+    "fr": "Définir la collection de scènes",
+    "it": "Imposta raccolta di scene",
+    "sv": "Ställ in scenkollektion",
+    "no": "Sett scene-samling",
+    "es": "Establecer colección de escenas",
+    "da": "Indstil scene-samling",
+    "ru": "Установите коллекцию сцен",
+    "pl": "Ustaw kolekcję scen"
   },
   "titleFormatted": {
     "en": "Set [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] scene collection",
-    "nl": "Activeer [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] scene collectie"
+    "nl": "Stel [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] scene collectie in",
+    "de": "Legen Sie [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] Szenensammlung fest",
+    "fr": "Définir la collection de scènes [[nl.luxaflex.powerview.sceneCollectionAutocomplete]]",
+    "it": "Imposta [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] raccolta di scene",
+    "sv": "Ställ in [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] scenkollektion",
+    "no": "Sett [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] scene-samling",
+    "es": "Establecer [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] colección de escenas",
+    "da": "Indstil [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] scene-samling",
+    "ru": "Установите [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] коллекцию сцен",
+    "pl": "Ustaw [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] kolekcję scen"
   },
   "args": [
     {
-        "name": "device",
-        "type": "device",
-        "filter": "driver_id=nl.luxaflex.powerview.hub",
-        "placeholder": {
-          "en": "Select shade",
-          "nl": "Selecteer shade"
-        }
-      },
+      "name": "device",
+      "type": "device",
+      "filter": "driver_id=nl.luxaflex.powerview.hub",
+      "placeholder": {
+        "en": "Select window covering",
+        "nl": "Selecteer raamdecoratie",
+        "de": "Wähle Fensterdekoration",
+        "fr": "Sélectionnez la décoration de fenêtre",
+        "it": "Seleziona decorazione finestra",
+        "sv": "Välj fönsterdekoration",
+        "no": "Velg vindusdekorasjon",
+        "es": "Selecciona decoración de ventana",
+        "da": "Vælg vinduets dekoration",
+        "ru": "Выберите декорацию окна",
+        "pl": "Wybierz dekorację okna"
+      }
+    },
     {
       "type": "autocomplete",
       "name": "nl.luxaflex.powerview.sceneCollectionAutocomplete",
       "placeholder": {
         "en": "Choose a scene collection",
-        "nl": "Kies een  scène collectie"
+        "nl": "Kies een scène collectie",
+        "de": "Wähle eine Szenensammlung",
+        "fr": "Choisissez une collection de scènes",
+        "it": "Scegli una raccolta di scene",
+        "sv": "Välj en scen-samling",
+        "no": "Velg en scenesamling",
+        "es": "Elige una colección de escenas",
+        "da": "Vælg en scenesamling",
+        "ru": "Выберите коллекцию сцен",
+        "pl": "Wybierz kolekcję scen"
       }
     }
   ],

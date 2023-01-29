@@ -10,7 +10,16 @@
       "type": "group",
       "label": {
         "en": "Powerview Settings",
-        "nl": "Powerview instellingen"
+        "nl": "Powerview instellingen",
+        "de": "Powerview Einstellungen",
+        "fr": "Paramètres Powerview",
+        "it": "Impostazioni Powerview",
+        "sv": "Powerview Inställningar",
+        "no": "Powerview innstillinger",
+        "es": "Ajustes Powerview",
+        "da": "Powerview indstillinger",
+        "ru": "Настройки Powerview",
+        "pl": "Ustawienia Powerview"
       },
       "children": [
         {
@@ -18,7 +27,16 @@
           "type": "text",
           "label": {
             "en": "IP address of your Powerview hub",
-            "nl": "IP adres van de Powerview Hub"
+            "nl": "IP-adres van uw Powerview hub",
+            "de": "IP-Adresse Ihres Powerview-Hubs",
+            "fr": "Adresse IP de votre hub Powerview",
+            "it": "Indirizzo IP del tuo hub Powerview",
+            "sv": "IP-adress för din Powerview-hub",
+            "no": "IP-adresse for din Powerview-hub",
+            "es": "Dirección IP de su centro Powerview",
+            "da": "IP-adresse på din Powerview-hub",
+            "ru": "IP-адрес вашего концентратора Powerview",
+            "pl": "Adres IP twojego huba Powerview"
           },
           "value": ""
         }
@@ -36,17 +54,44 @@
           "type": "number",
           "label": {
             "en": "Update interval",
-            "nl": "Update interval"
+            "nl": "Update interval",
+            "de": "Aktualisierungsintervall",
+            "fr": "Intervalle de mise à jour",
+            "it": "Intervallo di aggiornamento",
+            "sv": "Uppdateringsintervall",
+            "no": "Oppdateringsintervall",
+            "es": "Intervalo de actualización",
+            "da": "Opdateringsinterval",
+            "ru": "Интервал обновления",
+            "pl": "Interwał aktualizacji"
           },
           "hint": {
-            "en": "Interval (in minutes) to update all Powerview Shades (0 = OFF)",
-            "nl": "Interval (in minuten) om alle Powerview Shades te updaten (0 = UIT)"
+            "en": "Interval (in minutes) to update all Powerview windows coverings (0 = OFF)",
+            "nl": "Interval (in minuten) om alle Powerview raambekleding te updaten (0 = UIT)",
+            "de": "Intervall (in Minuten) zur Aktualisierung aller Powerview-Fensterbekleidungen (0 = AUS)",
+            "fr": "Intervalle (en minutes) pour mettre à jour toutes les revêtements de fenêtres Powerview (0 = OFF)",
+            "it": "Intervallo (in minuti) per aggiornare tutte le coperture per finestre Powerview (0 = OFF)",
+            "sv": "Intervall (i minuter) för att uppdatera alla Powerview fönsterbeklädnader (0 = AV)",
+            "no": "Intervall (i minutter) for å oppdatere alle Powerview vindu bekledninger (0 = AV)",
+            "es": "Intervalo (en minutos) para actualizar todas las cubiertas de ventanas Powerview (0 = OFF)",
+            "da": "Interval (i minutter) for at opdatere alle Powerview vinduesbeklædninger (0 = SLUKKET)",
+            "ru": "Интервал (в минутах) для обновления всех оконных покрытий Powerview (0 = ВЫКЛ)",
+            "pl": "Interwał (w minutach) do aktualizacji wszystkich okładek okien Powerview (0 = WYŁ)"
           },
           "min": 0,
           "max": 3600,
           "units": {
             "en": "minutes",
-            "nl": "minuten"
+            "nl": "minuten",
+            "de": "Minuten",
+            "fr": "minutes",
+            "it": "minuti",
+            "sv": "minuter",
+            "no": "minutter",
+            "es": "minutos",
+            "da": "minutter",
+            "ru": "минуты",
+            "pl": "minuty"
           },
           "value": 15
         }

@@ -1,22 +1,49 @@
 {
   "id": "update_data",
   "title": {
-    "en": "Update Shades",
-    "nl": "Shades updaten"
+    "en": "Update Window coverings",
+    "nl": "Bijwerken Raambekleding",
+    "de": "Fensterbedeckungen aktualisieren",
+    "fr": "Mettre à jour les revêtements de fenêtre",
+    "it": "Aggiorna rivestimenti finestre",
+    "sv": "Uppdatera fönsterbeklädnader",
+    "no": "Oppdater vindu dekker",
+    "es": "Actualizar cubiertas de ventana",
+    "da": "Opdater vinduesbeklædninger",
+    "ru": "Обновить оконные покрытия",
+    "pl": "Zaktualizuj osłony okienne"
   },
   "titleFormatted": {
-    "en": "Update Shades",
-    "nl": "Shades updaten"
+    "en": "Update Window coverings",
+    "nl": "Bijwerken Raambekleding",
+    "de": "Fensterbedeckungen aktualisieren",
+    "fr": "Mettre à jour les revêtements de fenêtre",
+    "it": "Aggiorna rivestimenti finestre",
+    "sv": "Uppdatera fönsterbeklädnader",
+    "no": "Oppdater vindu dekker",
+    "es": "Actualizar cubiertas de ventana",
+    "da": "Opdater vinduesbeklædninger",
+    "ru": "Обновить оконные покрытия",
+    "pl": "Zaktualizuj osłony okienne"
   },
   "args": [
     {
-      "type": "device",
       "name": "device",
+      "type": "device",
+      "filter": "driver_id=nl.luxaflex.powerview.hub&capabilities=update_data",
       "placeholder": {
-        "en": "Select device",
-        "nl": "Selecteer apparaat"
-      },
-      "filter": "driver_id=nl.luxaflex.powerview.hub&capabilities=update_data"
+        "en": "Select window covering",
+        "nl": "Selecteer raamdecoratie",
+        "de": "Wähle Fensterdekoration",
+        "fr": "Sélectionnez la décoration de fenêtre",
+        "it": "Seleziona decorazione finestra",
+        "sv": "Välj fönsterdekoration",
+        "no": "Velg vindusdekorasjon",
+        "es": "Selecciona decoración de ventana",
+        "da": "Vælg vinduets dekoration",
+        "ru": "Выберите декорацию окна",
+        "pl": "Wybierz dekorację okna"
+      }
     }
   ],
   "platforms": ["local"]

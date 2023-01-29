@@ -1,12 +1,30 @@
 {
   "type": "boolean",
   "title": {
-    "en": "Update Shades",
-    "nl": "Shades updaten"
+    "en": "Update Window coverings",
+    "nl": "Bijwerken Raambekleding",
+    "de": "Fensterbedeckungen aktualisieren",
+    "fr": "Mettre à jour les revêtements de fenêtre",
+    "it": "Aggiorna rivestimenti finestre",
+    "sv": "Uppdatera fönsterbeklädnader",
+    "no": "Oppdater vindu dekker",
+    "es": "Actualizar cubiertas de ventana",
+    "da": "Opdater vinduesbeklædninger",
+    "ru": "Обновить оконные покрытия",
+    "pl": "Zaktualizuj osłony okienne"
   },
   "titleFormatted": {
-    "en": "Update Shades",
-    "nl": "Shades updaten"
+    "en": "Update Window coverings",
+    "nl": "Bijwerken Raambekleding",
+    "de": "Fensterbedeckungen aktualisieren",
+    "fr": "Mettre à jour les revêtements de fenêtre",
+    "it": "Aggiorna rivestimenti finestre",
+    "sv": "Uppdatera fönsterbeklädnader",
+    "no": "Oppdater vindu dekker",
+    "es": "Actualizar cubiertas de ventana",
+    "da": "Opdater vinduesbeklædninger",
+    "ru": "Обновить оконные покрытия",
+    "pl": "Zaktualizuj osłony okienne"
   },
   "getable": true,
   "setable": true,

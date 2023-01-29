@@ -4,7 +4,16 @@
       "type": "group",
       "label": {
         "en": "Powerview Settings",
-        "nl": "Powerview instellingen"
+        "nl": "Powerview-instellingen",
+        "de": "Powerview-Einstellungen",
+        "fr": "Paramètres Powerview",
+        "it": "Impostazioni Powerview",
+        "sv": "Powerview inställningar",
+        "no": "Powerview innstillinger",
+        "es": "Configuraciones de Powerview",
+        "da": "Powerview-indstillinger",
+        "ru": "Настройки Powerview",
+        "pl": "Ustawienia Powerview"
       },
       "children": [
         {
@@ -12,7 +21,16 @@
           "type": "text",
           "label": {
             "en": "IP address of your Powerview hub",
-            "nl": "IP adres van de Powerview Hub"
+            "nl": "IP-adres van uw Powerview hub",
+            "de": "IP-Adresse Ihres Powerview-Hubs",
+            "fr": "Adresse IP de votre hub Powerview",
+            "it": "Indirizzo IP del tuo hub Powerview",
+            "sv": "IP-adress för din Powerview-hub",
+            "no": "IP-adresse for din Powerview-hub",
+            "es": "Dirección IP de su centro Powerview",
+            "da": "IP-adresse på din Powerview-hub",
+            "ru": "IP-адрес вашего концентратора Powerview",
+            "pl": "Adres IP twojego huba Powerview"
           },
           "value": ""
         }
@@ -30,8 +48,18 @@
           "type": "checkbox",
           "label": {
             "en": "Invert position 1 ",
-            "nl": "Draai positie 1 om"
+            "nl": "Positie 1 omdraaien",
+            "de": "Position 1 umdrehen",
+            "fr": "Inverser la position 1",
+            "it": "Inverti posizione 1",
+            "sv": "Vänd position 1",
+            "no": "Snu stilling 1",
+            "es": "Invertir posición 1",
+            "da": "Vend position 1",
+            "ru": "Инвертировать позицию 1",
+            "pl": "Odwróć pozycję 1"
           },
+
           "value": false
         },
         {
@@ -75,7 +103,16 @@
       "type": "group",
       "label": {
         "en": "Motor 2 Settings",
-        "nl": "Motor 2 instellingen"
+        "nl": "Motor 2 instellingen",
+        "de": "Motor 2 Einstellungen",
+        "fr": "Réglages moteur 2",
+        "it": "Impostazioni Motore 2",
+        "sv": "Inställningar för motor 2",
+        "no": "Innstillinger for motor 2",
+        "es": "Configuración del motor 2",
+        "da": "Indstillinger for motor 2",
+        "ru": "Настройки мотора 2",
+        "pl": "Ustawienia silnika 2"
       },
       "children": [
         {
@@ -83,11 +120,30 @@
           "type": "checkbox",
           "hint": {
             "en": "These options will only affect the app if DualMotor setting is enabled",
-            "nl": "Deze opties zullen van kracht worden als de DualMotor optie is aangevinkt"
+            "nl": "Deze opties hebben alleen effect op de app als de DualMotor-instelling is ingeschakeld",
+            "de": "Diese Optionen wirken sich nur auf die App aus, wenn die DualMotor-Einstellung aktiviert ist",
+            "fr": "Ces options n'affecteront l'application que si le paramètre DualMotor est activé",
+            "it": "Queste opzioni avranno effetto solo sull'app se l'impostazione DualMotor è abilitata",
+            "sv": "Dessa alternativ påverkar bara appen om DualMotor-inställningen är aktiverad",
+            "no": "Disse alternativen vil bare påvirke appen hvis DualMotor-innstillingen er aktivert",
+            "es": "Estas opciones solo afectarán la aplicación si la configuración de DualMotor está habilitada",
+            "da": "Disse indstillinger vil kun påvirke appen, hvis DualMotor-indstillingen er aktiveret",
+            "ru": "Эти параметры будут влиять на приложение только в том случае, если включена настройка DualMotor",
+            "pl": "Te opcje wpłyną tylko na aplikację, jeśli opcja DualMotor jest włączona"
           },
+
           "label": {
-            "en": "Invert position 2 ",
-            "nl": "Draai positie 2 om"
+            "en": "Invert position 2",
+            "nl": "Positie 2 omdraaien",
+            "de": "Position 2 umdrehen",
+            "fr": "Inverser la position 2",
+            "it": "Inverti posizione 2",
+            "sv": "Vänd position 2",
+            "no": "Snu stilling 2",
+            "es": "Invertir posición 2",
+            "da": "Vend position 2",
+            "ru": "Инвертировать позицию 2",
+            "pl": "Odwróć pozycję 2"
           },
           "value": false
         },
@@ -96,7 +152,16 @@
           "type": "dropdown",
           "hint": {
             "en": "These options will only affect the app if DualMotor setting is enabled",
-            "nl": "Deze opties zullen van kracht worden als de DualMotor optie is aangevinkt"
+            "nl": "Deze opties hebben alleen effect op de app als de DualMotor-instelling is ingeschakeld",
+            "de": "Diese Optionen wirken sich nur auf die App aus, wenn die DualMotor-Einstellung aktiviert ist",
+            "fr": "Ces options n'affecteront l'application que si le paramètre DualMotor est activé",
+            "it": "Queste opzioni avranno effetto solo sull'app se l'impostazione DualMotor è abilitata",
+            "sv": "Dessa alternativ påverkar bara appen om DualMotor-inställningen är aktiverad",
+            "no": "Disse alternativen vil bare påvirke appen hvis DualMotor-innstillingen er aktivert",
+            "es": "Estas opciones solo afectarán la aplicación si la configuración de DualMotor está habilitada",
+            "da": "Disse indstillinger vil kun påvirke appen, hvis DualMotor-indstillingen er aktiveret",
+            "ru": "Эти параметры будут влиять на приложение только в том случае, если включена настройка DualMotor",
+            "pl": "Te opcje wpłyną tylko na aplikację, jeśli opcja DualMotor jest włączona"
           },
           "value": "0",
           "label": {
@@ -131,50 +196,113 @@
           ]
         },
         {
-            "id": "updatePosition2",
-            "type": "checkbox",
-            "hint": {
-              "en": "When closing Position 1, then Position 2 will always go back to the state it was set to. Disabling this will allow the user to close/open both motors when Position 1 open/closes. (Useful with Google Home)",
-              "nl": "Wanneer Positie 1 sluit zal Positie 2 altijd terug gaan in de laatste stand waar deze in stond. Het uitschakelen van deze optie zal beide motoren openen/sluiten als Positie 1 opent/sluit. (Handig in gebruik met Google Home)"
-            },
-            "label": {
-              "en": "Control separate from Position 1",
-              "nl": "Bestuur los van positie 1"
-            },
-            "value": true
-          }
+          "id": "updatePosition2",
+          "type": "checkbox",
+          "hint": {
+            "en": "When closing Position 1, then Position 2 will always go back to the state it was set to. Disabling this will allow the user to close/open both motors when Position 1 open/closes. (Useful with Google Home)",
+            "nl": "Wanneer Positie 1 sluit zal Positie 2 altijd terug gaan in de laatste stand waar deze in stond. Het uitschakelen van deze optie zal beide motoren openen/sluiten als Positie 1 opent/sluit. (Handig in gebruik met Google Home)",
+            "de": "Wenn Sie Position 1 schließen, geht Position 2 immer in den Zustand zurück, in dem es eingestellt wurde. Wenn Sie dies deaktivieren, kann der Benutzer beide Motoren schließen/öffnen, wenn Position 1 geöffnet/geschlossen wird. (Nützlich mit Google Home)",
+            "fr": "Lors de la fermeture de la position 1, la position 2 reviendra toujours à l'état dans lequel elle a été définie. Désactiver cette option permettra à l'utilisateur de fermer/ouvrir les deux moteurs lorsque la position 1 est ouverte/fermée. (Utile avec Google Home)",
+            "it": "Quando si chiude la posizione 1, la posizione 2 tornerà sempre allo stato impostato. Disabilitare questa opzione consentirà all'utente di chiudere/aprire entrambi i motori quando la posizione 1 si apre/chiude. (Utile con Google Home)",
+            "sv": "När position 1 stängs kommer position 2 alltid tillbaka till den tillstånd den var inställd på. Om du inaktiverar detta kommer användaren att kunna stänga/öppna båda motorerna när position 1 öppnas/stängs. (Användbart med Google Home)",
+            "no": "Når posisjon 1 lukkes, vil posisjon 2 alltid gå tilbake til den tilstanden den ble satt til. Hvis du deaktiverer dette, vil brukeren kunne lukke/åpne begge motorene når posisjon 1 åpnes/lukkes. (Nyttig med Google Home)",
+            "da": "Når position 1 lukkes, vil position 2 altid gå tilbage til den tilstand, den blev sat til. Deaktivering af dette vil tillade brugeren at lukke / åbne begge motorer, når position 1 åbnes / lukkes. (Nyttigt med Google Home)",
+            "ru": "При закрытии позиции 1, позиция 2 всегда возвращается в прежнее состояние. Отключение этой опции позволит пользователю закрывать / открывать оба двигателя при открытии / закрытии позиции 1. (Полезно с Google Home)",
+            "pl": "Po zamknięciu pozycji 1 pozycja 2 zawsze wraca do stanu, w którym została ustawiona. Wyłączenie tej opcji pozwoli użytkownikowi zamykać / otwierać oba silniki, gdy pozycja 1 jest otwierana / zamykana. (Przydatne z Google Home)"
+          },
+          "label": {
+            "en": "Control separate from Position 1",
+            "nl": "Bestuur los van positie 1",
+            "de": "Steuerung unabhängig von Position 1",
+            "fr": "Contrôle séparé de la position 1",
+            "it": "Controllo separato dalla posizione 1",
+            "sv": "Kontroll separat från position 1",
+            "no": "Kontroll separat fra posisjon 1",
+            "es": "Control separado de la posición 1",
+            "da": "Kontrol separat fra position 1",
+            "ru": "Управление отдельно от позиции 1",
+            "pl": "Kontrola oddzielnie od pozycji 1"
+          },
+          "value": true
+        }
       ]
     },
     {
       "type": "group",
       "label": {
         "en": "App options",
-        "nl": "App opties"
+        "nl": "App opties",
+        "de": "App Optionen",
+        "fr": "Options de l'application",
+        "it": "Opzioni app",
+        "sv": "Appalternativ",
+        "no": "App alternativer",
+        "es": "Opciones de aplicación",
+        "da": "App-indstillinger",
+        "ru": "Параметры приложения",
+        "pl": "Opcje aplikacji"
       },
       "children": [
         {
-            "id": "dualmotor",
-            "type": "checkbox",
-            "label": {
-              "en": "Setting: Dualmotor",
-              "nl": "Instelling: Dualmotor"
-            },
-            "hint": {
-              "en": "Checking this box will add the option to control a extra motor on this device (e.g. Duette Top-Down-Bottom-Up)",
-              "nl": "Het aanzetten van deze instelling zal het mogelijk maken een extra motor te gebruiken op dit apparaat (bijv Duette Top-Down-Bottom-Up)"
-            },
-            "value": true
+          "id": "dualmotor",
+          "type": "checkbox",
+          "label": {
+            "en": "Setting: Dualmotor",
+            "nl": "Instelling: Dualmotor",
+            "de": "Einstellung: Dualmotor",
+            "fr": "Réglage: Dualmoteur",
+            "it": "Impostazione: Dualmotor",
+            "sv": "Inställning: Dualmotor",
+            "no": "Innstilling: Dualmotor",
+            "es": "Configuración: Dualmotor",
+            "da": "Indstilling: Dualmotor",
+            "ru": "Настройка: Dualmotor",
+            "pl": "Ustawienie: Dualmotor"
+          },
+
+          "hint": {
+            "en": "Checking this box will add the option to control a extra motor on this device (e.g. Duette Top-Down-Bottom-Up)",
+            "nl": "Het aanzetten van deze instelling zal het mogelijk maken een extra motor te gebruiken op dit apparaat (bijv Duette Top-Down-Bottom-Up)",
+            "de": "Wenn Sie dieses Kästchen aktivieren, haben Sie die Möglichkeit, einen zusätzlichen Motor auf diesem Gerät zu steuern (z.B. Duette Top-Down-Bottom-Up)",
+            "fr": "En cochant cette case, vous ajouterez l'option de contrôler un moteur supplémentaire sur ce dispositif (par ex. Duette Top-Down-Bottom-Up)",
+            "it": "Se si seleziona questa casella, verrà aggiunta l'opzione per controllare un motore extra su questo dispositivo (ad es. Duette Top-Down-Bottom-Up)",
+            "sv": "Om du markerar denna ruta kommer du att få möjlighet att kontrollera en extra motor på den här enheten (t.ex. Duette Top-Down-Bottom-Up)",
+            "no": "Hvis du merker av i denne boksen, vil du få muligheten til å kontrollere en ekstra motor på dette utstyret (f.eks. Duette Top-Down-Bottom-Up)",
+            "es": "Al marcar esta casilla, se agregará la opción de controlar un motor adicional en este dispositivo (por ejemplo, Duette Top-Down-Bottom-Up)",
+            "da": "Hvis du markerer denne boks, vil du få mulighed for at kontrollere en ekstra motor på dette udstyr (f.eks. Duette Top-Down-Bottom-Up)",
+            "ru": "Отметив этот флажок, вы добавите возможность управления дополнительным мотором на этом устройстве (например, Duette Top-Down-Bottom-Up)",
+            "pl": "Zaznaczenie tego pola doda opcję kontrolowania dodatkowego silnika w tym urządzeniu (np. Duette Top-Down-Bottom-Up)"
+          },
+          "value": true
         },
         {
           "id": "measure_battery",
           "type": "checkbox",
           "label": {
             "en": "Setting: Battery",
-            "nl": "Instelling: Battery"
+            "nl": "Instelling: Batterij",
+            "de": "Einstellung: Batterie",
+            "fr": "Réglage : Batterie",
+            "it": "Impostazione: Batteria",
+            "sv": "Inställning: Batteri",
+            "no": "Innstilling: Batteri",
+            "es": "Configuración: Batería",
+            "da": "Indstilling: Batteri",
+            "ru": "Настройка: батарея",
+            "pl": "Ustawienie: Bateria"
           },
           "hint": {
             "en": "Checking this box will add the battery option to this device",
-            "nl": "Het aanzetten van deze instelling zal de batterij optie toevoegen aan dit apparaat"
+            "nl": "Het aanzetten van deze instelling zal de batterij optie toevoegen aan dit apparaat",
+            "de": "Durch das Aktivieren dieser Option wird die Batterieoption hinzugefügt",
+            "fr": "Cocher cette case ajoutera l'option de batterie à ce dispositif",
+            "it": "Selezionare questa casella aggiungerà l'opzione della batteria a questo dispositivo",
+            "sv": "Genom att kryssa i denna ruta kommer batterialternativet att läggas till i den här enheten",
+            "no": "Ved å merke av denne boksen vil batterialternativet bli lagt til i denne enheten",
+            "es": "Marcar esta casilla agregará la opción de batería a este dispositivo",
+            "da": "Ved at markere denne boks vil batteri-indstillingen blive tilføjet til dette apparat",
+            "ru": "Отметив этот флажок, вы добавите вариант батареи в это устройство",
+            "pl": "Zaznaczenie tego pola doda opcję baterii do tego urządzenia"
           },
           "value": true
         }

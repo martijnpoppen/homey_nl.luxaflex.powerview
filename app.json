@@ -53,6 +53,9 @@
       },
       {
         "name": "🇳🇱 Martijn Poppen"
+      },
+      {
+        "name": "🇪🇸🇲🇽🇫🇷🇩🇪🇩🇰🇸🇪🇳🇴🇷🇺🇵🇱 AI"
       }
     ]
   },
@@ -99,8 +102,17 @@
             "type": "device",
             "filter": "driver_id=nl.luxaflex.powerview.shade",
             "placeholder": {
-              "en": "Select shade",
-              "nl": "Selecteer shade"
+              "en": "Select window covering",
+              "nl": "Selecteer raamdecoratie",
+              "de": "Wähle Fensterdekoration",
+              "fr": "Sélectionnez la décoration de fenêtre",
+              "it": "Seleziona decorazione finestra",
+              "sv": "Välj fönsterdekoration",
+              "no": "Velg vindusdekorasjon",
+              "es": "Selecciona decoración de ventana",
+              "da": "Vælg vinduets dekoration",
+              "ru": "Выберите декорацию окна",
+              "pl": "Wybierz dekorację okna"
             }
           }
         ],
@@ -131,11 +143,29 @@
         "id": "nl.luxaflex.powerview.actions.sceneCollectionSet",
         "title": {
           "en": "Set scene collection",
-          "nl": "Activeer Scène collectie"
+          "nl": "Stel scene collecite in",
+          "de": "Szenensammlung festlegen",
+          "fr": "Définir la collection de scènes",
+          "it": "Imposta raccolta di scene",
+          "sv": "Ställ in scenkollektion",
+          "no": "Sett scene-samling",
+          "es": "Establecer colección de escenas",
+          "da": "Indstil scene-samling",
+          "ru": "Установите коллекцию сцен",
+          "pl": "Ustaw kolekcję scen"
         },
         "titleFormatted": {
           "en": "Set [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] scene collection",
-          "nl": "Activeer [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] scene collectie"
+          "nl": "Stel [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] scene collectie in",
+          "de": "Legen Sie [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] Szenensammlung fest",
+          "fr": "Définir la collection de scènes [[nl.luxaflex.powerview.sceneCollectionAutocomplete]]",
+          "it": "Imposta [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] raccolta di scene",
+          "sv": "Ställ in [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] scenkollektion",
+          "no": "Sett [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] scene-samling",
+          "es": "Establecer [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] colección de escenas",
+          "da": "Indstil [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] scene-samling",
+          "ru": "Установите [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] коллекцию сцен",
+          "pl": "Ustaw [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] kolekcję scen"
         },
         "args": [
           {
@@ -143,8 +173,17 @@
             "type": "device",
             "filter": "driver_id=nl.luxaflex.powerview.hub",
             "placeholder": {
-              "en": "Select shade",
-              "nl": "Selecteer shade"
+              "en": "Select window covering",
+              "nl": "Selecteer raamdecoratie",
+              "de": "Wähle Fensterdekoration",
+              "fr": "Sélectionnez la décoration de fenêtre",
+              "it": "Seleziona decorazione finestra",
+              "sv": "Välj fönsterdekoration",
+              "no": "Velg vindusdekorasjon",
+              "es": "Selecciona decoración de ventana",
+              "da": "Vælg vinduets dekoration",
+              "ru": "Выберите декорацию окна",
+              "pl": "Wybierz dekorację okna"
             }
           },
           {
@@ -152,7 +191,16 @@
             "name": "nl.luxaflex.powerview.sceneCollectionAutocomplete",
             "placeholder": {
               "en": "Choose a scene collection",
-              "nl": "Kies een  scène collectie"
+              "nl": "Kies een scène collectie",
+              "de": "Wähle eine Szenensammlung",
+              "fr": "Choisissez une collection de scènes",
+              "it": "Scegli una raccolta di scene",
+              "sv": "Välj en scen-samling",
+              "no": "Velg en scenesamling",
+              "es": "Elige una colección de escenas",
+              "da": "Vælg en scenesamling",
+              "ru": "Выберите коллекцию сцен",
+              "pl": "Wybierz kolekcję scen"
             }
           }
         ],
@@ -164,11 +212,29 @@
         "id": "nl.luxaflex.powerview.actions.sceneSet",
         "title": {
           "en": "Set scene",
-          "nl": "Activeer Scène"
+          "nl": "Activeer Scène",
+          "de": "Szene setzen",
+          "fr": "Définir une scène",
+          "it": "Imposta scena",
+          "sv": "Ställ in scen",
+          "no": "Sett scene",
+          "es": "Configurar escena",
+          "da": "Indstil scene",
+          "ru": "Установить сцену",
+          "pl": "Ustaw scenę"
         },
         "titleFormatted": {
           "en": "Set [[nl.luxaflex.powerview.sceneAutocomplete]] scene",
-          "nl": "Activeer [[nl.luxaflex.powerview.sceneAutocomplete]] scene"
+          "nl": "Activeer [[nl.luxaflex.powerview.sceneAutocomplete]] scene",
+          "de": "Setze [[nl.luxaflex.powerview.sceneAutocomplete]] Szene",
+          "fr": "Définir [[nl.luxaflex.powerview.sceneAutocomplete]] scène",
+          "it": "Imposta [[nl.luxaflex.powerview.sceneAutocomplete]] scena",
+          "sv": "Ställ in [[nl.luxaflex.powerview.sceneAutocomplete]] scen",
+          "no": "Sett [[nl.luxaflex.powerview.sceneAutocomplete]] scene",
+          "es": "Configurar [[nl.luxaflex.powerview.sceneAutocomplete]] escena",
+          "da": "Indstil [[nl.luxaflex.powerview.sceneAutocomplete]] scene",
+          "ru": "Установить [[nl.luxaflex.powerview.sceneAutocomplete]] сцену",
+          "pl": "Ustaw [[nl.luxaflex.powerview.sceneAutocomplete]] scenę"
         },
         "args": [
           {
@@ -176,8 +242,17 @@
             "type": "device",
             "filter": "driver_id=nl.luxaflex.powerview.hub",
             "placeholder": {
-              "en": "Select shade",
-              "nl": "Selecteer shade"
+              "en": "Select window covering",
+              "nl": "Selecteer raamdecoratie",
+              "de": "Wähle Fensterdekoration",
+              "fr": "Sélectionnez la décoration de fenêtre",
+              "it": "Seleziona decorazione finestra",
+              "sv": "Välj fönsterdekoration",
+              "no": "Velg vindusdekorasjon",
+              "es": "Selecciona decoración de ventana",
+              "da": "Vælg vinduets dekoration",
+              "ru": "Выберите декорацию окна",
+              "pl": "Wybierz dekorację okna"
             }
           },
           {
@@ -185,7 +260,16 @@
             "name": "nl.luxaflex.powerview.sceneAutocomplete",
             "placeholder": {
               "en": "Choose a scene",
-              "nl": "Kies een  scène"
+              "nl": "Kies een scène",
+              "de": "Wähle eine Szene",
+              "fr": "Choisissez une scène",
+              "it": "Scegli una scena",
+              "sv": "Välj en scen",
+              "no": "Velg en scene",
+              "es": "Elige una escena",
+              "da": "Vælg en scene",
+              "ru": "Выберите сцену",
+              "pl": "Wybierz scenę"
             }
           }
         ],
@@ -196,22 +280,49 @@
       {
         "id": "update_data",
         "title": {
-          "en": "Update Shades",
-          "nl": "Shades updaten"
+          "en": "Update Window coverings",
+          "nl": "Bijwerken Raambekleding",
+          "de": "Fensterbedeckungen aktualisieren",
+          "fr": "Mettre à jour les revêtements de fenêtre",
+          "it": "Aggiorna rivestimenti finestre",
+          "sv": "Uppdatera fönsterbeklädnader",
+          "no": "Oppdater vindu dekker",
+          "es": "Actualizar cubiertas de ventana",
+          "da": "Opdater vinduesbeklædninger",
+          "ru": "Обновить оконные покрытия",
+          "pl": "Zaktualizuj osłony okienne"
         },
         "titleFormatted": {
-          "en": "Update Shades",
-          "nl": "Shades updaten"
+          "en": "Update Window coverings",
+          "nl": "Bijwerken Raambekleding",
+          "de": "Fensterbedeckungen aktualisieren",
+          "fr": "Mettre à jour les revêtements de fenêtre",
+          "it": "Aggiorna rivestimenti finestre",
+          "sv": "Uppdatera fönsterbeklädnader",
+          "no": "Oppdater vindu dekker",
+          "es": "Actualizar cubiertas de ventana",
+          "da": "Opdater vinduesbeklædninger",
+          "ru": "Обновить оконные покрытия",
+          "pl": "Zaktualizuj osłony okienne"
         },
         "args": [
           {
-            "type": "device",
             "name": "device",
+            "type": "device",
+            "filter": "driver_id=nl.luxaflex.powerview.hub&capabilities=update_data",
             "placeholder": {
-              "en": "Select device",
-              "nl": "Selecteer apparaat"
-            },
-            "filter": "driver_id=nl.luxaflex.powerview.hub&capabilities=update_data"
+              "en": "Select window covering",
+              "nl": "Selecteer raamdecoratie",
+              "de": "Wähle Fensterdekoration",
+              "fr": "Sélectionnez la décoration de fenêtre",
+              "it": "Seleziona decorazione finestra",
+              "sv": "Välj fönsterdekoration",
+              "no": "Velg vindusdekorasjon",
+              "es": "Selecciona decoración de ventana",
+              "da": "Vælg vinduets dekoration",
+              "ru": "Выберите декорацию окна",
+              "pl": "Wybierz dekorację okna"
+            }
           }
         ],
         "platforms": [
@@ -259,8 +370,17 @@
             "type": "device",
             "filter": "driver_id=nl.luxaflex.powerview.shade",
             "placeholder": {
-              "en": "Select shade",
-              "nl": "Selecteer shade"
+              "en": "Select window covering",
+              "nl": "Selecteer raamdecoratie",
+              "de": "Wähle Fensterdekoration",
+              "fr": "Sélectionnez la décoration de fenêtre",
+              "it": "Seleziona decorazione finestra",
+              "sv": "Välj fönsterdekoration",
+              "no": "Velg vindusdekorasjon",
+              "es": "Selecciona decoración de ventana",
+              "da": "Vælg vinduets dekoration",
+              "ru": "Выберите декорацию окна",
+              "pl": "Wybierz dekorację okna"
             }
           },
           {
@@ -336,8 +456,17 @@
             "type": "device",
             "filter": "driver_id=nl.luxaflex.powerview.shade",
             "placeholder": {
-              "en": "Select shade",
-              "nl": "Selecteer shade"
+              "en": "Select window covering",
+              "nl": "Selecteer raamdecoratie",
+              "de": "Wähle Fensterdekoration",
+              "fr": "Sélectionnez la décoration de fenêtre",
+              "it": "Seleziona decorazione finestra",
+              "sv": "Välj fönsterdekoration",
+              "no": "Velg vindusdekorasjon",
+              "es": "Selecciona decoración de ventana",
+              "da": "Vælg vinduets dekoration",
+              "ru": "Выберите декорацию окна",
+              "pl": "Wybierz dekorację okna"
             }
           },
           {
@@ -361,7 +490,7 @@
         "local"
       ],
       "connectivity": [
-        "cloud"
+        "lan"
       ],
       "icon": "/drivers/nl.luxaflex.powerview.hub/assets/icon.svg",
       "images": {
@@ -381,8 +510,17 @@
           "template": "loading",
           "options": {
             "text": {
-              "en": "Searching devices",
-              "nl": "Zoeken naar apparaten"
+              "en": "Searching for devices",
+              "nl": "Zoeken naar apparaten",
+              "de": "Suche nach Geräten",
+              "fr": "Recherche de dispositifs",
+              "it": "Ricerca di dispositivi",
+              "sv": "Söker efter enheter",
+              "no": "Søker etter enheter",
+              "es": "Buscando dispositivos",
+              "da": "Søger efter enheder",
+              "ru": "Поиск устройств",
+              "pl": "Wyszukiwanie urządzeń"
             }
           }
         },
@@ -414,7 +552,16 @@
           "type": "group",
           "label": {
             "en": "Powerview Settings",
-            "nl": "Powerview instellingen"
+            "nl": "Powerview instellingen",
+            "de": "Powerview Einstellungen",
+            "fr": "Paramètres Powerview",
+            "it": "Impostazioni Powerview",
+            "sv": "Powerview Inställningar",
+            "no": "Powerview innstillinger",
+            "es": "Ajustes Powerview",
+            "da": "Powerview indstillinger",
+            "ru": "Настройки Powerview",
+            "pl": "Ustawienia Powerview"
           },
           "children": [
             {
@@ -422,7 +569,16 @@
               "type": "text",
               "label": {
                 "en": "IP address of your Powerview hub",
-                "nl": "IP adres van de Powerview Hub"
+                "nl": "IP-adres van uw Powerview hub",
+                "de": "IP-Adresse Ihres Powerview-Hubs",
+                "fr": "Adresse IP de votre hub Powerview",
+                "it": "Indirizzo IP del tuo hub Powerview",
+                "sv": "IP-adress för din Powerview-hub",
+                "no": "IP-adresse for din Powerview-hub",
+                "es": "Dirección IP de su centro Powerview",
+                "da": "IP-adresse på din Powerview-hub",
+                "ru": "IP-адрес вашего концентратора Powerview",
+                "pl": "Adres IP twojego huba Powerview"
               },
               "value": ""
             }
@@ -440,17 +596,44 @@
               "type": "number",
               "label": {
                 "en": "Update interval",
-                "nl": "Update interval"
+                "nl": "Update interval",
+                "de": "Aktualisierungsintervall",
+                "fr": "Intervalle de mise à jour",
+                "it": "Intervallo di aggiornamento",
+                "sv": "Uppdateringsintervall",
+                "no": "Oppdateringsintervall",
+                "es": "Intervalo de actualización",
+                "da": "Opdateringsinterval",
+                "ru": "Интервал обновления",
+                "pl": "Interwał aktualizacji"
               },
               "hint": {
-                "en": "Interval (in minutes) to update all Powerview Shades (0 = OFF)",
-                "nl": "Interval (in minuten) om alle Powerview Shades te updaten (0 = UIT)"
+                "en": "Interval (in minutes) to update all Powerview windows coverings (0 = OFF)",
+                "nl": "Interval (in minuten) om alle Powerview raambekleding te updaten (0 = UIT)",
+                "de": "Intervall (in Minuten) zur Aktualisierung aller Powerview-Fensterbekleidungen (0 = AUS)",
+                "fr": "Intervalle (en minutes) pour mettre à jour toutes les revêtements de fenêtres Powerview (0 = OFF)",
+                "it": "Intervallo (in minuti) per aggiornare tutte le coperture per finestre Powerview (0 = OFF)",
+                "sv": "Intervall (i minuter) för att uppdatera alla Powerview fönsterbeklädnader (0 = AV)",
+                "no": "Intervall (i minutter) for å oppdatere alle Powerview vindu bekledninger (0 = AV)",
+                "es": "Intervalo (en minutos) para actualizar todas las cubiertas de ventanas Powerview (0 = OFF)",
+                "da": "Interval (i minutter) for at opdatere alle Powerview vinduesbeklædninger (0 = SLUKKET)",
+                "ru": "Интервал (в минутах) для обновления всех оконных покрытий Powerview (0 = ВЫКЛ)",
+                "pl": "Interwał (w minutach) do aktualizacji wszystkich okładek okien Powerview (0 = WYŁ)"
               },
               "min": 0,
               "max": 3600,
               "units": {
                 "en": "minutes",
-                "nl": "minuten"
+                "nl": "minuten",
+                "de": "Minuten",
+                "fr": "minutes",
+                "it": "minuti",
+                "sv": "minuter",
+                "no": "minutter",
+                "es": "minutos",
+                "da": "minutter",
+                "ru": "минуты",
+                "pl": "minuty"
               },
               "value": 15
             }
@@ -464,7 +647,7 @@
         "local"
       ],
       "connectivity": [
-        "cloud"
+        "lan"
       ],
       "icon": "/drivers/nl.luxaflex.powerview.shade/assets/icon.svg",
       "images": {
@@ -476,7 +659,16 @@
           "type": "group",
           "label": {
             "en": "Powerview Settings",
-            "nl": "Powerview instellingen"
+            "nl": "Powerview-instellingen",
+            "de": "Powerview-Einstellungen",
+            "fr": "Paramètres Powerview",
+            "it": "Impostazioni Powerview",
+            "sv": "Powerview inställningar",
+            "no": "Powerview innstillinger",
+            "es": "Configuraciones de Powerview",
+            "da": "Powerview-indstillinger",
+            "ru": "Настройки Powerview",
+            "pl": "Ustawienia Powerview"
           },
           "children": [
             {
@@ -484,7 +676,16 @@
               "type": "text",
               "label": {
                 "en": "IP address of your Powerview hub",
-                "nl": "IP adres van de Powerview Hub"
+                "nl": "IP-adres van uw Powerview hub",
+                "de": "IP-Adresse Ihres Powerview-Hubs",
+                "fr": "Adresse IP de votre hub Powerview",
+                "it": "Indirizzo IP del tuo hub Powerview",
+                "sv": "IP-adress för din Powerview-hub",
+                "no": "IP-adresse for din Powerview-hub",
+                "es": "Dirección IP de su centro Powerview",
+                "da": "IP-adresse på din Powerview-hub",
+                "ru": "IP-адрес вашего концентратора Powerview",
+                "pl": "Adres IP twojego huba Powerview"
               },
               "value": ""
             }
@@ -502,7 +703,16 @@
               "type": "checkbox",
               "label": {
                 "en": "Invert position 1 ",
-                "nl": "Draai positie 1 om"
+                "nl": "Positie 1 omdraaien",
+                "de": "Position 1 umdrehen",
+                "fr": "Inverser la position 1",
+                "it": "Inverti posizione 1",
+                "sv": "Vänd position 1",
+                "no": "Snu stilling 1",
+                "es": "Invertir posición 1",
+                "da": "Vend position 1",
+                "ru": "Инвертировать позицию 1",
+                "pl": "Odwróć pozycję 1"
               },
               "value": false
             },
@@ -546,7 +756,16 @@
           "type": "group",
           "label": {
             "en": "Motor 2 Settings",
-            "nl": "Motor 2 instellingen"
+            "nl": "Motor 2 instellingen",
+            "de": "Motor 2 Einstellungen",
+            "fr": "Réglages moteur 2",
+            "it": "Impostazioni Motore 2",
+            "sv": "Inställningar för motor 2",
+            "no": "Innstillinger for motor 2",
+            "es": "Configuración del motor 2",
+            "da": "Indstillinger for motor 2",
+            "ru": "Настройки мотора 2",
+            "pl": "Ustawienia silnika 2"
           },
           "children": [
             {
@@ -554,11 +773,29 @@
               "type": "checkbox",
               "hint": {
                 "en": "These options will only affect the app if DualMotor setting is enabled",
-                "nl": "Deze opties zullen van kracht worden als de DualMotor optie is aangevinkt"
+                "nl": "Deze opties hebben alleen effect op de app als de DualMotor-instelling is ingeschakeld",
+                "de": "Diese Optionen wirken sich nur auf die App aus, wenn die DualMotor-Einstellung aktiviert ist",
+                "fr": "Ces options n'affecteront l'application que si le paramètre DualMotor est activé",
+                "it": "Queste opzioni avranno effetto solo sull'app se l'impostazione DualMotor è abilitata",
+                "sv": "Dessa alternativ påverkar bara appen om DualMotor-inställningen är aktiverad",
+                "no": "Disse alternativen vil bare påvirke appen hvis DualMotor-innstillingen er aktivert",
+                "es": "Estas opciones solo afectarán la aplicación si la configuración de DualMotor está habilitada",
+                "da": "Disse indstillinger vil kun påvirke appen, hvis DualMotor-indstillingen er aktiveret",
+                "ru": "Эти параметры будут влиять на приложение только в том случае, если включена настройка DualMotor",
+                "pl": "Te opcje wpłyną tylko na aplikację, jeśli opcja DualMotor jest włączona"
               },
               "label": {
-                "en": "Invert position 2 ",
-                "nl": "Draai positie 2 om"
+                "en": "Invert position 2",
+                "nl": "Positie 2 omdraaien",
+                "de": "Position 2 umdrehen",
+                "fr": "Inverser la position 2",
+                "it": "Inverti posizione 2",
+                "sv": "Vänd position 2",
+                "no": "Snu stilling 2",
+                "es": "Invertir posición 2",
+                "da": "Vend position 2",
+                "ru": "Инвертировать позицию 2",
+                "pl": "Odwróć pozycję 2"
               },
               "value": false
             },
@@ -567,7 +804,16 @@
               "type": "dropdown",
               "hint": {
                 "en": "These options will only affect the app if DualMotor setting is enabled",
-                "nl": "Deze opties zullen van kracht worden als de DualMotor optie is aangevinkt"
+                "nl": "Deze opties hebben alleen effect op de app als de DualMotor-instelling is ingeschakeld",
+                "de": "Diese Optionen wirken sich nur auf die App aus, wenn die DualMotor-Einstellung aktiviert ist",
+                "fr": "Ces options n'affecteront l'application que si le paramètre DualMotor est activé",
+                "it": "Queste opzioni avranno effetto solo sull'app se l'impostazione DualMotor è abilitata",
+                "sv": "Dessa alternativ påverkar bara appen om DualMotor-inställningen är aktiverad",
+                "no": "Disse alternativen vil bare påvirke appen hvis DualMotor-innstillingen er aktivert",
+                "es": "Estas opciones solo afectarán la aplicación si la configuración de DualMotor está habilitada",
+                "da": "Disse indstillinger vil kun påvirke appen, hvis DualMotor-indstillingen er aktiveret",
+                "ru": "Эти параметры будут влиять на приложение только в том случае, если включена настройка DualMotor",
+                "pl": "Te opcje wpłyną tylko na aplikację, jeśli opcja DualMotor jest włączona"
               },
               "value": "0",
               "label": {
@@ -605,11 +851,28 @@
               "type": "checkbox",
               "hint": {
                 "en": "When closing Position 1, then Position 2 will always go back to the state it was set to. Disabling this will allow the user to close/open both motors when Position 1 open/closes. (Useful with Google Home)",
-                "nl": "Wanneer Positie 1 sluit zal Positie 2 altijd terug gaan in de laatste stand waar deze in stond. Het uitschakelen van deze optie zal beide motoren openen/sluiten als Positie 1 opent/sluit. (Handig in gebruik met Google Home)"
+                "nl": "Wanneer Positie 1 sluit zal Positie 2 altijd terug gaan in de laatste stand waar deze in stond. Het uitschakelen van deze optie zal beide motoren openen/sluiten als Positie 1 opent/sluit. (Handig in gebruik met Google Home)",
+                "de": "Wenn Sie Position 1 schließen, geht Position 2 immer in den Zustand zurück, in dem es eingestellt wurde. Wenn Sie dies deaktivieren, kann der Benutzer beide Motoren schließen/öffnen, wenn Position 1 geöffnet/geschlossen wird. (Nützlich mit Google Home)",
+                "fr": "Lors de la fermeture de la position 1, la position 2 reviendra toujours à l'état dans lequel elle a été définie. Désactiver cette option permettra à l'utilisateur de fermer/ouvrir les deux moteurs lorsque la position 1 est ouverte/fermée. (Utile avec Google Home)",
+                "it": "Quando si chiude la posizione 1, la posizione 2 tornerà sempre allo stato impostato. Disabilitare questa opzione consentirà all'utente di chiudere/aprire entrambi i motori quando la posizione 1 si apre/chiude. (Utile con Google Home)",
+                "sv": "När position 1 stängs kommer position 2 alltid tillbaka till den tillstånd den var inställd på. Om du inaktiverar detta kommer användaren att kunna stänga/öppna båda motorerna när position 1 öppnas/stängs. (Användbart med Google Home)",
+                "no": "Når posisjon 1 lukkes, vil posisjon 2 alltid gå tilbake til den tilstanden den ble satt til. Hvis du deaktiverer dette, vil brukeren kunne lukke/åpne begge motorene når posisjon 1 åpnes/lukkes. (Nyttig med Google Home)",
+                "da": "Når position 1 lukkes, vil position 2 altid gå tilbage til den tilstand, den blev sat til. Deaktivering af dette vil tillade brugeren at lukke / åbne begge motorer, når position 1 åbnes / lukkes. (Nyttigt med Google Home)",
+                "ru": "При закрытии позиции 1, позиция 2 всегда возвращается в прежнее состояние. Отключение этой опции позволит пользователю закрывать / открывать оба двигателя при открытии / закрытии позиции 1. (Полезно с Google Home)",
+                "pl": "Po zamknięciu pozycji 1 pozycja 2 zawsze wraca do stanu, w którym została ustawiona. Wyłączenie tej opcji pozwoli użytkownikowi zamykać / otwierać oba silniki, gdy pozycja 1 jest otwierana / zamykana. (Przydatne z Google Home)"
               },
               "label": {
                 "en": "Control separate from Position 1",
-                "nl": "Bestuur los van positie 1"
+                "nl": "Bestuur los van positie 1",
+                "de": "Steuerung unabhängig von Position 1",
+                "fr": "Contrôle séparé de la position 1",
+                "it": "Controllo separato dalla posizione 1",
+                "sv": "Kontroll separat från position 1",
+                "no": "Kontroll separat fra posisjon 1",
+                "es": "Control separado de la posición 1",
+                "da": "Kontrol separat fra position 1",
+                "ru": "Управление отдельно от позиции 1",
+                "pl": "Kontrola oddzielnie od pozycji 1"
               },
               "value": true
             }
@@ -619,7 +882,16 @@
           "type": "group",
           "label": {
             "en": "App options",
-            "nl": "App opties"
+            "nl": "App opties",
+            "de": "App Optionen",
+            "fr": "Options de l'application",
+            "it": "Opzioni app",
+            "sv": "Appalternativ",
+            "no": "App alternativer",
+            "es": "Opciones de aplicación",
+            "da": "App-indstillinger",
+            "ru": "Параметры приложения",
+            "pl": "Opcje aplikacji"
           },
           "children": [
             {
@@ -627,11 +899,29 @@
               "type": "checkbox",
               "label": {
                 "en": "Setting: Dualmotor",
-                "nl": "Instelling: Dualmotor"
+                "nl": "Instelling: Dualmotor",
+                "de": "Einstellung: Dualmotor",
+                "fr": "Réglage: Dualmoteur",
+                "it": "Impostazione: Dualmotor",
+                "sv": "Inställning: Dualmotor",
+                "no": "Innstilling: Dualmotor",
+                "es": "Configuración: Dualmotor",
+                "da": "Indstilling: Dualmotor",
+                "ru": "Настройка: Dualmotor",
+                "pl": "Ustawienie: Dualmotor"
               },
               "hint": {
                 "en": "Checking this box will add the option to control a extra motor on this device (e.g. Duette Top-Down-Bottom-Up)",
-                "nl": "Het aanzetten van deze instelling zal het mogelijk maken een extra motor te gebruiken op dit apparaat (bijv Duette Top-Down-Bottom-Up)"
+                "nl": "Het aanzetten van deze instelling zal het mogelijk maken een extra motor te gebruiken op dit apparaat (bijv Duette Top-Down-Bottom-Up)",
+                "de": "Wenn Sie dieses Kästchen aktivieren, haben Sie die Möglichkeit, einen zusätzlichen Motor auf diesem Gerät zu steuern (z.B. Duette Top-Down-Bottom-Up)",
+                "fr": "En cochant cette case, vous ajouterez l'option de contrôler un moteur supplémentaire sur ce dispositif (par ex. Duette Top-Down-Bottom-Up)",
+                "it": "Se si seleziona questa casella, verrà aggiunta l'opzione per controllare un motore extra su questo dispositivo (ad es. Duette Top-Down-Bottom-Up)",
+                "sv": "Om du markerar denna ruta kommer du att få möjlighet att kontrollera en extra motor på den här enheten (t.ex. Duette Top-Down-Bottom-Up)",
+                "no": "Hvis du merker av i denne boksen, vil du få muligheten til å kontrollere en ekstra motor på dette utstyret (f.eks. Duette Top-Down-Bottom-Up)",
+                "es": "Al marcar esta casilla, se agregará la opción de controlar un motor adicional en este dispositivo (por ejemplo, Duette Top-Down-Bottom-Up)",
+                "da": "Hvis du markerer denne boks, vil du få mulighed for at kontrollere en ekstra motor på dette udstyr (f.eks. Duette Top-Down-Bottom-Up)",
+                "ru": "Отметив этот флажок, вы добавите возможность управления дополнительным мотором на этом устройстве (например, Duette Top-Down-Bottom-Up)",
+                "pl": "Zaznaczenie tego pola doda opcję kontrolowania dodatkowego silnika w tym urządzeniu (np. Duette Top-Down-Bottom-Up)"
               },
               "value": true
             },
@@ -640,11 +930,29 @@
               "type": "checkbox",
               "label": {
                 "en": "Setting: Battery",
-                "nl": "Instelling: Battery"
+                "nl": "Instelling: Batterij",
+                "de": "Einstellung: Batterie",
+                "fr": "Réglage : Batterie",
+                "it": "Impostazione: Batteria",
+                "sv": "Inställning: Batteri",
+                "no": "Innstilling: Batteri",
+                "es": "Configuración: Batería",
+                "da": "Indstilling: Batteri",
+                "ru": "Настройка: батарея",
+                "pl": "Ustawienie: Bateria"
               },
               "hint": {
                 "en": "Checking this box will add the battery option to this device",
-                "nl": "Het aanzetten van deze instelling zal de batterij optie toevoegen aan dit apparaat"
+                "nl": "Het aanzetten van deze instelling zal de batterij optie toevoegen aan dit apparaat",
+                "de": "Durch das Aktivieren dieser Option wird die Batterieoption hinzugefügt",
+                "fr": "Cocher cette case ajoutera l'option de batterie à ce dispositif",
+                "it": "Selezionare questa casella aggiungerà l'opzione della batteria a questo dispositivo",
+                "sv": "Genom att kryssa i denna ruta kommer batterialternativet att läggas till i den här enheten",
+                "no": "Ved å merke av denne boksen vil batterialternativet bli lagt til i denne enheten",
+                "es": "Marcar esta casilla agregará la opción de batería a este dispositivo",
+                "da": "Ved at markere denne boks vil batteri-indstillingen blive tilføjet til dette apparat",
+                "ru": "Отметив этот флажок, вы добавите вариант батареи в это устройство",
+                "pl": "Zaznaczenie tego pola doda opcję baterii do tego urządzenia"
               },
               "value": true
             }
@@ -659,14 +967,32 @@
       "capabilitiesOptions": {
         "windowcoverings_set": {
           "title": {
+            "en": "Position 1",
             "nl": "Positie 1",
-            "en": "Position 1"
+            "de": "Position 1",
+            "fr": "Position 1",
+            "it": "Posizione 1",
+            "sv": "Position 1",
+            "no": "Posisjon 1",
+            "es": "Posición 1",
+            "da": "Position 1",
+            "ru": "Положение 1",
+            "pl": "Pozycja 1"
           }
         },
         "windowcoverings_tilt_set": {
           "title": {
+            "en": "Position 2",
             "nl": "Positie 2",
-            "en": "Position 2"
+            "de": "Position 2",
+            "fr": "Position 2",
+            "it": "Posizione 2",
+            "sv": "Position 2",
+            "no": "Posisjon 2",
+            "es": "Posición 2",
+            "da": "Position 2",
+            "ru": "Положение 2",
+            "pl": "Pozycja 2"
           }
         }
       },
@@ -683,8 +1009,17 @@
           "template": "loading",
           "options": {
             "text": {
-              "en": "Searching devices",
-              "nl": "Zoeken naar apparaten"
+              "en": "Searching for devices",
+              "nl": "Zoeken naar apparaten",
+              "de": "Suche nach Geräten",
+              "fr": "Recherche de dispositifs",
+              "it": "Ricerca di dispositivi",
+              "sv": "Söker efter enheter",
+              "no": "Søker etter enheter",
+              "es": "Buscando dispositivos",
+              "da": "Søger efter enheder",
+              "ru": "Поиск устройств",
+              "pl": "Wyszukiwanie urządzeń"
             }
           }
         },
@@ -705,8 +1040,17 @@
         }
       ],
       "name": {
-        "en": "Powerview Shade (Requires Hub)",
-        "nl": "Powerview Shade (Vereist Hub)"
+        "en": "Powerview Window Covering (Requires Hub)",
+        "nl": "Powerview Raambekleding (vereist Hub)",
+        "de": "Powerview Fensterbekleidung (erfordert Hub)",
+        "fr": "Revêtement de fenêtre Powerview (nécessite un hub)",
+        "it": "Rivestimento finestra Powerview (richiede un hub)",
+        "sv": "Powerview fönsterbeklädnad (kräver hub)",
+        "no": "Powerview vindu-deksel (krever hub)",
+        "es": "Cubrimiento de ventana Powerview (requiere centro)",
+        "da": "Powerview vindu-beklædning (kræver Hub)",
+        "ru": "Обтяжка оконного проема Powerview (требуется хаб)",
+        "pl": "Osłona okien Powerview (wymaga centrum)"
       },
       "class": "blinds",
       "energy": {
@@ -722,12 +1066,30 @@
     "update_data": {
       "type": "boolean",
       "title": {
-        "en": "Update Shades",
-        "nl": "Shades updaten"
+        "en": "Update Window coverings",
+        "nl": "Bijwerken Raambekleding",
+        "de": "Fensterbedeckungen aktualisieren",
+        "fr": "Mettre à jour les revêtements de fenêtre",
+        "it": "Aggiorna rivestimenti finestre",
+        "sv": "Uppdatera fönsterbeklädnader",
+        "no": "Oppdater vindu dekker",
+        "es": "Actualizar cubiertas de ventana",
+        "da": "Opdater vinduesbeklædninger",
+        "ru": "Обновить оконные покрытия",
+        "pl": "Zaktualizuj osłony okienne"
       },
       "titleFormatted": {
-        "en": "Update Shades",
-        "nl": "Shades updaten"
+        "en": "Update Window coverings",
+        "nl": "Bijwerken Raambekleding",
+        "de": "Fensterbedeckungen aktualisieren",
+        "fr": "Mettre à jour les revêtements de fenêtre",
+        "it": "Aggiorna rivestimenti finestre",
+        "sv": "Uppdatera fönsterbeklädnader",
+        "no": "Oppdater vindu dekker",
+        "es": "Actualizar cubiertas de ventana",
+        "da": "Opdater vinduesbeklædninger",
+        "ru": "Обновить оконные покрытия",
+        "pl": "Zaktualizuj osłony okienne"
       },
       "getable": true,
       "setable": true,

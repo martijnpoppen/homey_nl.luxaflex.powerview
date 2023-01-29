@@ -1,6 +1,6 @@
 {
   "platforms": ["local"],
-  "connectivity": ["cloud"],
+  "connectivity": ["lan"],
   "icon": "{{driverAssetsPath}}/icon.svg",
   "images": {
     "large": "{{driverAssetsPath}}/images/large.png",

@@ -5,17 +5,26 @@
       "template": "loading"
     },
     {
-        "id": "set_ip"
-      },
+      "id": "set_ip"
+    },
     {
-        "id": "get_data",
-        "template": "loading",
-        "options": {
-          "text": {
-            "en": "Searching devices",
-            "nl": "Zoeken naar apparaten"
-          }
+      "id": "get_data",
+      "template": "loading",
+      "options": {
+        "text": {
+          "en": "Searching for devices",
+          "nl": "Zoeken naar apparaten",
+          "de": "Suche nach Geräten",
+          "fr": "Recherche de dispositifs",
+          "it": "Ricerca di dispositivi",
+          "sv": "Söker efter enheter",
+          "no": "Søker etter enheter",
+          "es": "Buscando dispositivos",
+          "da": "Søger efter enheder",
+          "ru": "Поиск устройств",
+          "pl": "Wyszukiwanie urządzeń"
         }
+      }
     },
     {
       "id": "list_devices",
