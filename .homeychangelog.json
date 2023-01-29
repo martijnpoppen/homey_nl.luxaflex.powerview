@@ -58,5 +58,8 @@
   },
   "2.3.3": {
     "en": "FIX: shade pairing when positions unkown"
+  },
+  "2.4.0": {
+    "en": "NEW: add translations"
   }
 }
