@@ -7,8 +7,6 @@ const { sleep } = require('../lib/helpers');
 class mainHub extends rootDevice {
     async onInit() {
         try {
-            const settings = this.getSettings();
-
             this.homey.app.log('[Device] - init =>', this.getName());
             this.setUnavailable(`Connecting to: ${this.getName()} ...`);
 
@@ -17,15 +15,10 @@ class mainHub extends rootDevice {
             await this.checkCapabilities();
 
             await this.registerCapabilityListener('update_data', this.onCapability_UPDATE_DATA.bind(this));
-
-            await this.setIntervalsAndFlows(true, settings.update_interval);
             await this.setAvailable();
+            
 
-            this.homey.app.homeyEvents.on('setCapabilityValues', async () => {
-                this.clearIntervals();
-                await sleep(5000)
-                await this.setIntervalsAndFlows(true, settings.update_interval);
-            });
+            await this.setShadeInterval();
         } catch (error) {
             this.homey.app.error(`[Device] ${this.getName()} - OnInit Error`, error);
         }
@@ -64,6 +57,15 @@ class mainHub extends rootDevice {
     }
 
     // ------------- Intervals -------------
+    async setShadeInterval() {
+        this.homey.app.homeyEvents.on('setCapabilityValues', async () => {
+            this.clearIntervals();
+            await sleep(5000)
+            await this.setIntervalsAndFlows(true, settings.update_interval);
+        });
+    }
+
+
     async setIntervalsAndFlows(override = false, time = 2) {
         try {
             this.homey.app.log(`[Device] ${this.getName()} - setIntervalsAndFlows override | time - `, override, time);
@@ -119,10 +121,11 @@ class mainHub extends rootDevice {
         try {
             const settings = await this.getSettings();
             const ip = settings.ip || settings['nl.luxaflex.powerview.settings.ip'];
+            const isV3 = (settings.apiVersion === "3")
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneSet`, value);
 
-            const sceneResponse = await getScenes(ip, this.homey.app.apiClient, value);
+            const sceneResponse = await getScenes(ip, this.homey.app.apiClient, isV3, value);
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneSet sceneResponse: `, sceneResponse);
 
@@ -137,10 +140,11 @@ class mainHub extends rootDevice {
         try {
             const settings = await this.getSettings();
             const ip = settings.ip || settings['nl.luxaflex.powerview.settings.ip'];
+            const isV3 = (settings.apiVersion === "3")
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneCollectionSet`, value);
 
-            const sceneResponse = await getSceneCollection(ip, this.homey.app.apiClient, value);
+            const sceneResponse = await getSceneCollection(ip, this.homey.app.apiClient, isV3, value);
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneCollectionSet sceneResponse: `, sceneResponse);
 

@@ -240,7 +240,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=nl.luxaflex.powerview.hub",
+            "filter": "driver_id=nl.luxaflex.powerview.hub|nl.luxaflex.powerview.hub.gen3",
             "placeholder": {
               "en": "Select window covering",
               "nl": "Selecteer raamdecoratie",
@@ -540,12 +540,117 @@
           "template": "done"
         }
       ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Powerview Settings",
+            "nl": "Powerview instellingen"
+          },
+          "children": [
+            {
+              "id": "ip",
+              "type": "text",
+              "label": {
+                "en": "IP address of your Powerview hub",
+                "nl": "IP adres van de Powerview Hub"
+              },
+              "value": ""
+            },
+            {
+              "id": "apiVersion",
+              "type": "label",
+              "label": {
+                "en": "API Version",
+                "nl": "API Versie"
+              },
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Warning! Setting this to a low value might cause dropouts to your Powerview Hub. (Suggested value is 15)",
+            "nl": "Let op! Deze waarde instellen op een lage waarde kan leiden tot het uitvallen van de Powerview Hub. (Aanbevolen waarde is 15)"
+          },
+          "children": [
+            {
+              "id": "update_interval",
+              "type": "number",
+              "label": {
+                "en": "Update interval",
+                "nl": "Update interval"
+              },
+              "hint": {
+                "en": "Interval (in minutes) to update all Powerview Shades (0 = OFF)",
+                "nl": "Interval (in minuten) om alle Powerview Shades te updaten (0 = UIT)"
+              },
+              "min": 0,
+              "max": 3600,
+              "units": {
+                "en": "minutes",
+                "nl": "minuten"
+              },
+              "value": 15
+            }
+          ]
+        }
+      ],
       "name": {
         "en": "Powerview Hub"
       },
       "class": "other",
       "capabilities": [
         "update_data"
+      ],
+      "id": "nl.luxaflex.powerview.hub"
+    },
+    {
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "icon": "/drivers/nl.luxaflex.powerview.hub.gen3/assets/icon.svg",
+      "images": {
+        "large": "/drivers/nl.luxaflex.powerview.hub.gen3/assets/images/large.png",
+        "small": "/drivers/nl.luxaflex.powerview.hub.gen3/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "loading",
+          "template": "loading"
+        },
+        {
+          "id": "set_ip"
+        },
+        {
+          "id": "get_data",
+          "template": "loading",
+          "options": {
+            "text": {
+              "en": "Searching devices",
+              "nl": "Zoeken naar apparaten"
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        },
+        {
+          "id": "done",
+          "template": "done"
+        }
       ],
       "settings": [
         {
@@ -581,6 +686,15 @@
                 "pl": "Adres IP twojego huba Powerview"
               },
               "value": ""
+            },
+            {
+              "id": "apiVersion",
+              "type": "label",
+              "label": {
+                "en": "API Version",
+                "nl": "API Versie"
+              },
+              "value": "2"
             }
           ]
         },
@@ -640,7 +754,14 @@
           ]
         }
       ],
-      "id": "nl.luxaflex.powerview.hub"
+      "name": {
+        "en": "Powerview Hub (Gen 3)"
+      },
+      "class": "other",
+      "capabilities": [
+        "update_data"
+      ],
+      "id": "nl.luxaflex.powerview.hub.gen3"
     },
     {
       "platforms": [
@@ -688,6 +809,15 @@
                 "pl": "Adres IP twojego huba Powerview"
               },
               "value": ""
+            },
+            {
+              "id": "apiVersion",
+              "type": "label",
+              "label": {
+                "en": "API Version",
+                "nl": "API Versie"
+              },
+              "value": "2"
             }
           ]
         },
@@ -1060,6 +1190,273 @@
         ]
       },
       "id": "nl.luxaflex.powerview.shade"
+    },
+    {
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "icon": "/drivers/nl.luxaflex.powerview.shade.gen3/assets/icon.svg",
+      "images": {
+        "large": "/drivers/nl.luxaflex.powerview.shade.gen3/assets/images/large.png",
+        "small": "/drivers/nl.luxaflex.powerview.shade.gen3/assets/images/small.png"
+      },
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Powerview Settings",
+            "nl": "Powerview instellingen"
+          },
+          "children": [
+            {
+              "id": "ip",
+              "type": "text",
+              "label": {
+                "en": "IP address of your Powerview hub",
+                "nl": "IP adres van de Powerview Hub"
+              },
+              "value": ""
+            },
+            {
+              "id": "apiVersion",
+              "type": "label",
+              "label": {
+                "en": "API Version",
+                "nl": "API Versie"
+              },
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Motor 1 Settings",
+            "nl": "Motor 1 instellingen"
+          },
+          "children": [
+            {
+              "id": "invertPosition1",
+              "type": "checkbox",
+              "label": {
+                "en": "Invert position 1 ",
+                "nl": "Draai positie 1 om"
+              },
+              "value": false
+            },
+            {
+              "id": "posKind1",
+              "type": "dropdown",
+              "value": "0",
+              "label": {
+                "en": "Positionkind 1"
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "None"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Primary Rail"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Secondary Rail"
+                  }
+                },
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Vane Tilt"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Motor 2 Settings",
+            "nl": "Motor 2 instellingen"
+          },
+          "children": [
+            {
+              "id": "invertPosition2",
+              "type": "checkbox",
+              "hint": {
+                "en": "These options will only affect the app if DualMotor setting is enabled",
+                "nl": "Deze opties zullen van kracht worden als de DualMotor optie is aangevinkt"
+              },
+              "label": {
+                "en": "Invert position 2 ",
+                "nl": "Draai positie 2 om"
+              },
+              "value": false
+            },
+            {
+              "id": "posKind2",
+              "type": "dropdown",
+              "hint": {
+                "en": "These options will only affect the app if DualMotor setting is enabled",
+                "nl": "Deze opties zullen van kracht worden als de DualMotor optie is aangevinkt"
+              },
+              "value": "0",
+              "label": {
+                "en": "Positionkind 2"
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "None"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Primary Rail"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Secondary Rail"
+                  }
+                },
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Vane Tilt"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "updatePosition2",
+              "type": "checkbox",
+              "hint": {
+                "en": "When closing Position 1, then Position 2 will always go back to the state it was set to. Disabling this will allow the user to close/open both motors when Position 1 open/closes. (Useful with Google Home)",
+                "nl": "Wanneer Positie 1 sluit zal Positie 2 altijd terug gaan in de laatste stand waar deze in stond. Het uitschakelen van deze optie zal beide motoren openen/sluiten als Positie 1 opent/sluit. (Handig in gebruik met Google Home)"
+              },
+              "label": {
+                "en": "Control separate from Position 1",
+                "nl": "Bestuur los van positie 1"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "App options",
+            "nl": "App opties"
+          },
+          "children": [
+            {
+              "id": "dualmotor",
+              "type": "checkbox",
+              "label": {
+                "en": "Setting: Dualmotor",
+                "nl": "Instelling: Dualmotor"
+              },
+              "hint": {
+                "en": "Checking this box will add the option to control a extra motor on this device (e.g. Duette Top-Down-Bottom-Up)",
+                "nl": "Het aanzetten van deze instelling zal het mogelijk maken een extra motor te gebruiken op dit apparaat (bijv Duette Top-Down-Bottom-Up)"
+              },
+              "value": true
+            },
+            {
+              "id": "measure_battery",
+              "type": "checkbox",
+              "label": {
+                "en": "Setting: Battery",
+                "nl": "Instelling: Battery"
+              },
+              "hint": {
+                "en": "Checking this box will add the battery option to this device",
+                "nl": "Het aanzetten van deze instelling zal de batterij optie toevoegen aan dit apparaat"
+              },
+              "value": true
+            }
+          ]
+        }
+      ],
+      "capabilities": [
+        "measure_battery",
+        "windowcoverings_set",
+        "windowcoverings_tilt_set"
+      ],
+      "capabilitiesOptions": {
+        "windowcoverings_set": {
+          "title": {
+            "nl": "Positie 1",
+            "en": "Position 1"
+          }
+        },
+        "windowcoverings_tilt_set": {
+          "title": {
+            "nl": "Positie 2",
+            "en": "Position 2"
+          }
+        }
+      },
+      "pair": [
+        {
+          "id": "loading",
+          "template": "loading"
+        },
+        {
+          "id": "set_ip"
+        },
+        {
+          "id": "get_data",
+          "template": "loading",
+          "options": {
+            "text": {
+              "en": "Searching devices",
+              "nl": "Zoeken naar apparaten"
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        },
+        {
+          "id": "done",
+          "template": "done"
+        }
+      ],
+      "name": {
+        "en": "Powerview Shade (Gen 3) (Requires Hub)",
+        "nl": "Powerview Shade (Gen 3) (Vereist Hub)"
+      },
+      "class": "blinds",
+      "energy": {
+        "batteries": [
+          "INTERNAL",
+          "OTHER"
+        ]
+      },
+      "id": "nl.luxaflex.powerview.shade.gen3"
     }
   ],
   "capabilities": {
@@ -1102,6 +1499,14 @@
       "mdns-sd": {
         "protocol": "tcp",
         "name": "_powerview"
+      },
+      "id": "{{txt.id}}"
+    },
+    "powerview-g3": {
+      "type": "mdns-sd",
+      "mdns-sd": {
+        "protocol": "tcp",
+        "name": "_PowerView-G3"
       },
       "id": "{{txt.id}}"
     }

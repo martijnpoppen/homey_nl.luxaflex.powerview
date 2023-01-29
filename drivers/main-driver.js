@@ -16,6 +16,14 @@ module.exports = class mainDriver extends Homey.Driver {
         return 'other';
     }
 
+    discovery() {
+        return 'other'
+    }
+
+    apiVersion() {
+        return '2';
+    }
+
     GetGUID() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
             var r = (Math.random() * 16) | 0,
@@ -25,7 +33,7 @@ module.exports = class mainDriver extends Homey.Driver {
     }
 
     async onPair(session) {
-        const discoveryStrategy = this.homey.discovery.getStrategy('powerview');
+        const discoveryStrategy = this.homey.discovery.getStrategy(this.discovery());
         const discoveryResults = discoveryStrategy.getDiscoveryResults();
 
         this.homey.app.log(`[Driver] ${this.id} - searching for Powerview`);
@@ -78,8 +86,9 @@ module.exports = class mainDriver extends Homey.Driver {
 
             this.results.forEach((r) => {
                 const ip = r.address;
+                const isV3 = this.apiVersion() === '3'
 
-                getShades(ip, this.homey.app.apiClient).then((result) => {
+                getShades(ip, this.homey.app.apiClient, isV3).then((result) => {
                     shades.push(...result);
                     this.homey.app.log(`[Driver] ${this.id} - Found shades - `, result);
                 });
@@ -99,24 +108,43 @@ module.exports = class mainDriver extends Homey.Driver {
 
             for (const device of deviceArray) {
                 const ip = device.address;
+                const isV3 = this.apiVersion() === '3';
 
                 if (ctx.driverType() === 'shade') {
                     const typeSettings = getDeviceByType(device.type);
                     const { positions } = device;
 
-                    devices.push({
-                        name: device.shadeName,
-                        data: {
-                            id: device.id
-                        },
-                        settings: {
-                            ip: ip,
-                            type: device.type,
-                            ...(positions.posKind1 && {posKind1: positions.posKind1.toFixed()}),
-                            ...(positions.posKind2 && {posKind2: positions.posKind2.toFixed()}),
-                            ...typeSettings.options
-                        }
-                    });
+                    if(isV3) {
+                        devices.push({
+                            name: device.shadeName,
+                            data: {
+                                id: device.id,
+                            },
+                            settings: {
+                                ip: ip,
+                                apiVersion: this.apiVersion(),
+                                type: device.type,
+                                posKind1: positions.primary.toFixed(2),
+                                ...('secondary' in positions && {posKind2: positions.secondary.toFixed(2)}),
+                                ...typeSettings.options
+                            }
+                        });
+                    } else {
+                        devices.push({
+                            name: device.shadeName,
+                            data: {
+                                id: device.id,
+                            },
+                            settings: {
+                                ip: ip,
+                                apiVersion: this.apiVersion(),
+                                type: device.type,
+                                ...(positions.posKind1 && {posKind1: positions.posKind1.toFixed()}),
+                                ...('posKind2' in positions && {posKind2: positions.posKind2.toFixed()}),
+                                ...typeSettings.options
+                            }
+                        });
+                    }
                 } else {
                     devices.push({
                         name: device.name || ctx.driverType(),
@@ -124,7 +152,8 @@ module.exports = class mainDriver extends Homey.Driver {
                             id: ctx.GetGUID()
                         },
                         settings: {
-                            ip: ip
+                            ip: ip,
+                            apiVersion: this.apiVersion()
                         }
                     });
                 }

@@ -33,6 +33,15 @@
             "pl": "Adres IP twojego huba Powerview"
           },
           "value": ""
+        },
+        {
+            "id": "apiVersion",
+            "type": "label",
+            "label": {
+              "en": "API Version",
+              "nl": "API Versie"
+            },
+            "value": "2"
         }
       ]
     },

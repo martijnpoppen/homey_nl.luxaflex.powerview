@@ -1,11 +1,9 @@
 'use strict';
 
-const rootDevice = require('./root-device');
+const mainDevice = require('./main-device');
 const { setShade, getShade } = require('../lib/api');
 
-const maxValue = 65535;
-
-class mainDevice extends rootDevice {
+class mainDevice extends mainDevice {
     async onInit() {
         try {
             this.homey.app.log('[Device] - init =>', this.getName());
@@ -19,7 +17,7 @@ class mainDevice extends rootDevice {
             await this.checkCapabilities();
 
             if (hasHub) {
-                const driverData = this.homey.drivers.getDriver('nl.luxaflex.powerview.shade');
+                const driverData = this.homey.drivers.getDriver('nl.luxaflex.powerview.shade.gen3');
                 const driverDevices = driverData.getDevices();
                 const deviceObject = this.getData();
 
@@ -46,45 +44,12 @@ class mainDevice extends rootDevice {
         }
     }
 
-    async checkForHub() {
-        const settings = this.getSettings();
-        const isV3 = settings.apiVersion === '3';
-        const hubID = isV3 ? '.gen3' : '';
-        const driverData = this.homey.drivers.getDriver(`nl.luxaflex.powerview.hub${hubID}`);
-        const driverDevices = driverData.getDevices();
-
-        return driverDevices.some((d) => {
-            const driverDeviceSettings = d.getSettings();
-
-            return driverDeviceSettings && driverDeviceSettings.ip === settings.ip;
-        });
-    }
-
     // ------------- Settings -------------
-    async onSettings({ oldSettings, newSettings, changedKeys }) {
-        this.homey.app.log(`[Device] ${this.getName()} - oldSettings`, { ...oldSettings });
-        this.homey.app.log(`[Device] ${this.getName()} - newSettings`, { ...newSettings });
-
-        if (changedKeys.length) {
-            await sleep(1000);
-            this.setCapabilityValues(true, newSettings);
-        }
-    }
-
-    async setCapabilityListeners() {
-        await this.registerCapabilityListener('windowcoverings_set', this.onCapability_WINDOWCOVERINGS_SET.bind(this));
-
-        if (this.hasCapability('windowcoverings_tilt_set')) {
-            await this.registerCapabilityListener('windowcoverings_tilt_set', this.onCapability_WINDOWCOVERINGS_TILT_SET.bind(this));
-        }
-    }
-
     async onCapability_WINDOWCOVERINGS_SET(value) {
         try {
             const deviceObject = await this.getData();
             const settings = await this.getSettings();
             const ip = settings.ip || settings['nl.luxaflex.powerview.settings.ip'];
-            const isV3 = settings.apiVersion === '3';
 
             const pos2 = this.getCapabilityValue('windowcoverings_tilt_set');
 
@@ -92,32 +57,16 @@ class mainDevice extends rootDevice {
             const setValue2 = settings.invertPosition2 ? 1 - pos2 : pos2;
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET`, value);
-
-            let request = {};
-
-            if (isV3) {
-                request = {
+               const request = {
                     positions: {
                         primary: parseFloat(setValue1 / 100),
-                        ...(settings.dualmotor && settings.updatePosition2 && { secondary: parseFloat(setValue2 / 100) })
+                        ...(settings.dualmotor && settings.updatePosition2 && { secondary: setValue2 / 100 })
                     }
                 };
-            } else {
-                request = {
-                    shade: {
-                        positions: {
-                            posKind1: parseInt(settings.posKind1),
-                            position1: parseInt((maxValue * setValue1).toFixed()),
-                            ...(settings.dualmotor && settings.updatePosition2 && { posKind2: parseInt(settings.posKind2) }),
-                            ...(settings.dualmotor && settings.updatePosition2 && { position2: parseInt((maxValue * setValue2).toFixed()) })
-                        }
-                    }
-                };
-            }
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET request: `, request);
 
-            const shadeResponse = await setShade(ip, this.homey.app.apiClient, request, deviceObject.id, isV3);
+            const shadeResponse = await setShade(ip, this.homey.app.apiClient, request, deviceObject.id, true);
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET shadeResponse: `, shadeResponse);
 
@@ -128,8 +77,7 @@ class mainDevice extends rootDevice {
                     ...shadeResponse,
                     positions: {
                         ...request.shade.positions,
-                        posKind2: parseInt(settings.posKind2),
-                        position2: settings.invertPosition2 ? 1 - 0 : 0
+                        secondary: settings.invertPosition2 ? 1 - 0 : 0
                     }
                 });
             }

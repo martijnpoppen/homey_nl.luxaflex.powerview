@@ -1,0 +1,12 @@
+{
+    "$extends": ["device", "settings", "capabilities", "pair"],
+    "name": {
+        "en": "Powerview Shade (Gen 3) (Requires Hub)",
+        "nl": "Powerview Shade (Gen 3) (Vereist Hub)"
+    },
+    "class": "blinds",
+    "energy": {
+        "batteries": ["INTERNAL", "OTHER"]
+    }
+  }
+  
