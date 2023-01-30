@@ -12,6 +12,9 @@ class rootDevice extends Homey.Device {
 
             await this.setSettings({ ip: settings['nl.luxaflex.powerview.settings.ip'] });
         }
+
+        this.isV3 = settings.apiVersion === '3';
+        this.genType = this.isV3 ? '.gen3' : '';
     }
 
     // ------------- Capabilities -------------

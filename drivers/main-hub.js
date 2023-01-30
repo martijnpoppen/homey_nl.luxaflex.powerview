@@ -41,16 +41,17 @@ class mainHub extends rootDevice {
     //-------------- PowerView ----------------
 
     async updateData() {
-        const driverData = this.homey.drivers.getDriver('nl.luxaflex.powerview.shade');
+        const settings = this.getSettings();
+
+        const driverData = this.homey.drivers.getDriver(`nl.luxaflex.powerview.shade${this.genType}`);
         const driverDevices = driverData.getDevices();
 
         if (driverDevices.length) {
-            const settings = this.getSettings();
             const shades = await getShades(settings.ip, this.homey.app.apiClient);
 
             this.homey.app.log(`[Device] ${this.getName()} - updateData =>`, shades);
 
-            this.homey.app.homeyEvents.emit('shadesUpdate', shades);
+            this.homey.app.homeyEvents.emit(`shadesUpdate${this.genType}`, shades);
         } else {
             this.homey.app.log(`[Device] ${this.getName()} - updateData => no shades found on this Homey`);
         }
@@ -121,11 +122,10 @@ class mainHub extends rootDevice {
         try {
             const settings = await this.getSettings();
             const ip = settings.ip || settings['nl.luxaflex.powerview.settings.ip'];
-            const isV3 = (settings.apiVersion === "3")
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneSet`, value);
 
-            const sceneResponse = await getScenes(ip, this.homey.app.apiClient, isV3, value);
+            const sceneResponse = await getScenes(ip, this.homey.app.apiClient, this.isV3(), value);
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneSet sceneResponse: `, sceneResponse);
 
@@ -140,11 +140,10 @@ class mainHub extends rootDevice {
         try {
             const settings = await this.getSettings();
             const ip = settings.ip || settings['nl.luxaflex.powerview.settings.ip'];
-            const isV3 = (settings.apiVersion === "3")
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneCollectionSet`, value);
 
-            const sceneResponse = await getSceneCollection(ip, this.homey.app.apiClient, isV3, value);
+            const sceneResponse = await getSceneCollection(ip, this.homey.app.apiClient, this.isV3(), value);
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneCollectionSet sceneResponse: `, sceneResponse);
 
