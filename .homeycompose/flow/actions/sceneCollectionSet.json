@@ -2,7 +2,7 @@
   "id": "nl.luxaflex.powerview.actions.sceneCollectionSet",
   "title": {
     "en": "Set scene collection",
-    "nl": "Stel scene collecite in",
+    "nl": "Activer scene collectie",
     "de": "Szenensammlung festlegen",
     "fr": "Définir la collection de scènes",
     "it": "Imposta raccolta di scene",
@@ -15,7 +15,7 @@
   },
   "titleFormatted": {
     "en": "Set [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] scene collection",
-    "nl": "Stel [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] scene collectie in",
+    "nl": "Activeer [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] scene collectie",
     "de": "Legen Sie [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] Szenensammlung fest",
     "fr": "Définir la collection de scènes [[nl.luxaflex.powerview.sceneCollectionAutocomplete]]",
     "it": "Imposta [[nl.luxaflex.powerview.sceneCollectionAutocomplete]] raccolta di scene",
@@ -33,7 +33,7 @@
       "filter": "driver_id=nl.luxaflex.powerview.hub",
       "placeholder": {
         "en": "Select window covering",
-        "nl": "Selecteer raamdecoratie",
+        "nl": "Selecteer raambekleding",
         "de": "Wähle Fensterdekoration",
         "fr": "Sélectionnez la décoration de fenêtre",
         "it": "Seleziona decorazione finestra",
