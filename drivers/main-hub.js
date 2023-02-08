@@ -125,7 +125,7 @@ class mainHub extends rootDevice {
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneSet`, value);
 
-            const sceneResponse = await getScenes(ip, this.homey.app.apiClient, this.isV3(), value);
+            const sceneResponse = await getScenes(ip, this.homey.app.apiClient, this.isV3, value);
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneSet sceneResponse: `, sceneResponse);
 
@@ -143,7 +143,7 @@ class mainHub extends rootDevice {
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneCollectionSet`, value);
 
-            const sceneResponse = await getSceneCollection(ip, this.homey.app.apiClient, this.isV3(), value);
+            const sceneResponse = await getSceneCollection(ip, this.homey.app.apiClient, this.isV3, value);
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneCollectionSet sceneResponse: `, sceneResponse);
 
