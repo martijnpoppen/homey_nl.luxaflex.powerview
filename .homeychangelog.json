@@ -64,5 +64,8 @@
   },
   "2.4.1": {
     "en": "FIX: translations"
+  },
+  "2.5.0": {
+    "en": "NEW: add Gen3 hub and shades (todo: vane tilt)"
   }
 }
