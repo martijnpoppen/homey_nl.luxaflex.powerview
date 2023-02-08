@@ -61,5 +61,8 @@
   },
   "2.4.0": {
     "en": "NEW: add translations"
+  },
+  "2.4.1": {
+    "en": "FIX: translations"
   }
 }
