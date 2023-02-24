@@ -42,6 +42,7 @@ module.exports = class mainDriver extends Homey.Driver {
             this.homey.app.log(`[Driver] ${this.id} - currentView:`, { view });
 
             if (view === 'loading') {
+                console.log(Object.values(discoveryResults))
                 if (Object.values(discoveryResults).length) {
                     this.results = Object.values(discoveryResults);
 
