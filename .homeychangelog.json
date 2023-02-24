@@ -70,5 +70,8 @@
   },
   "2.5.1": {
     "en": "NEW: add Gen3 hub and shades (todo: vane tilt)"
+  },
+  "2.5.2": {
+    "en": "NEW: add tilt for Gen 3"
   }
 }
