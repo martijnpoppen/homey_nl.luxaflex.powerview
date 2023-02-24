@@ -1,4 +1,5 @@
 const mainDevice = require('../main-device');
+const { getDeviceByType } = require('../constants/device-types');
 
 class PowerviewShadeGen3 extends mainDevice {
     async onCapability_WINDOWCOVERINGS_SET(value) {
@@ -6,17 +7,19 @@ class PowerviewShadeGen3 extends mainDevice {
             const deviceObject = await this.getData();
             const settings = await this.getSettings();
             const ip = settings.ip || settings['nl.luxaflex.powerview.settings.ip'];
+            const typeSettings = getDeviceByType(deviceObject.type);
 
             const pos2 = this.getCapabilityValue('windowcoverings_tilt_set');
 
             const setValue1 = settings.invertPosition1 ? 1 - value : value;
             const setValue2 = settings.invertPosition2 ? 1 - pos2 : pos2;
 
+
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET`, value);
             const request = {
                 positions: {
-                    primary: parseFloat(setValue1),
-                    ...(settings.dualmotor && settings.updatePosition2 && { secondary: parseFloat(setValue2) })
+                    [typeSettings.types[0]]: parseFloat(setValue1),
+                    ...(settings.dualmotor && settings.updatePosition2 && { [typeSettings.types[1]]: parseFloat(setValue2) })
                 }
             };
 
@@ -33,7 +36,7 @@ class PowerviewShadeGen3 extends mainDevice {
                     ...shadeResponse,
                     positions: {
                         ...request.positions,
-                        secondary: settings.invertPosition2 ? 1 - 0 : 0
+                        [typeSettings.types[1]]: settings.invertPosition2 ? 1 - 0 : 0
                     }
                 });
             }
@@ -63,10 +66,8 @@ class PowerviewShadeGen3 extends mainDevice {
             const request = {
                 shade: {
                     positions: {
-                        posKind1: parseInt(settings.posKind1),
-                        position1: parseInt((maxValue * setValue1).toFixed()),
-                        posKind2: parseInt(settings.posKind2),
-                        position2: parseInt((maxValue * setValue2).toFixed())
+                        [typeSettings.types[0]]: parseFloat((maxValue * setValue1)),
+                        [typeSettings.types[1]]: parseFloat((maxValue * setValue2))
                     }
                 }
             };
@@ -100,10 +101,8 @@ class PowerviewShadeGen3 extends mainDevice {
             const request = {
                 shade: {
                     positions: {
-                        posKind1: parseInt(settings.posKind1),
-                        position1: parseInt((maxValue * setValue1).toFixed()),
-                        posKind2: parseInt(settings.posKind2),
-                        position2: parseInt((maxValue * setValue2).toFixed())
+                        [typeSettings.types[0]]: parseFloat((maxValue * setValue1)),
+                        [typeSettings.types[1]]: parseFloat((maxValue * setValue2))
                     }
                 }
             };
