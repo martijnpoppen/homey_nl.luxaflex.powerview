@@ -76,5 +76,8 @@
   },
   "2.5.3": {
     "en": "FIX: updateData flowcard (gen3)"
+  },
+  "2.5.4": {
+    "en": "GEN 3 fixes"
   }
 }
