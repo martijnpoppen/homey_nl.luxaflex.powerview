@@ -16,7 +16,6 @@ class mainHub extends rootDevice {
 
             await this.registerCapabilityListener('update_data', this.onCapability_UPDATE_DATA.bind(this));
             await this.setAvailable();
-            
 
             await this.setShadeInterval();
         } catch (error) {
@@ -24,36 +23,97 @@ class mainHub extends rootDevice {
         }
     }
 
+    async onAdded() {
+        this.homey.app.setDevice(this);
+    }
+
     onDeleted() {
         this.clearIntervals();
+
+        const deviceObject = this.getData();
+        this.homey.app.removeDevice(deviceObject.id);
     }
 
     // ------------- Settings -------------
     async onSettings({ oldSettings, newSettings, changedKeys }) {
-        this.homey.app.log(`[Device] ${this.getName()} - oldSettings`, { ...oldSettings });
-        this.homey.app.log(`[Device] ${this.getName()} - newSettings`, { ...newSettings });
+        try {
+            this.homey.app.log(`[Device] ${this.getName()} - oldSettings`, { ...oldSettings });
+            this.homey.app.log(`[Device] ${this.getName()} - newSettings`, { ...newSettings });
+    
 
-        if (changedKeys.length && changedKeys.includes('update_interval')) {
-            this.setIntervalsAndFlows(false, newSettings.update_interval);
+            if (changedKeys.length && changedKeys.includes('update_interval')) {
+                this.setIntervalsAndFlows(false, newSettings.update_interval);
+            }
+
+            if (changedKeys.length && (changedKeys.includes('update_shade_ips') || changedKeys.includes('ip'))) {
+                this.homey.app.log(`[Device] ${this.getName()} - onSettings => Update Shade IPs`);
+    
+                this.setAvailable();
+    
+                const shades = await getShades(newSettings.ip, this.homey.app.apiClient);
+    
+                if(shades) {
+                    this.updateShadeIps(shades, newSettings);
+                }
+            }
+        } catch (error) {
+            this.homey.app.log(`[Device] ${this.getName()} - onSettings error`, error);
         }
+       
+    }
+
+    async updateShadeIps(shades, settings) {
+        try {
+            this.homey.app.log(`[Device] ${this.getName()} - updateShadeIps`);
+
+            for (const shade of shades) {
+                const homeyShade = this.homey.app.deviceList.find(d => {
+                    const deviceObject = d.getData()
+                    if(deviceObject.id === shade.id) {
+                        return true
+                    }
+                });
+    
+                if(homeyShade) {
+                    this.homey.app.log(`[Device] ${this.getName()} - updateShadeIps => setSetings`, homeyShade.getName());
+                    homeyShade.setSettings({ip: settings.ip})
+
+                    await sleep(2000);
+
+                    homeyShade.onStartup();
+                }
+            }
+
+            await sleep(5000);
+
+            this.setSettings({'update_shade_ips': false})
+        } catch (error) {
+            this.homey.app.log(`[Device] ${this.getName()} - updateShadeIps error`, error);
+        }
+       
     }
 
     //-------------- PowerView ----------------
 
     async updateData() {
-        const settings = this.getSettings();
+        try {
+            const settings = this.getSettings();
 
-        const driverData = this.homey.drivers.getDriver(`nl.luxaflex.powerview.shade${this.genType}`);
-        const driverDevices = driverData.getDevices();
-
-        if (driverDevices.length) {
-            const shades = await getShades(settings.ip, this.homey.app.apiClient);
-
-            this.homey.app.log(`[Device] ${this.getName()} - updateData =>`, shades);
-
-            this.homey.app.homeyEvents.emit(`shadesUpdate${this.genType}`, shades);
-        } else {
-            this.homey.app.log(`[Device] ${this.getName()} - updateData => no shades found on this Homey`);
+            const driverData = this.homey.drivers.getDriver(`nl.luxaflex.powerview.shade${this.genType}`);
+            const driverDevices = driverData.getDevices();
+    
+            if (driverDevices.length) {
+                const shades = await getShades(settings.ip, this.homey.app.apiClient);
+    
+                this.homey.app.log(`[Device] ${this.getName()} - updateData =>`, shades);
+    
+                this.homey.app.homeyEvents.emit(`shadesUpdate${this.genType}`, shades);
+            } else {
+                this.homey.app.log(`[Device] ${this.getName()} - updateData => no shades found on this Homey`);
+            }
+        } catch (error) {
+            this.homey.app.log(`[Device] ${this.getName()} - updateData error =>`, error);
+            this.setUnavailable(error);
         }
     }
 
@@ -134,6 +194,7 @@ class mainHub extends rootDevice {
             return Promise.resolve(true);
         } catch (e) {
             this.homey.app.error(e);
+            this.setUnavailable(error);
             return Promise.reject(e);
         }
     }
@@ -152,6 +213,7 @@ class mainHub extends rootDevice {
             return Promise.resolve(true);
         } catch (e) {
             this.homey.app.error(e);
+            this.setUnavailable(error);
             return Promise.reject(e);
         }
     }

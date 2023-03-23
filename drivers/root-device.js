@@ -7,7 +7,7 @@ class rootDevice extends Homey.Device {
     // ------------- Settings -------------
     async fixSettings() {
         const settings = await this.getSettings();
-        if (settings['nl.luxaflex.powerview.settings.ip'] && this.driver.id === 'nl.luxaflex.powerview.hub') {
+        if (!settings.ip && settings['nl.luxaflex.powerview.settings.ip'] && this.driver.id === 'nl.luxaflex.powerview.hub') {
             this.homey.app.log(`[Device] ${this.getName()} - fixSettings - set IP`, { ip: settings['nl.luxaflex.powerview.settings.ip'] });
 
             await this.setSettings({ ip: settings['nl.luxaflex.powerview.settings.ip'] });

@@ -18,7 +18,7 @@
       "children": [
         {
           "id": "ip",
-          "type": "text",
+          "type": "label",
           "label": {
             "en": "IP address of your Powerview hub",
             "nl": "IP-adres van uw Powerview hub",

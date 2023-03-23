@@ -35,6 +35,24 @@
           "value": ""
         },
         {
+            "id": "update_shade_ips",
+            "type": "checkbox",
+            "label": {
+                "en": "Update window covering IP",
+                "nl": "IP-adres van raambekleding bijwerken",
+                "de": "IP-Adresse der Fensterabdeckung aktualisieren",
+                "fr": "Mettre à jour l'adresse IP du revêtement de fenêtre",
+                "it": "Aggiornare l'IP della copertura della finestra",
+                "sv": "Uppdatera IP-adressen för fönsterbeklädnad",
+                "no": "Oppdater IP-adressen til vindusdekselet",
+                "es": "Actualizar la dirección IP de la cubierta de la ventana",
+                "da": "Opdater IP-adressen på vinduesafdækning",
+                "ru": "Обновить IP-адрес оконного покрытия",
+                "pl": "Zaktualizuj adres IP osłony okna"
+            },
+            "value": false
+        },
+        {
           "id": "apiVersion",
           "type": "label",
           "label": {

@@ -573,6 +573,14 @@
               "value": ""
             },
             {
+              "id": "update_shade_ips",
+              "type": "checkbox",
+              "label": {
+                "en": "Update Shade IP's"
+              },
+              "value": false
+            },
+            {
               "id": "apiVersion",
               "type": "label",
               "label": {
@@ -739,6 +747,14 @@
               "value": ""
             },
             {
+              "id": "update_shade_ips",
+              "type": "checkbox",
+              "label": {
+                "en": "Update Shade IP's"
+              },
+              "value": false
+            },
+            {
               "id": "apiVersion",
               "type": "label",
               "label": {
@@ -845,7 +861,7 @@
           "children": [
             {
               "id": "ip",
-              "type": "text",
+              "type": "label",
               "label": {
                 "en": "IP address of your Powerview hub",
                 "nl": "IP-adres van uw Powerview hub",
@@ -1273,7 +1289,7 @@
           "children": [
             {
               "id": "ip",
-              "type": "text",
+              "type": "label",
               "label": {
                 "en": "IP address of your Powerview hub",
                 "nl": "IP-adres van uw Powerview hub",
