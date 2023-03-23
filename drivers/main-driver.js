@@ -10,6 +10,8 @@ module.exports = class mainDriver extends Homey.Driver {
 
         this.devices = [];
         this.results = [];
+
+        this.homey.app.setDevices(this.getDevices());
     }
 
     driverType() {

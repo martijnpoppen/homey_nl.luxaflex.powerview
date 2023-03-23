@@ -13,37 +13,50 @@ class mainDevice extends rootDevice {
 
             await this.fixSettings();
             await this.checkCapabilities();
+            await this.setCapabilityListeners();
 
             const hasHub = await this.checkForHub();
 
             this.homey.app.log(`[Device] ${this.getName()} - checkForHub - `, hasHub);
 
             if (hasHub) {
-                const driverData = this.homey.drivers.getDriver(`nl.luxaflex.powerview.shade${this.genType}`);
-                const driverDevices = driverData.getDevices();
-                const deviceObject = this.getData();
-
-                const sleepIndex = driverDevices.findIndex((device) => {
-                    const driverDeviceObject = device.getData();
-                    return deviceObject.id === driverDeviceObject.id;
-                });
-
-                await sleep((sleepIndex + 1) * 10000);
-
-                this.homey.app.log('[Device] - init - after sleep =>', sleepIndex, this.getName());
-
-                await this.setCapabilityValues(true);
-                await this.setCapabilityListeners();
-
-                await this.setAvailable();
-
-                this.shadeUpdate();
+                this.onStartup();
             } else {
-                this.setUnavailable(`Can't find PowerviewHub. Is it connected to Homey? Make sure the IP address setting is the same.`);
+                this.setUnavailable(`Can't find a Powerview Hub. Is it connected to Homey? Make sure the IP address setting is the same.`);
             }
         } catch (error) {
             this.homey.app.error(`[Device] ${this.getName()} - OnInit Error`, error);
         }
+    }
+
+    async onAdded() {
+        this.homey.app.setDevice(this);
+    }
+
+    onDeleted() {
+        const deviceObject = this.getData();
+        this.homey.app.removeDevice(deviceObject.id);
+    }
+
+    async onStartup() {
+        const driverData = this.homey.drivers.getDriver(`nl.luxaflex.powerview.shade${this.genType}`);
+        const driverDevices = driverData.getDevices();
+        const deviceObject = this.getData();
+
+        const sleepIndex = driverDevices.findIndex((device) => {
+            const driverDeviceObject = device.getData();
+            return deviceObject.id === driverDeviceObject.id;
+        });
+
+        await sleep((sleepIndex + 1) * 10000);
+
+        this.homey.app.log('[Device] - init - after sleep =>', sleepIndex, this.getName());
+
+        await this.setCapabilityValues(true);
+        
+        await this.setAvailable();
+
+        this.shadeUpdate();
     }
 
     async checkForHub() {
@@ -206,25 +219,31 @@ class mainDevice extends rootDevice {
     }
 
     async shadeUpdate() {
-        this.homey.app.log(`[Device] ${this.getName()} - init shadeUpdate`);
+        try {
+            this.homey.app.log(`[Device] ${this.getName()} - init shadeUpdate`);
 
-        this.homey.app.homeyEvents.on(`shadesUpdate${this.genType}`, async (shades) => {
-            this.homey.app.log(`[Device] ${this.getName()} - shadeUpdate`);
-            const deviceObject = await this.getData();
-            const shadeData = shades.find((s) => s.id === deviceObject.id);
-
-            if (shadeData) {
-                this.homey.app.log(`[Device] ${this.getName()} - shadeUpdate - correct`);
-
-                this.setCapabilityValues(false, null, shadeData);
-            }
-        });
+            this.homey.app.homeyEvents.on(`shadesUpdate${this.genType}`, async (shades) => {
+                this.homey.app.log(`[Device] ${this.getName()} - shadeUpdate`);
+                const deviceObject = await this.getData();
+                const shadeData = shades.find((s) => s.id === deviceObject.id);
+    
+                if (shadeData) {
+                    this.homey.app.log(`[Device] ${this.getName()} - shadeUpdate - correct`);
+    
+                    this.setCapabilityValues(false, null, shadeData);
+                }
+            });
+        } catch (error) {
+            this.homey.app.log(`[Device] ${this.getName()} - error shadeUpdate`, error);
+        }
     }
 
     async setCapabilityValues(check = false, overrideSettings = null, overrideDeviceInfo = null) {
         this.homey.app.log(`[Device] ${this.getName()} - setCapabilityValues`, check, !!overrideSettings, !!overrideDeviceInfo);
 
         try {
+            this.setAvailable();
+
             if (!check) this.homey.app.homeyEvents.emit('setCapabilityValues');
 
             const deviceObject = await this.getData();
@@ -271,6 +290,7 @@ class mainDevice extends rootDevice {
 
             await this.setValue('measure_battery', batteryTypes[batteryStatus]);
         } catch (error) {
+            this.setUnavailable(error);
             this.homey.app.error(error);
         }
     }
