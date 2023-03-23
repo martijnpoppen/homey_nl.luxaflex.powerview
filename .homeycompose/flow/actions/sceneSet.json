@@ -48,6 +48,19 @@
     {
       "type": "autocomplete",
       "name": "nl.luxaflex.powerview.sceneAutocomplete",
+      "title": {
+        "en": "Choose a scene",
+        "nl": "Kies een scène",
+        "de": "Wähle eine Szene",
+        "fr": "Choisissez une scène",
+        "it": "Scegli una scena",
+        "sv": "Välj en scen",
+        "no": "Velg en scene",
+        "es": "Elige una escena",
+        "da": "Vælg en scene",
+        "ru": "Выберите сцену",
+        "pl": "Wybierz scenę"
+      },
       "placeholder": {
         "en": "Choose a scene",
         "nl": "Kies een scène",

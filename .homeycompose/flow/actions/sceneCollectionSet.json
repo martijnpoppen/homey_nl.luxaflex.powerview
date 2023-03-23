@@ -48,6 +48,19 @@
     {
       "type": "autocomplete",
       "name": "nl.luxaflex.powerview.sceneCollectionAutocomplete",
+      "title": {
+        "en": "Choose a scene collection",
+        "nl": "Kies een scène collectie",
+        "de": "Wähle eine Szenensammlung",
+        "fr": "Choisissez une collection de scènes",
+        "it": "Scegli una raccolta di scene",
+        "sv": "Välj en scen-samling",
+        "no": "Velg en scenesamling",
+        "es": "Elige una colección de escenas",
+        "da": "Vælg en scenesamling",
+        "ru": "Выберите коллекцию сцен",
+        "pl": "Wybierz kolekcję scen"
+      },
       "placeholder": {
         "en": "Choose a scene collection",
         "nl": "Kies een scène collectie",

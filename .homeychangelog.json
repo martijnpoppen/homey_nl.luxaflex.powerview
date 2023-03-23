@@ -79,5 +79,8 @@
   },
   "2.5.4": {
     "en": "GEN 3 fixes"
+  },
+  "2.6.0": {
+    "en": "NEW: Sync IP address to shades when set from Hub | FIX: don't reset IP on startup of app"
   }
 }

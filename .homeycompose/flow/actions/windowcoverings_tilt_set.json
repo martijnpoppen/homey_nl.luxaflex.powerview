@@ -35,25 +35,38 @@
   },
   "args": [
     {
-        "name": "device",
-        "type": "device",
+      "name": "device",
+      "type": "device",
       "filter": "driver_id=nl.luxaflex.powerview.shade",
-        "placeholder": {
-          "en": "Select window covering",
-          "nl": "Selecteer raambekleding",
-          "de": "Wähle Fensterdekoration",
-          "fr": "Sélectionnez la décoration de fenêtre",
-          "it": "Seleziona decorazione finestra",
-          "sv": "Välj fönsterdekoration",
-          "no": "Velg vindusdekorasjon",
-          "es": "Selecciona decoración de ventana",
-          "da": "Vælg vinduets dekoration",
-          "ru": "Выберите декорацию окна",
-          "pl": "Wybierz dekorację okna"
-        }
-      },
+      "placeholder": {
+        "en": "Select window covering",
+        "nl": "Selecteer raambekleding",
+        "de": "Wähle Fensterdekoration",
+        "fr": "Sélectionnez la décoration de fenêtre",
+        "it": "Seleziona decorazione finestra",
+        "sv": "Välj fönsterdekoration",
+        "no": "Velg vindusdekorasjon",
+        "es": "Selecciona decoración de ventana",
+        "da": "Vælg vinduets dekoration",
+        "ru": "Выберите декорацию окна",
+        "pl": "Wybierz dekorację okna"
+      }
+    },
     {
       "name": "windowcoverings_tilt_set",
+      "title": {
+        "en": "Set the position 2 to",
+        "nl": "Zet de positie 2 naar",
+        "de": "Setze die Position 2 auf",
+        "fr": "Mettre la position 2 sur",
+        "it": "Imposta la posizione 2 su",
+        "sv": "Ställ in positionen 2 till",
+        "no": "Innstill posisjonen 2 til",
+        "es": "Configurar la posición c2 omo",
+        "da": "Indstil positionen 2 til",
+        "ru": "Установите позицию 2 на",
+        "pl": "Ustaw pozycję 2 na"
+      },
       "type": "range",
       "min": 0,
       "max": 1,
