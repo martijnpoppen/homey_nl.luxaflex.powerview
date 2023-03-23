@@ -70,41 +70,6 @@
           },
 
           "value": false
-        },
-        {
-          "id": "posKind1",
-          "type": "dropdown",
-          "value": "0",
-          "label": {
-            "en": "Positionkind 1"
-          },
-
-          "values": [
-            {
-              "id": "0",
-              "label": {
-                "en": "None"
-              }
-            },
-            {
-              "id": "1",
-              "label": {
-                "en": "Primary Rail"
-              }
-            },
-            {
-              "id": "2",
-              "label": {
-                "en": "Secondary Rail"
-              }
-            },
-            {
-              "id": "3",
-              "label": {
-                "en": "Vane Tilt"
-              }
-            }
-          ]
         }
       ]
     },
@@ -140,7 +105,6 @@
             "ru": "Эти параметры будут влиять на приложение только в том случае, если включена настройка DualMotor",
             "pl": "Te opcje wpłyną tylko na aplikację, jeśli opcja DualMotor jest włączona"
           },
-
           "label": {
             "en": "Invert position 2",
             "nl": "Positie 2 omdraaien",
@@ -155,54 +119,6 @@
             "pl": "Odwróć pozycję 2"
           },
           "value": false
-        },
-        {
-          "id": "posKind2",
-          "type": "dropdown",
-          "hint": {
-            "en": "These options will only affect the app if DualMotor setting is enabled",
-            "nl": "Deze opties hebben alleen effect op de app als de DualMotor-instelling is ingeschakeld",
-            "de": "Diese Optionen wirken sich nur auf die App aus, wenn die DualMotor-Einstellung aktiviert ist",
-            "fr": "Ces options n'affecteront l'application que si le paramètre DualMotor est activé",
-            "it": "Queste opzioni avranno effetto solo sull'app se l'impostazione DualMotor è abilitata",
-            "sv": "Dessa alternativ påverkar bara appen om DualMotor-inställningen är aktiverad",
-            "no": "Disse alternativen vil bare påvirke appen hvis DualMotor-innstillingen er aktivert",
-            "es": "Estas opciones solo afectarán la aplicación si la configuración de DualMotor está habilitada",
-            "da": "Disse indstillinger vil kun påvirke appen, hvis DualMotor-indstillingen er aktiveret",
-            "ru": "Эти параметры будут влиять на приложение только в том случае, если включена настройка DualMotor",
-            "pl": "Te opcje wpłyną tylko na aplikację, jeśli opcja DualMotor jest włączona"
-          },
-          "value": "0",
-          "label": {
-            "en": "Positionkind 2"
-          },
-
-          "values": [
-            {
-              "id": "0",
-              "label": {
-                "en": "None"
-              }
-            },
-            {
-              "id": "1",
-              "label": {
-                "en": "Primary Rail"
-              }
-            },
-            {
-              "id": "2",
-              "label": {
-                "en": "Secondary Rail"
-              }
-            },
-            {
-              "id": "3",
-              "label": {
-                "en": "Vane Tilt"
-              }
-            }
-          ]
         },
         {
           "id": "updatePosition2",

@@ -30,7 +30,7 @@
     {
       "name": "device",
       "type": "device",
-      "filter": "driver_id=nl.luxaflex.powerview.hub",
+      "filter": "driver_id=nl.luxaflex.powerview.hub|nl.luxaflex.powerview.hub.gen3",
       "placeholder": {
         "en": "Select window covering",
         "nl": "Selecteer raambekleding",

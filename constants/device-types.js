@@ -3,67 +3,78 @@ const options = [
         //0
         invertPosition1: false,
         invertPosition2: false,
-        dualmotor: false
+        dualmotor: false,
+        types: ['primary']
     },
     {
         //1
         invertPosition1: false,
         invertPosition2: false,
-        dualmotor: true
+        dualmotor: true,
+        types: ['primary', 'tilt']
     },
     {
         //2
         invertPosition1: false,
         invertPosition2: false,
-        dualmotor: true
+        dualmotor: true,
+        types: ['primary', 'tilt']
     },
     {
         //3
         invertPosition1: false,
         invertPosition2: false,
-        dualmotor: false
+        dualmotor: false,
+        types: ['primary']
     },
     {
         //4
         invertPosition1: false,
         invertPosition2: false,
-        dualmotor: true
+        dualmotor: true,
+        types: ['primary', 'tilt']
     },
     {
         //5
         invertPosition1: false,
         invertPosition2: false,
-        dualmotor: true
+        dualmotor: false,
+        types: ['tilt']
     },
     {
         //6
         invertPosition1: true,
         invertPosition2: false,
-        dualmotor: false
+        dualmotor: false,
+        types: ['primary']
     },
     {
         //7
         invertPosition1: false,
         invertPosition2: false,
-        dualmotor: true
+        dualmotor: true,
+        types: ['primary', 'secondary']
     },
     {
         //8
         invertPosition1: false,
         invertPosition2: false,
-        dualmotor: true
+        dualmotor: true,
+        types: ['primary', 'secondary']
     },
     {
         //9
         invertPosition1: false,
         invertPosition2: false,
-        dualmotor: true
+        dualmotor: true,
+        types: ['primary', 'tilt']
     },
     {
         //10
         invertPosition1: false,
         invertPosition2: false,
-        dualmotor: true
+        dualmotor: true,
+        types: ['primary', 'tilt']
     }
 ];
 

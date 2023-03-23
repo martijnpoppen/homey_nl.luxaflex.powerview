@@ -67,5 +67,17 @@
   },
   "2.5.0": {
     "en": "NEW: add Gen3 hub and shades (todo: vane tilt)"
+  },
+  "2.5.1": {
+    "en": "NEW: add Gen3 hub and shades (todo: vane tilt)"
+  },
+  "2.5.2": {
+    "en": "NEW: add tilt for Gen 3"
+  },
+  "2.5.3": {
+    "en": "FIX: updateData flowcard (gen3)"
+  },
+  "2.5.4": {
+    "en": "GEN 3 fixes"
   }
 }

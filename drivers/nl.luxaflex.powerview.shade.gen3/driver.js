@@ -10,6 +10,6 @@ module.exports = class PowerviewShadeDriver extends mainDriver {
     }
 
     apiVersion() {
-        return '2';
+        return '3';
     }
 };

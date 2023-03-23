@@ -7,8 +7,6 @@ const { sleep } = require('../lib/helpers');
 class mainHub extends rootDevice {
     async onInit() {
         try {
-            const settings = this.getSettings();
-
             this.homey.app.log('[Device] - init =>', this.getName());
             this.setUnavailable(`Connecting to: ${this.getName()} ...`);
 
@@ -17,15 +15,10 @@ class mainHub extends rootDevice {
             await this.checkCapabilities();
 
             await this.registerCapabilityListener('update_data', this.onCapability_UPDATE_DATA.bind(this));
-
-            await this.setIntervalsAndFlows(true, settings.update_interval);
             await this.setAvailable();
+            
 
-            this.homey.app.homeyEvents.on('setCapabilityValues', async () => {
-                this.clearIntervals();
-                await sleep(5000)
-                await this.setIntervalsAndFlows(true, settings.update_interval);
-            });
+            await this.setShadeInterval();
         } catch (error) {
             this.homey.app.error(`[Device] ${this.getName()} - OnInit Error`, error);
         }
@@ -48,22 +41,34 @@ class mainHub extends rootDevice {
     //-------------- PowerView ----------------
 
     async updateData() {
-        const driverData = this.homey.drivers.getDriver('nl.luxaflex.powerview.shade');
+        const settings = this.getSettings();
+
+        const driverData = this.homey.drivers.getDriver(`nl.luxaflex.powerview.shade${this.genType}`);
         const driverDevices = driverData.getDevices();
 
         if (driverDevices.length) {
-            const settings = this.getSettings();
             const shades = await getShades(settings.ip, this.homey.app.apiClient);
 
             this.homey.app.log(`[Device] ${this.getName()} - updateData =>`, shades);
 
-            this.homey.app.homeyEvents.emit('shadesUpdate', shades);
+            this.homey.app.homeyEvents.emit(`shadesUpdate${this.genType}`, shades);
         } else {
             this.homey.app.log(`[Device] ${this.getName()} - updateData => no shades found on this Homey`);
         }
     }
 
     // ------------- Intervals -------------
+    async setShadeInterval() {
+        const settings = this.getSettings();
+
+        this.homey.app.homeyEvents.on('setCapabilityValues', async () => {
+            this.clearIntervals();
+            await sleep(5000)
+            await this.setIntervalsAndFlows(true, settings.update_interval);
+        });
+    }
+
+
     async setIntervalsAndFlows(override = false, time = 2) {
         try {
             this.homey.app.log(`[Device] ${this.getName()} - setIntervalsAndFlows override | time - `, override, time);
@@ -122,7 +127,7 @@ class mainHub extends rootDevice {
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneSet`, value);
 
-            const sceneResponse = await getScenes(ip, this.homey.app.apiClient, value);
+            const sceneResponse = await getScenes(ip, this.homey.app.apiClient, this.isV3, value);
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneSet sceneResponse: `, sceneResponse);
 
@@ -140,7 +145,7 @@ class mainHub extends rootDevice {
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneCollectionSet`, value);
 
-            const sceneResponse = await getSceneCollection(ip, this.homey.app.apiClient, value);
+            const sceneResponse = await getSceneCollection(ip, this.homey.app.apiClient, this.isV3, value);
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_sceneCollectionSet sceneResponse: `, sceneResponse);
 

@@ -11,15 +11,15 @@ class mainDevice extends rootDevice {
             this.homey.app.log('[Device] - init =>', this.getName());
             this.setUnavailable(`Connecting to: ${this.getName()} ... (this might take longer when multiple shades are connected)`);
 
-            const hasHub = await this.checkForHub();
-            
-            this.homey.app.log(`[Device] ${this.getName()} - checkForHub - `, hasHub);
-
             await this.fixSettings();
             await this.checkCapabilities();
 
+            const hasHub = await this.checkForHub();
+
+            this.homey.app.log(`[Device] ${this.getName()} - checkForHub - `, hasHub);
+
             if (hasHub) {
-                const driverData = this.homey.drivers.getDriver('nl.luxaflex.powerview.shade');
+                const driverData = this.homey.drivers.getDriver(`nl.luxaflex.powerview.shade${this.genType}`);
                 const driverDevices = driverData.getDevices();
                 const deviceObject = this.getData();
 
@@ -34,7 +34,7 @@ class mainDevice extends rootDevice {
 
                 await this.setCapabilityValues(true);
                 await this.setCapabilityListeners();
-                
+
                 await this.setAvailable();
 
                 this.shadeUpdate();
@@ -47,9 +47,9 @@ class mainDevice extends rootDevice {
     }
 
     async checkForHub() {
-        const driverData = this.homey.drivers.getDriver('nl.luxaflex.powerview.hub');
-        const driverDevices = driverData.getDevices();
         const settings = this.getSettings();
+        const driverData = this.homey.drivers.getDriver(`nl.luxaflex.powerview.hub${this.genType}`);
+        const driverDevices = driverData.getDevices();
 
         return driverDevices.some((d) => {
             const driverDeviceSettings = d.getSettings();
@@ -90,7 +90,7 @@ class mainDevice extends rootDevice {
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET`, value);
 
-            let request = {
+            const request = {
                 shade: {
                     positions: {
                         posKind1: parseInt(settings.posKind1),
@@ -208,15 +208,15 @@ class mainDevice extends rootDevice {
     async shadeUpdate() {
         this.homey.app.log(`[Device] ${this.getName()} - init shadeUpdate`);
 
-        this.homey.app.homeyEvents.on('shadesUpdate', async (shades) => {
+        this.homey.app.homeyEvents.on(`shadesUpdate${this.genType}`, async (shades) => {
             this.homey.app.log(`[Device] ${this.getName()} - shadeUpdate`);
             const deviceObject = await this.getData();
-            const shadeData = shades.find(s => s.id === deviceObject.id);
+            const shadeData = shades.find((s) => s.id === deviceObject.id);
 
-            if(shadeData) {
+            if (shadeData) {
                 this.homey.app.log(`[Device] ${this.getName()} - shadeUpdate - correct`);
-                
-                this.setCapabilityValues(false, null, shadeData)
+
+                this.setCapabilityValues(false, null, shadeData);
             }
         });
     }
@@ -225,12 +225,12 @@ class mainDevice extends rootDevice {
         this.homey.app.log(`[Device] ${this.getName()} - setCapabilityValues`, check, !!overrideSettings, !!overrideDeviceInfo);
 
         try {
-            if(!check) this.homey.app.homeyEvents.emit('setCapabilityValues');
+            if (!check) this.homey.app.homeyEvents.emit('setCapabilityValues');
 
             const deviceObject = await this.getData();
             const settings = overrideSettings ? overrideSettings : this.getSettings();
 
-            const deviceInfo = overrideDeviceInfo ? overrideDeviceInfo : await getShade(settings.ip, this.homey.app.apiClient, deviceObject.id);
+            const deviceInfo = overrideDeviceInfo ? overrideDeviceInfo : await getShade(settings.ip, this.homey.app.apiClient, deviceObject.id, this.isV3);
 
             const { positions } = deviceInfo;
             const { batteryStatus } = deviceInfo;
@@ -253,11 +253,20 @@ class mainDevice extends rootDevice {
             // // ------------ Get values --------------
             const { position1 } = positions;
 
-            await this.setValue('windowcoverings_set', position1 / maxValue);
+            if(this.isV3) {
+                await this.setValue('windowcoverings_set', position1);
+            } else {
+                await this.setValue('windowcoverings_set', position1 / maxValue);
+            }
+            
 
             if (settings.dualmotor) {
                 const { position2 } = positions;
-                await this.setValue('windowcoverings_tilt_set', position2 / maxValue);
+                if(this.isV3) {
+                    await this.setValue('windowcoverings_tilt_set', position2);
+                } else {
+                    await this.setValue('windowcoverings_tilt_set', position2 / maxValue);
+                }
             }
 
             await this.setValue('measure_battery', batteryTypes[batteryStatus]);

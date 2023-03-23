@@ -1,8 +1,8 @@
 const mainDriver = require('../main-driver');
 
-module.exports = class PowerviewShadeDriver extends mainDriver {
+module.exports = class PowerviewHubG3Driver extends mainDriver {
     driverType() {
-        return 'shade';
+        return 'Powerview Hub';
     }
 
     discovery() {
@@ -10,6 +10,6 @@ module.exports = class PowerviewShadeDriver extends mainDriver {
     }
 
     apiVersion() {
-        return '2';
+        return '3';
     }
 };
