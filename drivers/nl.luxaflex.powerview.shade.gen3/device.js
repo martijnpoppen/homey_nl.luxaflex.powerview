@@ -1,5 +1,5 @@
 const mainDevice = require('../main-device');
-const { getDeviceByType } = require('../constants/device-types');
+const { getDeviceByType } = require('../../constants/device-types');
 
 class PowerviewShadeGen3 extends mainDevice {
     async onCapability_WINDOWCOVERINGS_SET(value) {
@@ -7,7 +7,10 @@ class PowerviewShadeGen3 extends mainDevice {
             const deviceObject = await this.getData();
             const settings = await this.getSettings();
             const ip = settings.ip || settings['nl.luxaflex.powerview.settings.ip'];
-            const typeSettings = getDeviceByType(deviceObject.type);
+            const typeSettings = getDeviceByType(settings.type);
+            const types = typeSettings.options.types;
+
+            console.log(typeSettings, deviceObject);
 
             const pos2 = this.getCapabilityValue('windowcoverings_tilt_set');
 
@@ -18,8 +21,8 @@ class PowerviewShadeGen3 extends mainDevice {
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET`, value);
             const request = {
                 positions: {
-                    [typeSettings.types[0]]: parseFloat(setValue1),
-                    ...(settings.dualmotor && settings.updatePosition2 && { [typeSettings.types[1]]: parseFloat(setValue2) })
+                    [types[0]]: parseFloat(setValue1),
+                    ...(settings.dualmotor && settings.updatePosition2 && { [types[1]]: parseFloat(setValue2) })
                 }
             };
 
@@ -36,7 +39,7 @@ class PowerviewShadeGen3 extends mainDevice {
                     ...shadeResponse,
                     positions: {
                         ...request.positions,
-                        [typeSettings.types[1]]: settings.invertPosition2 ? 1 - 0 : 0
+                        [types[1]]: settings.invertPosition2 ? 1 - 0 : 0
                     }
                 });
             }
@@ -53,6 +56,8 @@ class PowerviewShadeGen3 extends mainDevice {
             const deviceObject = await this.getData();
             const settings = await this.getSettings();
             const ip = settings.ip;
+            const typeSettings = getDeviceByType(settings.type);
+            const types = typeSettings.options.types;
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_TILT_SET`, value);
 
@@ -66,8 +71,8 @@ class PowerviewShadeGen3 extends mainDevice {
             const request = {
                 shade: {
                     positions: {
-                        [typeSettings.types[0]]: parseFloat((maxValue * setValue1)),
-                        [typeSettings.types[1]]: parseFloat((maxValue * setValue2))
+                        [types[0]]: parseFloat((maxValue * setValue1)),
+                        [types[1]]: parseFloat((maxValue * setValue2))
                     }
                 }
             };
@@ -92,6 +97,8 @@ class PowerviewShadeGen3 extends mainDevice {
             const deviceObject = await this.getData();
             const settings = await this.getSettings();
             const ip = settings.ip;
+            const typeSettings = getDeviceByType(settings.type);
+            const types = typeSettings.options.types;
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET_BOTH`, value1, value2);
 
@@ -101,8 +108,8 @@ class PowerviewShadeGen3 extends mainDevice {
             const request = {
                 shade: {
                     positions: {
-                        [typeSettings.types[0]]: parseFloat((maxValue * setValue1)),
-                        [typeSettings.types[1]]: parseFloat((maxValue * setValue2))
+                        [types[0]]: parseFloat((maxValue * setValue1)),
+                        [types[1]]: parseFloat((maxValue * setValue2))
                     }
                 }
             };

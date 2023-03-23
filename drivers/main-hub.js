@@ -59,6 +59,8 @@ class mainHub extends rootDevice {
 
     // ------------- Intervals -------------
     async setShadeInterval() {
+        const settings = this.getSettings();
+
         this.homey.app.homeyEvents.on('setCapabilityValues', async () => {
             this.clearIntervals();
             await sleep(5000)
