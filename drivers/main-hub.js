@@ -113,7 +113,7 @@ class mainHub extends rootDevice {
             }
         } catch (error) {
             this.homey.app.log(`[Device] ${this.getName()} - updateData error =>`, error);
-            this.setUnavailable(error);
+            // this.setUnavailable(error);
         }
     }
 
