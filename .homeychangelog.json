@@ -85,5 +85,8 @@
   },
   "2.6.1": {
     "en": "FIX: prevent hub from getting stuck when it fails to retrieve the latest shade data."
+  },
+  "2.6.2": {
+    "en": "FIX: app store page "
   }
 }
