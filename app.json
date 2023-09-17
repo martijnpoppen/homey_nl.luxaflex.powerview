@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.luxaflex.powerview",
-  "version": "2.6.2",
+  "version": "2.6.3",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -699,7 +699,7 @@
         }
       ],
       "name": {
-        "en": "Powerview Hub"
+        "en": "Powerview Hub (Gen 1 & 2)"
       },
       "class": "other",
       "capabilities": [
@@ -1298,17 +1298,17 @@
         }
       ],
       "name": {
-        "en": "Powerview Window Covering (Requires Hub)",
-        "nl": "Powerview Raambekleding (vereist Hub)",
-        "de": "Powerview Fensterbekleidung (erfordert Hub)",
-        "fr": "Revêtement de fenêtre Powerview (nécessite un hub)",
-        "it": "Rivestimento finestra Powerview (richiede un hub)",
-        "sv": "Powerview fönsterbeklädnad (kräver hub)",
-        "no": "Powerview vindu-deksel (krever hub)",
-        "es": "Cubrimiento de ventana Powerview (requiere centro)",
-        "da": "Powerview vindu-beklædning (kræver Hub)",
-        "ru": "Обтяжка оконного проема Powerview (требуется хаб)",
-        "pl": "Osłona okien Powerview (wymaga centrum)"
+        "en": "Powerview Window Covering (Gen 1 & 2) (Requires Hub)",
+        "nl": "Powerview Raambekleding (Gen 1 & 2) (vereist Hub)",
+        "de": "Powerview Fensterbekleidung (Gen 1 & 2) (erfordert Hub)",
+        "fr": "Revêtement de fenêtre Powerview (Gen 1 & 2) (nécessite un hub)",
+        "it": "Rivestimento finestra Powerview (Gen 1 & 2) (richiede un hub)",
+        "sv": "Powerview fönsterbeklädnad (Gen 1 & 2) (kräver hub)",
+        "no": "Powerview vindu-deksel (Gen 1 & 2) (krever hub)",
+        "es": "Cubrimiento de ventana Powerview (Gen 1 & 2) (requiere centro)",
+        "da": "Powerview vindu-beklædning (Gen 1 & 2) (kræver Hub)",
+        "ru": "Обтяжка оконного проема Powerview (Gen 1 & 2) (требуется хаб)",
+        "pl": "Osłona okien Powerview (Gen 1 & 2) (wymaga centrum)"
       },
       "class": "blinds",
       "energy": {
