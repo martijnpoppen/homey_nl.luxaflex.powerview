@@ -46,7 +46,8 @@
       }
     },
     {
-      "type": "autocomplete",
+          "type": "autocomplete",
+    "required": false,
       "name": "nl.luxaflex.powerview.sceneAutocomplete",
       "title": {
         "en": "Choose a scene",

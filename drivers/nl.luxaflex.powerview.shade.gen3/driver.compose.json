@@ -1,17 +1,17 @@
 {
     "$extends": ["device", "settings-gen3", "capabilities", "pair"],
     "name": {
-        "en": "Powerview Window Covering (Gen 3) (Requires Hub)",
-        "nl": "Powerview Raambekleding (Gen 3) (vereist Hub)",
-        "de": "Powerview Fensterbekleidung (Gen 3) (erfordert Hub)",
-        "fr": "Revêtement de fenêtre Powerview (Gen 3) (nécessite un hub)",
-        "it": "Rivestimento finestra Powerview (Gen 3) (richiede un hub)",
-        "sv": "Powerview fönsterbeklädnad (Gen 3) (kräver hub)",
-        "no": "Powerview vindu-deksel (Gen 3) (krever hub)",
-        "es": "Cubrimiento de ventana Powerview (Gen 3) (requiere centro)",
-        "da": "Powerview vindu-beklædning (Gen 3) (kræver Hub)",
-        "ru": "Обтяжка оконного проема Powerview (Gen 3) (требуется хаб)",
-        "pl": "Osłona okien Powerview (Gen 3) (wymaga centrum)"
+        "en": "PowerView® gen 3 window covering (requires Gateway)",
+        "nl": "PowerView® gen 3 raambekleding (vereist Gateway)",
+        "de": "PowerView® Generation 3 Fensterdekoration (erfordert Gateway)",
+        "fr": "Habillage de fenêtre PowerView® gen 3 (nécessite une passerelle)",
+        "it": "Copertura per finestre PowerView® gen 3 (richiede una gateway)",
+        "sv": "PowerView® generation 3 fönsterbeklädnad (kräver Gateway)",
+        "no": "PowerView® gen 3 vindusdekning (krever Gateway)",
+        "es": "Cubierta para ventanas PowerView® gen 3 (requiere Gateway)",
+        "da": "PowerView® gen 3 vinduesafdækning (kræver Gateway)",
+        "ru": "Оконное покрытие PowerView® третьего поколения (требуется шлюз)",
+        "pl": "Pokrycie okna PowerView® gen 3 (wymaga Gateway)"
     },
     "class": "blinds",
     "energy": {

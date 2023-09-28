@@ -37,7 +37,7 @@
     {
       "name": "device",
       "type": "device",
-      "filter": "driver_id=nl.luxaflex.powerview.shade",
+      "filter": "driver_id=nl.luxaflex.powerview.shade|nl.luxaflex.powerview.shade.gen3",
       "placeholder": {
         "en": "Select window covering",
         "nl": "Selecteer raambekleding",

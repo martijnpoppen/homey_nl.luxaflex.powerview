@@ -1,10 +1,10 @@
 {
   "id": "nl.luxaflex.powerview",
-  "version": "2.6.3",
+  "version": "2.7.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
-    "en": "Powerview"
+    "en": "Powerview®"
   },
   "brandColor": "#b3bb3c",
   "description": {
@@ -15,6 +15,7 @@
       "Hunter Douglas",
       "Luxaflex",
       "Powerview",
+      "Powerview®",
       "Windows dressing",
       "Duette",
       "Plisse"
@@ -44,6 +45,10 @@
       {
         "name": "Rogier Hofboer",
         "email": "rogier@hofboer.nl"
+      },
+      {
+        "name": "Hunter Douglas Europe B.V.",
+        "email": "luxaflex@martijnpoppen.nl"
       }
     ],
     "translators": [

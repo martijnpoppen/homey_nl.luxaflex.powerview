@@ -1,7 +1,7 @@
 {
   "$extends": ["device", "pair", "settings-hub"],
   "name": {
-    "en": "Powerview Hub"
+    "en": "PowerView® gen 1 & 2 Hub"
   },
   "class": "other",
   "capabilities": ["update_data"]

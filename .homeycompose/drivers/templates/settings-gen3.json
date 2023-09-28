@@ -20,17 +20,17 @@
           "id": "ip",
           "type": "label",
           "label": {
-            "en": "IP address of your Powerview hub",
-            "nl": "IP-adres van uw Powerview hub",
-            "de": "IP-Adresse Ihres Powerview-Hubs",
-            "fr": "Adresse IP de votre hub Powerview",
-            "it": "Indirizzo IP del tuo hub Powerview",
-            "sv": "IP-adress för din Powerview-hub",
-            "no": "IP-adresse for din Powerview-hub",
+            "en": "IP address of your Powerview gateway",
+            "nl": "IP-adres van uw Powerview gateway",
+            "de": "IP-Adresse Ihres Powerview-gateways",
+            "fr": "Adresse IP de votre gateway Powerview",
+            "it": "Indirizzo IP del tuo gateway Powerview",
+            "sv": "IP-adress för din Powerview-gateway",
+            "no": "IP-adresse for din Powerview-gateway",
             "es": "Dirección IP de su centro Powerview",
-            "da": "IP-adresse på din Powerview-hub",
+            "da": "IP-adresse på din Powerview-gateway",
             "ru": "IP-адрес вашего концентратора Powerview",
-            "pl": "Adres IP twojego huba Powerview"
+            "pl": "Adres IP twojego gatewaya Powerview"
           },
           "value": ""
         },

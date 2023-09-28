@@ -1,17 +1,17 @@
 {
     "$extends": ["device", "settings", "capabilities", "pair"],
     "name": {
-        "en": "Powerview Window Covering (Requires Hub)",
-        "nl": "Powerview Raambekleding (vereist Hub)",
-        "de": "Powerview Fensterbekleidung (erfordert Hub)",
-        "fr": "Revêtement de fenêtre Powerview (nécessite un hub)",
-        "it": "Rivestimento finestra Powerview (richiede un hub)",
-        "sv": "Powerview fönsterbeklädnad (kräver hub)",
-        "no": "Powerview vindu-deksel (krever hub)",
-        "es": "Cubrimiento de ventana Powerview (requiere centro)",
-        "da": "Powerview vindu-beklædning (kræver Hub)",
-        "ru": "Обтяжка оконного проема Powerview (требуется хаб)",
-        "pl": "Osłona okien Powerview (wymaga centrum)"
+        "en": "PowerView® gen 1 & 2 window covering (requires Hub)",
+        "nl": "PowerView® gen 1 & 2 raambekleding (vereist Hub)",
+        "de": "PowerView® gen 1 & 2 Fensterdekoration (erfordert Hub)",
+        "fr": "PowerView® gen 1 & 2 habillage de fenêtre (nécessite un concentrateur)",
+        "it": "PowerView® gen 1 & 2 copertura finestra (richiede un concentratore)",
+        "sv": "PowerView® gen 1 & 2 fönsterbeläggning (kräver en hub)",
+        "no": "PowerView® gen 1 & 2 vindusdeksel (krever en hub)",
+        "es": "PowerView® gen 1 & 2 cobertura de ventana (requiere un concentrador)",
+        "da": "PowerView® gen 1 & 2 vinduesafdækning (kræver en hub)",
+        "ru": "PowerView® генерация 1 и 2 оконное покрытие (требуется хаб)",
+        "pl": "PowerView® gen 1 i 2 pokrycie okienne (wymaga koncentratora)"
       },
     "class": "blinds",
     "energy": {

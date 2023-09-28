@@ -1,11 +1,11 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.luxaflex.powerview",
-  "version": "2.6.3",
+  "version": "2.7.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
-    "en": "Powerview"
+    "en": "Powerview®"
   },
   "brandColor": "#b3bb3c",
   "description": {
@@ -16,6 +16,7 @@
       "Hunter Douglas",
       "Luxaflex",
       "Powerview",
+      "Powerview®",
       "Windows dressing",
       "Duette",
       "Plisse"
@@ -45,6 +46,10 @@
       {
         "name": "Rogier Hofboer",
         "email": "rogier@hofboer.nl"
+      },
+      {
+        "name": "Hunter Douglas Europe B.V.",
+        "email": "luxaflex@martijnpoppen.nl"
       }
     ],
     "translators": [
@@ -699,7 +704,7 @@
         }
       ],
       "name": {
-        "en": "Powerview Hub (Gen 1 & 2)"
+        "en": "PowerView® gen 1 & 2 Hub"
       },
       "class": "other",
       "capabilities": [
@@ -883,7 +888,7 @@
         }
       ],
       "name": {
-        "en": "Powerview Gateway (Gen 3)"
+        "en": "PowerView® gen 3 Gateway"
       },
       "class": "other",
       "capabilities": [
@@ -1298,17 +1303,17 @@
         }
       ],
       "name": {
-        "en": "Powerview Window Covering (Gen 1 & 2) (Requires Hub)",
-        "nl": "Powerview Raambekleding (Gen 1 & 2) (vereist Hub)",
-        "de": "Powerview Fensterbekleidung (Gen 1 & 2) (erfordert Hub)",
-        "fr": "Revêtement de fenêtre Powerview (Gen 1 & 2) (nécessite un hub)",
-        "it": "Rivestimento finestra Powerview (Gen 1 & 2) (richiede un hub)",
-        "sv": "Powerview fönsterbeklädnad (Gen 1 & 2) (kräver hub)",
-        "no": "Powerview vindu-deksel (Gen 1 & 2) (krever hub)",
-        "es": "Cubrimiento de ventana Powerview (Gen 1 & 2) (requiere centro)",
-        "da": "Powerview vindu-beklædning (Gen 1 & 2) (kræver Hub)",
-        "ru": "Обтяжка оконного проема Powerview (Gen 1 & 2) (требуется хаб)",
-        "pl": "Osłona okien Powerview (Gen 1 & 2) (wymaga centrum)"
+        "en": "PowerView® gen 1 & 2 window covering (requires Hub)",
+        "nl": "PowerView® gen 1 & 2 raambekleding (vereist Hub)",
+        "de": "PowerView® gen 1 & 2 Fensterdekoration (erfordert Hub)",
+        "fr": "PowerView® gen 1 & 2 habillage de fenêtre (nécessite un concentrateur)",
+        "it": "PowerView® gen 1 & 2 copertura finestra (richiede un concentratore)",
+        "sv": "PowerView® gen 1 & 2 fönsterbeläggning (kräver en hub)",
+        "no": "PowerView® gen 1 & 2 vindusdeksel (krever en hub)",
+        "es": "PowerView® gen 1 & 2 cobertura de ventana (requiere un concentrador)",
+        "da": "PowerView® gen 1 & 2 vinduesafdækning (kræver en hub)",
+        "ru": "PowerView® генерация 1 и 2 оконное покрытие (требуется хаб)",
+        "pl": "PowerView® gen 1 i 2 pokrycie okienne (wymaga koncentratora)"
       },
       "class": "blinds",
       "energy": {
@@ -1352,17 +1357,17 @@
               "id": "ip",
               "type": "label",
               "label": {
-                "en": "IP address of your Powerview hub",
-                "nl": "IP-adres van uw Powerview hub",
-                "de": "IP-Adresse Ihres Powerview-Hubs",
-                "fr": "Adresse IP de votre hub Powerview",
-                "it": "Indirizzo IP del tuo hub Powerview",
-                "sv": "IP-adress för din Powerview-hub",
-                "no": "IP-adresse for din Powerview-hub",
+                "en": "IP address of your Powerview gateway",
+                "nl": "IP-adres van uw Powerview gateway",
+                "de": "IP-Adresse Ihres Powerview-gateways",
+                "fr": "Adresse IP de votre gateway Powerview",
+                "it": "Indirizzo IP del tuo gateway Powerview",
+                "sv": "IP-adress för din Powerview-gateway",
+                "no": "IP-adresse for din Powerview-gateway",
                 "es": "Dirección IP de su centro Powerview",
-                "da": "IP-adresse på din Powerview-hub",
+                "da": "IP-adresse på din Powerview-gateway",
                 "ru": "IP-адрес вашего концентратора Powerview",
-                "pl": "Adres IP twojego huba Powerview"
+                "pl": "Adres IP twojego gatewaya Powerview"
               },
               "value": ""
             },
@@ -1645,17 +1650,17 @@
         }
       ],
       "name": {
-        "en": "Powerview Window Covering (Gen 3) (Requires Hub)",
-        "nl": "Powerview Raambekleding (Gen 3) (vereist Hub)",
-        "de": "Powerview Fensterbekleidung (Gen 3) (erfordert Hub)",
-        "fr": "Revêtement de fenêtre Powerview (Gen 3) (nécessite un hub)",
-        "it": "Rivestimento finestra Powerview (Gen 3) (richiede un hub)",
-        "sv": "Powerview fönsterbeklädnad (Gen 3) (kräver hub)",
-        "no": "Powerview vindu-deksel (Gen 3) (krever hub)",
-        "es": "Cubrimiento de ventana Powerview (Gen 3) (requiere centro)",
-        "da": "Powerview vindu-beklædning (Gen 3) (kræver Hub)",
-        "ru": "Обтяжка оконного проема Powerview (Gen 3) (требуется хаб)",
-        "pl": "Osłona okien Powerview (Gen 3) (wymaga centrum)"
+        "en": "PowerView® gen 3 window covering (requires Gateway)",
+        "nl": "PowerView® gen 3 raambekleding (vereist Gateway)",
+        "de": "PowerView® Generation 3 Fensterdekoration (erfordert Gateway)",
+        "fr": "Habillage de fenêtre PowerView® gen 3 (nécessite une passerelle)",
+        "it": "Copertura per finestre PowerView® gen 3 (richiede una gateway)",
+        "sv": "PowerView® generation 3 fönsterbeklädnad (kräver Gateway)",
+        "no": "PowerView® gen 3 vindusdekning (krever Gateway)",
+        "es": "Cubierta para ventanas PowerView® gen 3 (requiere Gateway)",
+        "da": "PowerView® gen 3 vinduesafdækning (kræver Gateway)",
+        "ru": "Оконное покрытие PowerView® третьего поколения (требуется шлюз)",
+        "pl": "Pokrycie okna PowerView® gen 3 (wymaga Gateway)"
       },
       "class": "blinds",
       "energy": {
