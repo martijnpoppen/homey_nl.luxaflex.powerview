@@ -127,8 +127,8 @@ module.exports = class mainDriver extends Homey.Driver {
                                 ip: ip,
                                 apiVersion: this.apiVersion(),
                                 type: device.type,
-                                posKind1: positions.primary.toFixed(2),
-                                ...('secondary' in positions && {posKind2: positions.secondary.toFixed(2)}),
+                                ...(positions && positions.primary && {posKind1: positions.primary.toFixed(2)}),
+                                ...(positions && 'secondary' in positions && {posKind2: positions.secondary.toFixed(2)}),
                                 ...typeSettings.options
                             }
                         });
