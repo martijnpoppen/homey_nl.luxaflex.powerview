@@ -97,5 +97,8 @@
   },
   "2.7.1": {
     "en": "NEW: impvrove Powerview® branding"
+  },
+  "2.7.2": {
+    "en": "FIX: shade pairing"
   }
 }
