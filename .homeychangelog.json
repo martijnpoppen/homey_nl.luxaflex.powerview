@@ -100,5 +100,8 @@
   },
   "2.7.2": {
     "en": "FIX: shade pairing"
+  },
+  "2.7.3": {
+    "en": "FIX: error in position update"
   }
 }
