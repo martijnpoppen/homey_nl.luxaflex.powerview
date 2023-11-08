@@ -103,5 +103,8 @@
   },
   "2.7.3": {
     "en": "FIX: error in position update"
+  },
+  "2.7.4": {
+    "en": "FIX: error in Powerview Gen 3 (positions)"
   }
 }
