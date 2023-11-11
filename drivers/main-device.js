@@ -270,16 +270,19 @@ class mainDevice extends rootDevice {
             }
 
             // // ------------ Get values --------------
-            const { position1 } = positions;
+            if(positions && positions.position1) {
+                const { position1 } = positions;
 
-            if(this.isV3) {
-                await this.setValue('windowcoverings_set', position1);
-            } else {
-                await this.setValue('windowcoverings_set', position1 / maxValue);
+                if(this.isV3) {
+                    await this.setValue('windowcoverings_set', position1);
+                } else {
+                    await this.setValue('windowcoverings_set', position1 / maxValue);
+                }
             }
+           
             
 
-            if (settings.dualmotor) {
+            if (settings.dualmotor && positions && positions.position2) {
                 const { position2 } = positions;
                 if(this.isV3) {
                     await this.setValue('windowcoverings_tilt_set', position2);

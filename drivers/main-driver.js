@@ -128,7 +128,7 @@ module.exports = class mainDriver extends Homey.Driver {
                                 apiVersion: this.apiVersion(),
                                 type: device.type,
                                 ...(positions && positions.primary && {posKind1: positions.primary.toFixed(2)}),
-                                ...(positions && 'secondary' in positions && {posKind2: positions.secondary.toFixed(2)}),
+                                ...(positions && 'secondary' in positions && positions.secondary && {posKind2: positions.secondary.toFixed(2)}),
                                 ...typeSettings.options
                             }
                         });
@@ -143,7 +143,7 @@ module.exports = class mainDriver extends Homey.Driver {
                                 apiVersion: this.apiVersion(),
                                 type: device.type,
                                 ...(positions && positions.posKind1 && {posKind1: positions.posKind1.toFixed()}),
-                                ...(positions && 'posKind2' in positions && {posKind2: positions.posKind2.toFixed()}),
+                                ...(positions && 'posKind2' in positions && positions.posKind2 && {posKind2: positions.posKind2.toFixed()}),
                                 ...typeSettings.options
                             }
                         });

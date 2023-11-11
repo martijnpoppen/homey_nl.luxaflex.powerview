@@ -17,12 +17,11 @@ class PowerviewShadeGen3 extends mainDevice {
             const setValue1 = settings.invertPosition1 ? 1 - value : value;
             const setValue2 = settings.invertPosition2 ? 1 - pos2 : pos2;
 
-
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET`, value);
             const request = {
                 positions: {
                     [types[0]]: parseFloat(setValue1),
-                    ...(settings.dualmotor && settings.updatePosition2 && { [types[1]]: parseFloat(setValue2) })
+                    ...(settings.dualmotor && settings.updatePosition2 && typeof setValue2 == 'number' && { [types[1]]: parseFloat(setValue2) })
                 }
             };
 
@@ -39,7 +38,7 @@ class PowerviewShadeGen3 extends mainDevice {
                     ...shadeResponse,
                     positions: {
                         ...request.positions,
-                        [types[1]]: settings.invertPosition2 ? 1 - 0 : 0
+                        ...(typeof setValue2 == 'number' && { [types[1]]: settings.invertPosition2 ? 1 - 0 : 0 })
                     }
                 });
             }
@@ -71,8 +70,8 @@ class PowerviewShadeGen3 extends mainDevice {
             const request = {
                 shade: {
                     positions: {
-                        [types[0]]: parseFloat((maxValue * setValue1)),
-                        [types[1]]: parseFloat((maxValue * setValue2))
+                        ...(typeof setValue1 == 'number' && { [types[0]]: parseFloat(maxValue * setValue1) }),
+                        ...(typeof setValue2 == 'number' && { [types[1]]: parseFloat(maxValue * setValue2) })
                     }
                 }
             };
@@ -108,8 +107,8 @@ class PowerviewShadeGen3 extends mainDevice {
             const request = {
                 shade: {
                     positions: {
-                        [types[0]]: parseFloat((maxValue * setValue1)),
-                        [types[1]]: parseFloat((maxValue * setValue2))
+                        ...(typeof setValue1 == 'number' && { [types[0]]: parseFloat(maxValue * setValue1) }),
+                        ...(typeof setValue2 == 'number' && { [types[1]]: parseFloat(maxValue * setValue2) })
                     }
                 }
             };
