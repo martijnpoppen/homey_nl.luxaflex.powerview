@@ -112,5 +112,8 @@
   },
   "2.7.6": {
     "en": "FIX: maxValue"
+  },
+  "2.7.7": {
+    "en": "FIX: window covering tilt api"
   }
 }
