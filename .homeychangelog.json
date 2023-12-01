@@ -118,5 +118,8 @@
   },
   "2.7.8": {
     "en": "FIX: api call to second position"
+  },
+  "2.7.9": {
+    "en": "FIX: dual motor Gen 3"
   }
 }
