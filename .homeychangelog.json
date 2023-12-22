@@ -121,5 +121,8 @@
   },
   "2.7.9": {
     "en": "FIX: dual motor Gen 3"
+  },
+  "2.8.0": {
+    "en": "NEW: fix device type. Add powerview model 39"
   }
 }
