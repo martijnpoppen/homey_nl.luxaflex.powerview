@@ -2,6 +2,7 @@
 
 const rootDevice = require('./root-device');
 const { setShade, getShade } = require('../lib/api');
+const { getDeviceByType } = require('../constants/device-types');
 
 const maxValue = 65535;
 
@@ -53,7 +54,7 @@ class mainDevice extends rootDevice {
         this.homey.app.log('[Device] - init - after sleep =>', sleepIndex, this.getName());
 
         await this.setCapabilityValues(true);
-        
+
         await this.setAvailable();
 
         this.shadeUpdate();
@@ -226,10 +227,10 @@ class mainDevice extends rootDevice {
                 this.homey.app.log(`[Device] ${this.getName()} - shadeUpdate`);
                 const deviceObject = await this.getData();
                 const shadeData = shades.find((s) => s.id === deviceObject.id);
-    
+
                 if (shadeData) {
                     this.homey.app.log(`[Device] ${this.getName()} - shadeUpdate - correct`);
-    
+
                     this.setCapabilityValues(false, null, shadeData);
                 }
             });
@@ -262,6 +263,7 @@ class mainDevice extends rootDevice {
             };
 
             this.homey.app.log(`[Device] ${this.getName()} - deviceInfo =>`, deviceInfo);
+            this.homey.app.log(`[Device] ${this.getName()} - deviceInfo positions =>`, positions);
 
             // // Check for existence
             if (check) {
@@ -270,24 +272,33 @@ class mainDevice extends rootDevice {
             }
 
             // // ------------ Get values --------------
-            if(positions && positions.position1) {
-                const { position1 } = positions;
+            if (!this.isV3) {
+                if (positions && 'position1' in positions) {
+                    const { position1 } = positions;
 
-                if(this.isV3) {
-                    await this.setValue('windowcoverings_set', position1);
-                } else {
                     await this.setValue('windowcoverings_set', position1 / maxValue);
                 }
-            }
-           
-            
 
-            if (settings.dualmotor && positions && positions.position2) {
-                const { position2 } = positions;
-                if(this.isV3) {
-                    await this.setValue('windowcoverings_tilt_set', position2);
-                } else {
+                if (settings.dualmotor && positions && 'position2' in positions) {
+                    const { position2 } = positions;
+
                     await this.setValue('windowcoverings_tilt_set', position2 / maxValue);
+                }
+            }
+
+            if (this.isV3) {
+                const typeSettings = getDeviceByType(settings.type);
+                const types = typeSettings.options.types;
+
+                if (positions && types[0] in positions) {
+                    const primary = positions[types[0]];
+
+                    await this.setValue('windowcoverings_set', primary);
+                }
+
+                if (settings.dualmotor && positions && types[1] in positions) {
+                    const secondary = positions[types[1]];
+                    await this.setValue('windowcoverings_tilt_set', secondary);
                 }
             }
 

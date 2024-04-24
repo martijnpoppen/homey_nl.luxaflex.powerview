@@ -14,8 +14,13 @@ class PowerviewShadeGen3 extends mainDevice {
 
             const pos2 = this.getCapabilityValue('windowcoverings_tilt_set');
 
-            const setValue1 = settings.invertPosition1 ? 1 - value : value;
+            let setValue1 = settings.invertPosition1 ? 1 - value : value;
             const setValue2 = settings.invertPosition2 ? 1 - pos2 : pos2;
+
+            if((setValue1 + setValue2) > 1) {
+                setValue1 = 1 - setValue2;
+            }
+
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET`, value);
             const request = {
@@ -64,25 +69,27 @@ class PowerviewShadeGen3 extends mainDevice {
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_TILT_SET pos1`, pos1);
 
-            const setValue1 = settings.invertPosition1 ? 1 - pos1 : pos1;
-            const setValue2 = settings.invertPosition2 ? 1 - value : value;
+            let setValue1 = settings.invertPosition1 ? 1 - pos1 : pos1;
+            let setValue2 = settings.invertPosition2 ? 1 - value : value;
+
+            if((setValue1 + setValue2) > 1) {
+                setValue2 = 1 - setValue1;
+            }
 
             const request = {
-                shade: {
-                    positions: {
-                        ...(typeof setValue1 == 'number' && { [types[0]]: parseFloat(maxValue * setValue1) }),
-                        ...(typeof setValue2 == 'number' && { [types[1]]: parseFloat(maxValue * setValue2) })
-                    }
+                positions: {
+                    ...(typeof setValue1 == 'number' && { [types[0]]: parseFloat(setValue1) }),
+                    ...(typeof setValue2 == 'number' && { [types[1]]: parseFloat(setValue2) })
                 }
             };
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_TILT_SET request: `, request);
 
-            const shadeResponse = await setShade(ip, this.homey.app.apiClient, request, deviceObject.id);
+            const shadeResponse = await setShade(ip, this.homey.app.apiClient, request, deviceObject.id, true);
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_TILT_SET shadeResponse: `, shadeResponse);
 
-            this.setCapabilityValues(false, null, { ...shadeResponse, positions: request.shade.positions });
+            this.setCapabilityValues(false, null, { ...shadeResponse, positions: request.positions });
 
             return Promise.resolve(true);
         } catch (e) {
@@ -105,21 +112,19 @@ class PowerviewShadeGen3 extends mainDevice {
             const setValue2 = settings.invertPosition2 ? 1 - value2 : value2;
 
             const request = {
-                shade: {
-                    positions: {
-                        ...(typeof setValue1 == 'number' && { [types[0]]: parseFloat(maxValue * setValue1) }),
-                        ...(typeof setValue2 == 'number' && { [types[1]]: parseFloat(maxValue * setValue2) })
-                    }
+                positions: {
+                    ...(typeof setValue1 == 'number' && { [types[0]]: parseFloat(setValue1) }),
+                    ...(typeof setValue2 == 'number' && { [types[1]]: parseFloat(setValue2) })
                 }
             };
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET_BOTH request: `, request);
 
-            const shadeResponse = await setShade(ip, this.homey.app.apiClient, request, deviceObject.id);
+            const shadeResponse = await setShade(ip, this.homey.app.apiClient, request, deviceObject.id, true);
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET_BOTH shadeResponse: `, shadeResponse);
 
-            this.setCapabilityValues(false, null, { ...shadeResponse, positions: request.shade.positions });
+            this.setCapabilityValues(false, null, { ...shadeResponse, positions: request.positions });
 
             return Promise.resolve(true);
         } catch (e) {

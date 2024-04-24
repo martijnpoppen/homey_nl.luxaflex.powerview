@@ -50,7 +50,7 @@ class mainHub extends rootDevice {
     
                 this.setAvailable();
     
-                const shades = await getShades(newSettings.ip, this.homey.app.apiClient);
+                const shades = await getShades(newSettings.ip, this.homey.app.apiClient, this.isV3);
     
                 if(shades) {
                     this.updateShadeIps(shades, newSettings);
@@ -103,7 +103,7 @@ class mainHub extends rootDevice {
             const driverDevices = driverData.getDevices();
     
             if (driverDevices.length) {
-                const shades = await getShades(settings.ip, this.homey.app.apiClient);
+                const shades = await getShades(settings.ip, this.homey.app.apiClient, this.isV3);
     
                 this.homey.app.log(`[Device] ${this.getName()} - updateData =>`, shades);
     
