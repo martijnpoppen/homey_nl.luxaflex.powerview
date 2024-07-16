@@ -1,6 +1,6 @@
 {
   "id": "nl.luxaflex.powerview",
-  "version": "2.8.0",
+  "version": "2.8.2",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -18,7 +18,18 @@
       "Powerview®",
       "Windows dressing",
       "Duette",
-      "Plisse"
+      "Plisse",
+      "Curtain",
+      "Curtains",
+      "Blinds",
+      "Shutters",
+      "Roller",
+      "Roller blinds",
+      "Roller shades",
+      "Roller shutters",
+      "Roller curtains",
+      "Window covering",
+      "Window coverings"
     ]
   },
   "category": [

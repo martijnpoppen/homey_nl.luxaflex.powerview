@@ -124,5 +124,11 @@
   },
   "2.8.0": {
     "en": "NEW: fix device type. Add powerview model 39"
+  },
+  "2.8.1": {
+    "en": "OPT: Improve visibility in app store"
+  },
+  "2.8.2": {
+    "en": "OPT: Improve visibility in app store"
   }
 }
