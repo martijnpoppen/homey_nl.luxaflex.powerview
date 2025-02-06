@@ -1,9 +1,9 @@
 {
-    "pair": {
-      "intro": "Geben Sie Ihre Powerview Hub IP-Adresse ein",
-      "login": "IP-Adresse festlegen",
-      "save": "Speichern",
-      "loading": "Wird geladen"
-    }
+  "pair": {
+    "intro": "Geben Sie Ihre Powerview Hub IP-Adresse ein",
+    "login": "IP-Adresse festlegen",
+    "save": "Speichern",
+    "loading": "Wird geladen",
+    "hub_not_found": "Hub/Schatten nicht automatisch gefunden. Bitte geben Sie die IP-Adresse manuell ein."
   }
-  
+}

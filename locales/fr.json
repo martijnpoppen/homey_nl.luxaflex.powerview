@@ -1,9 +1,9 @@
 {
-    "pair": {
-      "intro": "Entrez l'adresse IP de votre hub Powerview",
-      "login": "Définir l'adresse IP",
-      "save": "Enregistrer",
-      "loading": "Chargement"
-    }
+  "pair": {
+    "intro": "Entrez l'adresse IP de votre hub Powerview",
+    "login": "Définir l'adresse IP",
+    "save": "Enregistrer",
+    "loading": "Chargement",
+    "hub_not_found": "Hub/Store non trouvé automatiquement. Veuillez entrer l'adresse IP manuellement."
   }
-  
+}

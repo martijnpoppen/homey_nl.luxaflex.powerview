@@ -1,9 +1,9 @@
 {
-    "pair": {
-      "intro": "Inserisci l'indirizzo IP del tuo hub Powerview",
-      "login": "Imposta indirizzo IP",
-      "save": "Salva",
-      "loading": "Caricamento"
-    }
+  "pair": {
+    "intro": "Inserisci l'indirizzo IP del tuo hub Powerview",
+    "login": "Imposta indirizzo IP",
+    "save": "Salva",
+    "loading": "Caricamento",
+    "hub_not_found": "Hub/tende non trovati automaticamente. Inserisci l'indirizzo IP manualmente."
   }
-  
+}

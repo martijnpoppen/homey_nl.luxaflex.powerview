@@ -1,9 +1,9 @@
 {
-    "pair": {
-      "intro": "Ingrese su dirección IP de Powerview Hub",
-      "login": "Establecer dirección IP",
-      "save": "Guardar",
-      "loading": "Cargando"
-    }
+  "pair": {
+    "intro": "Ingrese su dirección IP de Powerview Hub",
+    "login": "Establecer dirección IP",
+    "save": "Guardar",
+    "loading": "Cargando",
+    "hub_not_found": "Hub/Cortina no encontrado automáticamente. Por favor, introduzca la dirección IP manualmente."
   }
-  
+}

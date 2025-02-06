@@ -3,6 +3,7 @@
     "intro": "Indtast Powerview Hub IP adres",
     "login": "Powerview IP-adresse",
     "save": "Gem",
-    "loading": "Indlæser"
+    "loading": "Indlæser",
+    "hub_not_found": "Hub / skygge ikke fundet automatisk. Ind tast IP-adressen manuelt."
   }
 }

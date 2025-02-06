@@ -76,9 +76,21 @@
           "type": "dropdown",
           "value": "0",
           "label": {
-            "en": "Positionkind 1"
+            "en": "1st motor setting"
           },
-
+          "hint": {
+            "en": "With this setting you can choose which motor will be controlled with the first slider. Automatic will let the app decide which motor to control. Primary should control the first motor, Secondary should control the second motor. Tilt should control the tilt of the blinds.",
+            "nl": "Met deze instelling kunt u kiezen welke motor wordt bediend met de eerste schuifregelaar. Automatisch laat de app beslissen welke motor moet worden bediend. Primair moet de eerste motor bedienen, Secundair moet de tweede motor bedienen. Kantelen moet de kanteling van de jaloezie bedienen.",
+            "de": "Mit dieser Einstellung können Sie auswählen, welcher Motor mit dem ersten Schieberegler gesteuert wird. Automatisch lässt die App entscheiden, welcher Motor gesteuert werden soll. Primär sollte den ersten Motor steuern, Sekundär sollte den zweiten Motor steuern. Tilt sollte die Neigung der Jalousien steuern.",
+            "fr": "Avec ce paramètre, vous pouvez choisir quel moteur sera contrôlé avec le premier curseur. Automatique laissera l'application décider quel moteur contrôler. Primaire devrait contrôler le premier moteur, Secondaire devrait contrôler le deuxième moteur. L'inclinaison devrait contrôler l'inclinaison des stores.",
+            "it": "Con questa impostazione puoi scegliere quale motore verrà controllato con il primo cursore. Automatico farà decidere all'app quale motore controllare. Primario dovrebbe controllare il primo motore, Secondario dovrebbe controllare il secondo motore. Tilt dovrebbe controllare l'inclinazione delle tende.",
+            "sv": "Med denna inställning kan du välja vilken motor som ska styras med den första skjutreglaget. Automatiskt låter appen bestämma vilken motor som ska styras. Primär bör styra den första motorn, Sekundär bör styra den andra motorn. Tilt bör styra lutningen på persiennerna.",
+            "no": "Med denne innstillingen kan du velge hvilken motor som skal styres med den første glidebryteren. Automatisk vil la appen bestemme hvilken motor som skal styres. Primær bør styre den første motoren, Sekundær bør styre den andre motoren. Tilt bør styre persiennenes tilt.",
+            "es": "Con esta configuración, puede elegir qué motor se controlará con el primer control deslizante. Automático permitirá que la aplicación decida qué motor controlar. Primario debería controlar el primer motor, Secundario debería controlar el segundo motor. Tilt debería controlar la inclinación de las persianas.",
+            "da": "Med denne indstilling kan du vælge, hvilken motor der skal styres med den første skyder. Automatisk vil lade appen beslutte, hvilken motor der skal styres. Primær skal styre den første motor, Sekundær skal styre den anden motor. Tilt skal styre persiennernes tilt.",
+            "ru": "С этим параметром вы можете выбрать, какой двигатель будет управляться первым ползунком. Автоматический позволит приложению решить, какой двигатель управлять. Первичный должен управлять первым двигателем, Вторичный должен управлять вторым двигателем. Наклон должен управлять наклоном жалюзи.",
+            "pl": "Z tym ustawieniem możesz wybrać, który silnik będzie sterowany za pomocą pierwszego suwaka. Automatycznie pozwoli aplikacji zdecydować, który silnik sterować. Pierwotny powinien sterować pierwszym silnikiem, Sekundarny powinien sterować drugim silnikiem. Kąt powinien sterować kątem żaluzji."
+        },
           "values": [
             {
               "id": "0",
@@ -174,7 +186,7 @@
           },
           "value": "0",
           "label": {
-            "en": "Positionkind 2"
+            "en": "2nd motor setting"
           },
 
           "values": [

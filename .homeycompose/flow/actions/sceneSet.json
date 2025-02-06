@@ -30,7 +30,7 @@
     {
       "name": "device",
       "type": "device",
-      "filter": "driver_id=nl.luxaflex.powerview.hub|nl.luxaflex.powerview.hub.gen3",
+      "filter": "driver_id=nl.luxaflex.powerview.hub|nl.luxaflex.powerview.hub.gen3|nl.luxaflex.powerview.hub.shade|nl.luxaflex.powerview.hub.shade.gen3",
       "placeholder": {
         "en": "Select window covering",
         "nl": "Selecteer raambekleding",
@@ -46,8 +46,8 @@
       }
     },
     {
-          "type": "autocomplete",
-    "required": false,
+      "type": "autocomplete",
+      "required": false,
       "name": "nl.luxaflex.powerview.sceneAutocomplete",
       "title": {
         "en": "Choose a scene",

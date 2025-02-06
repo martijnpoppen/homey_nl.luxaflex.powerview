@@ -50,7 +50,20 @@
                 "ru": "Обновить IP-адрес оконного покрытия",
                 "pl": "Zaktualizuj adres IP osłony okna"
             },
-            "value": false
+            "value": false,
+            "hint": {
+                "en": "Update the IP address of the window coverings when the IP address of the Powerview Hub changes",
+                "nl": "Werk het IP-adres van de raambekleding bij wanneer het IP-adres van de Powerview Hub verandert",
+                "de": "Aktualisieren Sie die IP-Adresse der Fensterabdeckungen, wenn sich die IP-Adresse des Powerview-Hubs ändert",
+                "fr": "Mettre à jour l'adresse IP des revêtements de fenêtres lorsque l'adresse IP du hub Powerview change",
+                "it": "Aggiorna l'indirizzo IP delle coperture delle finestre quando cambia l'indirizzo IP del Powerview Hub",
+                "sv": "Uppdatera IP-adressen för fönsterbeklädnad när IP-adressen för Powerview Hub ändras",
+                "no": "Oppdater IP-adressen til vindusdekselet når IP-adressen til Powerview Hub endres",
+                "es": "Actualizar la dirección IP de las cubiertas de ventanas cuando cambia la dirección IP del centro Powerview",
+                "da": "Opdater IP-adressen på vinduesafdækningen, når IP-adressen på Powerview-huben ændres",
+                "ru": "Обновить IP-адрес оконных покрытий, когда изменяется IP-адрес концентратора Powerview",
+                "pl": "Zaktualizuj adres IP osłon okiennych, gdy zmieni się adres IP huba Powerview"
+            }
         },
         {
           "id": "apiVersion",

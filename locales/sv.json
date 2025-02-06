@@ -1,9 +1,9 @@
 {
-    "pair": {
-      "intro": "Ange din Powerview Hub IP-adress",
-      "login": "Ställ in IP-adress",
-      "save": "Spara",
-      "loading": "Läser in"
-    }
+  "pair": {
+    "intro": "Ange din Powerview Hub IP-adress",
+    "login": "Ställ in IP-adress",
+    "save": "Spara",
+    "loading": "Läser in",
+    "hub_not_found": "Hub/fönster inte hittade automatiskt. Ange IP-adressen manuellt."
   }
-  
+}

@@ -130,5 +130,8 @@
   },
   "2.8.2": {
     "en": "OPT: Improve visibility in app store"
+  },
+  "2.9.0": {
+    "en": "FIX: add hint to update window covering IP settings | FIX: Make IP required for manual IP view | NEW: Update Set IP to new Homey UI. | NEW: add description to manual IP view explaining why it is needed"
   }
 }

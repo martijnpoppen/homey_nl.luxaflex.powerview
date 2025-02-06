@@ -1,18 +1,21 @@
-<form class="hy-tmpl-set_ip-form" action="/" method="post">
-    <div class="hy-tmpl-set_ip-row row">
-        <label class="hy-label hy-tmpl-set_ip-label" for="login" data-i18n="pair.intro"></label>
-        <input class="hy-input-text" name="login" type="text" value="">
+<form id="set_ip-form" class="homey-form">
+    <p data-i18n="pair.hub_not_found"></p>
+    <div class="homey-form-group">
+        <label class="homey-form-labell" for="login" data-i18n="pair.intro"></label>
+        <input class="homey-form-input" id="login" name="login" type="text" value="" required>
     </div>
-    <div class="hy-tmpl-set_ip-row row">
-        <input class="hy-button hy-button-primary hy-button-fill hy-tmpl-set_ip-submit button" type="submit" value="">
+    <div class="homey-form-group">
+        <button class="homey-button-primary-full"></button>
     </div>
 </form>
+
+
 <script type="text/javascript">!function () {
-        var form = document.querySelector(".hy-tmpl-set_ip-form");
-        var button = document.querySelector('input[type="submit"]');
+        var form = document.querySelector("#set_ip-form");
+        var button = document.querySelector('button');
 
         Homey.setTitle(Homey.__("pair.login")),
-        button.value = Homey.__("pair.save");
+            button.innerHTML = Homey.__("pair.save");
 
         form.addEventListener("submit", function (e) {
             e.preventDefault();

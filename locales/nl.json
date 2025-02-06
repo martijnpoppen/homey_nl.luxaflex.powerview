@@ -1,9 +1,9 @@
 {
-    "pair": {
-      "intro": "Voer je Powerview Hub IP adres in",
-      "login": "Powerview IP address",
-      "save": "Opslaan",
-      "loading": "Laden"
-    }
+  "pair": {
+    "intro": "Voer je Powerview Hub IP adres in",
+    "login": "Powerview IP address",
+    "save": "Opslaan",
+    "loading": "Laden",
+    "hub_not_found": "Hub / shade niet automatisch gevonden. Voer het IP-adres handmatig in."
   }
-  
+}

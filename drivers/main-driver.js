@@ -12,6 +12,24 @@ module.exports = class mainDriver extends Homey.Driver {
         this.results = [];
 
         this.homey.app.setDevices(this.getDevices());
+
+        const discoveryStrategy = this.homey.discovery.getStrategy(this.discovery());
+        const discoveryResults = discoveryStrategy.getDiscoveryResults();
+        const discoveryResultsArray = Object.values(discoveryResults);
+
+        const currentDevices = this.getDevices();
+        if (currentDevices.length === 1 && discoveryResultsArray.length === 1) {
+            const device = currentDevices[0];
+            const { address } = discoveryResultsArray[0] || {};
+            
+
+            if (address) {
+                this.homey.app.log(`[Driver] ${this.id} - ${device.getName()} - setSettings`, { ip: address });
+                device.setSettings({
+                    ip: address
+                });
+            }
+        }
     }
 
     driverType() {
@@ -19,7 +37,7 @@ module.exports = class mainDriver extends Homey.Driver {
     }
 
     discovery() {
-        return 'other'
+        return 'other';
     }
 
     apiVersion() {
@@ -44,7 +62,7 @@ module.exports = class mainDriver extends Homey.Driver {
             this.homey.app.log(`[Driver] ${this.id} - currentView:`, { view });
 
             if (view === 'loading') {
-                console.log(Object.values(discoveryResults))
+                console.log(Object.values(discoveryResults));
                 if (Object.values(discoveryResults).length) {
                     this.results = Object.values(discoveryResults);
 
@@ -65,7 +83,6 @@ module.exports = class mainDriver extends Homey.Driver {
         session.setHandler('set_ip', async (data) => {
             this.homey.app.log(`[Driver] ${this.id} - set_ip`, data);
             this.results = [{ address: data.ip }];
-
 
             session.showView('get_data');
             return true;
@@ -89,7 +106,7 @@ module.exports = class mainDriver extends Homey.Driver {
 
             this.results.forEach((r) => {
                 const ip = r.address;
-                const isV3 = this.apiVersion() === '3'
+                const isV3 = this.apiVersion() === '3';
 
                 getShades(ip, this.homey.app.apiClient, isV3).then((result) => {
                     shades.push(...result);
@@ -117,18 +134,18 @@ module.exports = class mainDriver extends Homey.Driver {
                     const typeSettings = getDeviceByType(device.type);
                     const { positions } = device;
 
-                    if(isV3) {
+                    if (isV3) {
                         devices.push({
                             name: device.shadeName,
                             data: {
-                                id: device.id,
+                                id: device.id
                             },
                             settings: {
                                 ip: ip,
                                 apiVersion: this.apiVersion(),
                                 type: device.type,
-                                ...(positions && positions.primary && {posKind1: positions.primary.toFixed(2)}),
-                                ...(positions && 'secondary' in positions && positions.secondary && {posKind2: positions.secondary.toFixed(2)}),
+                                ...(positions && positions.primary && { posKind1: positions.primary.toFixed(2) }),
+                                ...(positions && 'secondary' in positions && positions.secondary && { posKind2: positions.secondary.toFixed(2) }),
                                 ...typeSettings.options
                             }
                         });
@@ -136,14 +153,14 @@ module.exports = class mainDriver extends Homey.Driver {
                         devices.push({
                             name: device.shadeName,
                             data: {
-                                id: device.id,
+                                id: device.id
                             },
                             settings: {
                                 ip: ip,
                                 apiVersion: this.apiVersion(),
                                 type: device.type,
-                                ...(positions && positions.posKind1 && {posKind1: positions.posKind1.toFixed()}),
-                                ...(positions && 'posKind2' in positions && positions.posKind2 && {posKind2: positions.posKind2.toFixed()}),
+                                ...(positions && positions.posKind1 && { posKind1: positions.posKind1.toFixed() }),
+                                ...(positions && 'posKind2' in positions && positions.posKind2 && { posKind2: positions.posKind2.toFixed() }),
                                 ...typeSettings.options
                             }
                         });

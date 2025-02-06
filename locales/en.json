@@ -3,6 +3,7 @@
     "intro": "Enter your Powerview Hub IP address",
     "login": "Set IP address",
     "save": "Save",
-    "loading": "Loading"
+    "loading": "Loading",
+    "hub_not_found": "Hub/Shade not found automatically. Please enter the IP address manually."
   }
 }
