@@ -7,8 +7,7 @@ class PowerviewShadeGen3 extends mainDevice {
             const deviceObject = await this.getData();
             const settings = await this.getSettings();
             const ip = settings.ip || settings['nl.luxaflex.powerview.settings.ip'];
-            const typeSettings = getDeviceByType(settings.type);
-            const types = typeSettings.options.types;
+            const types = await this.getTypes();
 
             console.log(typeSettings, deviceObject);
 
@@ -60,8 +59,7 @@ class PowerviewShadeGen3 extends mainDevice {
             const deviceObject = await this.getData();
             const settings = await this.getSettings();
             const ip = settings.ip;
-            const typeSettings = getDeviceByType(settings.type);
-            const types = typeSettings.options.types;
+            const types = await this.getTypes();
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_TILT_SET`, value);
 
@@ -103,8 +101,7 @@ class PowerviewShadeGen3 extends mainDevice {
             const deviceObject = await this.getData();
             const settings = await this.getSettings();
             const ip = settings.ip;
-            const typeSettings = getDeviceByType(settings.type);
-            const types = typeSettings.options.types;
+            const types = await this.getTypes();
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET_BOTH`, value1, value2);
 

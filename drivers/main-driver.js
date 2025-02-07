@@ -22,8 +22,10 @@ module.exports = class mainDriver extends Homey.Driver {
             const device = currentDevices[0];
             const { address } = discoveryResultsArray[0] || {};
             
+            const deviceSettings = device.getSettings();
+            const deviceIp = deviceSettings.ip;
 
-            if (address) {
+            if (address && address !== deviceIp) {
                 this.homey.app.log(`[Driver] ${this.id} - ${device.getName()} - setSettings`, { ip: address });
                 device.setSettings({
                     ip: address

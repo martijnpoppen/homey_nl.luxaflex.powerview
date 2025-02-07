@@ -3,6 +3,7 @@
 const rootDevice = require('./root-device');
 const { setShade, getShade } = require('../lib/api');
 const { getDeviceByType } = require('../constants/device-types');
+const { capitalize} = require('../lib/helpers');
 
 const maxValue = 65535;
 
@@ -15,6 +16,10 @@ class mainDevice extends rootDevice {
             await this.fixSettings();
             await this.checkCapabilities();
             await this.setCapabilityListeners();
+
+            if(this.isV3) {
+                await this.getTypes(true);
+            }
 
             const hasHub = await this.checkForHub();
 
@@ -261,6 +266,7 @@ class mainDevice extends rootDevice {
                 1: 23,
                 0: 0
             };
+            const { type } = deviceInfo;
 
             this.homey.app.log(`[Device] ${this.getName()} - deviceInfo =>`, deviceInfo);
             this.homey.app.log(`[Device] ${this.getName()} - deviceInfo positions =>`, positions);
@@ -269,6 +275,8 @@ class mainDevice extends rootDevice {
             if (check) {
                 await this.addOrRemoveCapability(settings.dualmotor, 'windowcoverings_tilt_set');
                 await this.addOrRemoveCapability(settings.measure_battery, 'measure_battery');
+
+                if(type) await this.setSettings({ type });
             }
 
             // // ------------ Get values --------------
@@ -287,8 +295,7 @@ class mainDevice extends rootDevice {
             }
 
             if (this.isV3) {
-                const typeSettings = getDeviceByType(settings.type);
-                const types = typeSettings.options.types;
+                const types = await this.getTypes();
 
                 if (positions && types[0] in positions) {
                     const primary = positions[types[0]];
@@ -338,6 +345,34 @@ class mainDevice extends rootDevice {
             }
         }
     }
+
+    async getTypes(setSetting = false) {
+        // V3 only
+        const settings = await this.getSettings();
+        const typeSettings = getDeviceByType(settings.type) || { options: { types: ['primary', 'secondary'] } }; // Fallback
+
+        if(setSetting) {
+            this.homey.app.log(`[Device] ${this.getName()} - setting automatic types - settings.posKind1`, typeSettings.options.types);
+
+            this.setSettings({
+                posKind1ByType: typeSettings.options.types[0] ? capitalize(typeSettings.options.types[0]) : 'None',
+                posKind2ByType: typeSettings.options.types[1] ? capitalize(typeSettings.options.types[1]) : 'None'
+            });
+        }
+
+        if(settings.posKind1 !== 'automatic') {
+            this.homey.app.log(`[Device] ${this.getName()} - getTypes - settings.posKind1`, settings.posKind1);
+            typeSettings.options.types[0] = settings.posKind1;
+        }
+
+        if(settings.posKind2 !== 'automatic') {
+            this.homey.app.log(`[Device] ${this.getName()} - getTypes - settings.posKind2`, settings.posKind2);
+            typeSettings.options.types[1] = settings.posKind2;
+        }
+
+        return typeSettings.options.types;
+    }
 }
+
 
 module.exports = mainDevice;
