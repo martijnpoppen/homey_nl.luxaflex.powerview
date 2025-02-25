@@ -9,8 +9,6 @@ class PowerviewShadeGen3 extends mainDevice {
             const ip = settings.ip || settings['nl.luxaflex.powerview.settings.ip'];
             const types = await this.getTypes();
 
-            console.log(typeSettings, deviceObject);
-
             const pos2 = this.getCapabilityValue('windowcoverings_tilt_set');
 
             let setValue1 = settings.invertPosition1 ? 1 - value : value;

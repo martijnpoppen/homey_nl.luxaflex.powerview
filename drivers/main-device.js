@@ -284,13 +284,13 @@ class mainDevice extends rootDevice {
                 if (positions && 'position1' in positions) {
                     const { position1 } = positions;
 
-                    await this.setValue('windowcoverings_set', position1 / maxValue);
+                    await this.setValue('windowcoverings_set', Math.round(position1 / maxValue * 100) / 100);
                 }
 
                 if (settings.dualmotor && positions && 'position2' in positions) {
                     const { position2 } = positions;
 
-                    await this.setValue('windowcoverings_tilt_set', position2 / maxValue);
+                    await this.setValue('windowcoverings_tilt_set', Math.round(position2 / maxValue * 100) / 100);
                 }
             }
 
@@ -300,12 +300,12 @@ class mainDevice extends rootDevice {
                 if (positions && types[0] in positions) {
                     const primary = positions[types[0]];
 
-                    await this.setValue('windowcoverings_set', primary);
+                    await this.setValue('windowcoverings_set', Math.round(primary * 100) / 100);
                 }
 
                 if (settings.dualmotor && positions && types[1] in positions) {
                     const secondary = positions[types[1]];
-                    await this.setValue('windowcoverings_tilt_set', secondary);
+                    await this.setValue('windowcoverings_tilt_set', Math.round(secondary * 100) / 100);
                 }
             }
 
@@ -348,16 +348,24 @@ class mainDevice extends rootDevice {
 
     async getTypes(setSetting = false) {
         // V3 only
-        const settings = await this.getSettings();
+        let settings = await this.getSettings();
         const typeSettings = getDeviceByType(settings.type) || { options: { types: ['primary', 'secondary'] } }; // Fallback
+        const posTypes = ["automatic", "primary", "secondary", "tilt"];
+        const posKind1 = settings.posKind1;
+        const posKind2 = settings.posKind2;
+
 
         if(setSetting) {
             this.homey.app.log(`[Device] ${this.getName()} - setting automatic types - settings.posKind1`, typeSettings.options.types);
 
-            this.setSettings({
+            settings = {
+                ...(!posTypes.some(p => p === posKind1) && { posKind1: 'automatic' }),
+                ...(!posTypes.some(p => p === posKind2) && { posKind2: 'automatic' }),
                 posKind1ByType: typeSettings.options.types[0] ? capitalize(typeSettings.options.types[0]) : 'None',
                 posKind2ByType: typeSettings.options.types[1] ? capitalize(typeSettings.options.types[1]) : 'None'
-            });
+            }
+
+            this.setSettings(settings);
         }
 
         if(settings.posKind1 !== 'automatic') {
