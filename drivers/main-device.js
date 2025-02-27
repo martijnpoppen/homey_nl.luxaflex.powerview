@@ -368,12 +368,12 @@ class mainDevice extends rootDevice {
             this.setSettings(settings);
         }
 
-        if(settings.posKind1 !== 'automatic') {
+        if(settings.posKind1 !== 'automatic' && settings.posKind1) {
             this.homey.app.log(`[Device] ${this.getName()} - getTypes - settings.posKind1`, settings.posKind1);
             typeSettings.options.types[0] = settings.posKind1;
         }
 
-        if(settings.posKind2 !== 'automatic') {
+        if(settings.posKind2 !== 'automatic' && settings.posKind2) {
             this.homey.app.log(`[Device] ${this.getName()} - getTypes - settings.posKind2`, settings.posKind2);
             typeSettings.options.types[1] = settings.posKind2;
         }

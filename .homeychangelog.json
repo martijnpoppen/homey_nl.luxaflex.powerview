@@ -142,5 +142,11 @@
   },
   "2.10.2": {
     "en": "FIX: round postion to 2 decimals"
+  },
+  "2.10.3": {
+    "en": "FIX: error in powerview hub"
+  },
+  "2.10.4": {
+    "en": "FIX: v3 shades not properly working after last update"
   }
 }

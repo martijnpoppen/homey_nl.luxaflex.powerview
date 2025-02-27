@@ -11,7 +11,6 @@ class mainHub extends rootDevice {
             this.setUnavailable(`Connecting to: ${this.getName()} ...`);
 
             await this.fixSettings();
-            await this.updateShadeIps(this.getSettings());
 
             await this.checkCapabilities();
 
@@ -50,36 +49,36 @@ class mainHub extends rootDevice {
 
                 this.setAvailable();
 
-                this.updateShadeIps(newSettings);
+                const shades = await getShades(newSettings.ip, this.homey.app.apiClient, this.isV3);
+
+                if (shades) {
+                    this.updateShadeIps(shades, newSettings);
+                }
             }
         } catch (error) {
             this.homey.app.log(`[Device] ${this.getName()} - onSettings error`, error);
         }
     }
 
-    async updateShadeIps(settings) {
+    async updateShadeIps(shades, settings) {
         try {
             this.homey.app.log(`[Device] ${this.getName()} - updateShadeIps`);
 
-            const shades = await getShades(settings.ip, this.homey.app.apiClient, this.isV3);
-
-            if (shades) {
-                for (const shade of shades) {
-                    const homeyShade = this.homey.app.deviceList.find((d) => {
-                        const deviceObject = d.getData();
-                        if (deviceObject.id === shade.id) {
-                            return true;
-                        }
-                    });
-
-                    if (homeyShade) {
-                        this.homey.app.log(`[Device] ${this.getName()} - updateShadeIps => setSetings`, homeyShade.getName());
-                        homeyShade.setSettings({ ip: settings.ip });
-
-                        await sleep(2000);
-
-                        homeyShade.onStartup();
+            for (const shade of shades) {
+                const homeyShade = this.homey.app.deviceList.find((d) => {
+                    const deviceObject = d.getData();
+                    if (deviceObject.id === shade.id) {
+                        return true;
                     }
+                });
+
+                if (homeyShade) {
+                    this.homey.app.log(`[Device] ${this.getName()} - updateShadeIps => setSetings`, homeyShade.getName());
+                    homeyShade.setSettings({ ip: settings.ip });
+
+                    await sleep(2000);
+
+                    homeyShade.onStartup();
                 }
             }
 
