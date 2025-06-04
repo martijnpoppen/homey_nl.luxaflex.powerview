@@ -170,6 +170,8 @@ class mainHub extends rootDevice {
 
             await this.updateData();
 
+            this.setCapabilityValue('update_data', false);
+
             return Promise.resolve(true);
         } catch (e) {
             this.homey.app.error(e);

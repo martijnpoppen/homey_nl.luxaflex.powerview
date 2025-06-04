@@ -3,7 +3,7 @@
 const rootDevice = require('./root-device');
 const { setShade, getShade } = require('../lib/api');
 const { getDeviceByType } = require('../constants/device-types');
-const { capitalize} = require('../lib/helpers');
+const { capitalize } = require('../lib/helpers');
 
 const maxValue = 65535;
 
@@ -17,7 +17,7 @@ class mainDevice extends rootDevice {
             await this.checkCapabilities();
             await this.setCapabilityListeners();
 
-            if(this.isV3) {
+            if (this.isV3) {
                 await this.getTypes(true);
             }
 
@@ -276,7 +276,7 @@ class mainDevice extends rootDevice {
                 await this.addOrRemoveCapability(settings.dualmotor, 'windowcoverings_tilt_set');
                 await this.addOrRemoveCapability(settings.measure_battery, 'measure_battery');
 
-                if(type) await this.setSettings({ type });
+                if (type) await this.setSettings({ type });
             }
 
             // // ------------ Get values --------------
@@ -284,13 +284,13 @@ class mainDevice extends rootDevice {
                 if (positions && 'position1' in positions) {
                     const { position1 } = positions;
 
-                    await this.setValue('windowcoverings_set', Math.round(position1 / maxValue * 100) / 100);
+                    await this.setValue('windowcoverings_set', Math.round((position1 / maxValue) * 100) / 100);
                 }
 
                 if (settings.dualmotor && positions && 'position2' in positions) {
                     const { position2 } = positions;
 
-                    await this.setValue('windowcoverings_tilt_set', Math.round(position2 / maxValue * 100) / 100);
+                    await this.setValue('windowcoverings_tilt_set', Math.round((position2 / maxValue) * 100) / 100);
                 }
             }
 
@@ -298,14 +298,19 @@ class mainDevice extends rootDevice {
                 const types = await this.getTypes();
 
                 if (positions && types[0] in positions) {
-                    const primary = positions[types[0]];
+                    const pos = positions[types[0]];
 
-                    await this.setValue('windowcoverings_set', Math.round(primary * 100) / 100);
+                    this.homey.app.log(`[Device] ${this.getName()} - setCapabilityValues - Motor 1`, types[0], pos);
+
+                    await this.setValue('windowcoverings_set', Math.round(pos * 100) / 100);
                 }
 
                 if (settings.dualmotor && positions && types[1] in positions) {
-                    const secondary = positions[types[1]];
-                    await this.setValue('windowcoverings_tilt_set', Math.round(secondary * 100) / 100);
+                    const pos = positions[types[1]];
+
+                    this.homey.app.log(`[Device] ${this.getName()} - setCapabilityValues - Motor 2`, types[1], pos);
+
+                    await this.setValue('windowcoverings_tilt_set', Math.round(pos * 100) / 100);
                 }
             }
 
@@ -336,12 +341,12 @@ class mainDevice extends rootDevice {
             const triggers = this.homey.manifest.flow.triggers;
             const triggerExists = triggers.find((trigger) => trigger.id === `${key}_changed`);
 
-            if (triggerExists) {
+            if (triggerExists && oldValue !== value) {
                 await this.homey.flow
                     .getDeviceTriggerCard(`${key}_changed`)
                     .trigger(this, { [`${key}`]: value })
                     .catch(this.error)
-                    .then(this.homey.app.log(`[Device] ${this.getName()} - setValue ${key}_changed - Triggered: "${key} | ${value}"`));
+                    .then(this.homey.app.log(`[Device] ${this.getName()} - setValue ${key}_changed - Triggered: "${key}_changed | ${value}"`));
             }
         }
     }
@@ -350,37 +355,36 @@ class mainDevice extends rootDevice {
         // V3 only
         let settings = await this.getSettings();
         const typeSettings = getDeviceByType(settings.type) || { options: { types: ['primary', 'secondary'] } }; // Fallback
-        const posTypes = ["automatic", "primary", "secondary", "tilt"];
+        const posTypes = ['automatic', 'primary', 'secondary', 'tilt'];
         const posKind1 = settings.posKind1;
         const posKind2 = settings.posKind2;
 
-
-        if(setSetting) {
-            this.homey.app.log(`[Device] ${this.getName()} - setting automatic types - settings.posKind1`, typeSettings.options.types);
+        if (setSetting) {
+            this.homey.app.log(`[Device] ${this.getName()} - setting automatic types`, typeSettings.options.types);
 
             settings = {
-                ...(!posTypes.some(p => p === posKind1) && { posKind1: 'automatic' }),
-                ...(!posTypes.some(p => p === posKind2) && { posKind2: 'automatic' }),
+                ...(!posTypes.some((p) => p === posKind1) && { posKind1: 'automatic' }),
+                ...(!posTypes.some((p) => p === posKind2) && { posKind2: 'automatic' }),
                 posKind1ByType: typeSettings.options.types[0] ? capitalize(typeSettings.options.types[0]) : 'None',
                 posKind2ByType: typeSettings.options.types[1] ? capitalize(typeSettings.options.types[1]) : 'None'
-            }
+            };
 
             this.setSettings(settings);
         }
 
-        if(settings.posKind1 !== 'automatic' && settings.posKind1) {
-            this.homey.app.log(`[Device] ${this.getName()} - getTypes - settings.posKind1`, settings.posKind1);
-            typeSettings.options.types[0] = settings.posKind1;
+        if (posKind1 !== 'automatic' && posKind1) {
+            this.homey.app.log(`[Device] ${this.getName()} - getTypes - posKind1`, posKind1);
+            typeSettings.options.types[0] = posKind1;
         }
 
-        if(settings.posKind2 !== 'automatic' && settings.posKind2) {
-            this.homey.app.log(`[Device] ${this.getName()} - getTypes - settings.posKind2`, settings.posKind2);
-            typeSettings.options.types[1] = settings.posKind2;
+        if (posKind2 !== 'automatic' && posKind2) {
+            this.homey.app.log(`[Device] ${this.getName()} - getTypes - posKind2`, posKind2);
+            typeSettings.options.types[1] = posKind2;
         }
 
+        this.homey.app.log(`[Device] ${this.getName()} - getTypes - types array`, typeSettings.options.types);
         return typeSettings.options.types;
     }
 }
-
 
 module.exports = mainDevice;
