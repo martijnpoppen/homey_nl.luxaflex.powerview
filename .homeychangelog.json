@@ -148,5 +148,8 @@
   },
   "2.10.4": {
     "en": "FIX: v3 shades not properly working after last update"
+  },
+  "2.10.5": {
+    "en": "FIX: wrong position when motor settings are changed"
   }
 }
