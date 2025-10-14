@@ -1,5 +1,4 @@
 const mainDevice = require('../main-device');
-const { getDeviceByType } = require('../../constants/device-types');
 
 class PowerviewShadeGen3 extends mainDevice {
     async onCapability_WINDOWCOVERINGS_SET(value) {

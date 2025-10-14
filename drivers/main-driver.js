@@ -135,7 +135,7 @@ module.exports = class mainDriver extends Homey.Driver {
                 const isV3 = this.apiVersion() === '3';
 
                 if (ctx.driverType() === 'shade') {
-                    const typeSettings = getDeviceByType(device.type);
+                    const typeSettings = getDeviceByType(device.type, device.capabilities);
                     const { positions } = device;
 
                     if (isV3) {

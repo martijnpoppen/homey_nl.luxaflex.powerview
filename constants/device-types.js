@@ -111,11 +111,13 @@ const deviceType = [
     { type: 69, options: options[3] },
     { type: 70, options: options[3] },
     { type: 71, options: options[3] },
-    { type: 79, options: options[8] }
+    { type: 79, options: options[8] },
+    { type: 100, options: options[1] },
 ];
 
-getDeviceByType = function(type) {
-    return deviceType.find(t => t.type === type) || deviceType[0]
+getDeviceByType = function(type, capabilities = 7) {
+    console.log('getDeviceByType', type, capabilities);
+    return deviceType.find(t => t.type === type) || deviceType[capabilities];
 }
 
 module.exports = {

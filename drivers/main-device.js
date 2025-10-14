@@ -44,8 +44,8 @@ class mainDevice extends rootDevice {
         this.homey.app.removeDevice(deviceObject.id);
     }
 
-    async onStartup() {
-        const driverData = this.homey.drivers.getDriver(`nl.luxaflex.powerview.shade${this.genType}`);
+    async sleepByIndex(sleepLength = 10000) {
+         const driverData = this.homey.drivers.getDriver(`nl.luxaflex.powerview.shade${this.genType}`);
         const driverDevices = driverData.getDevices();
         const deviceObject = this.getData();
 
@@ -53,10 +53,14 @@ class mainDevice extends rootDevice {
             const driverDeviceObject = device.getData();
             return deviceObject.id === driverDeviceObject.id;
         });
+     
+         await sleep((sleepIndex + 1) * sleepLength);
+    }
 
-        await sleep((sleepIndex + 1) * 10000);
+    async onStartup() {
+        await this.sleepByIndex();
 
-        this.homey.app.log('[Device] - init - after sleep =>', sleepIndex, this.getName());
+        this.homey.app.log('[Device] - init - after sleep =>', this.getName());
 
         await this.setCapabilityValues(true);
 
@@ -236,7 +240,8 @@ class mainDevice extends rootDevice {
                 if (shadeData) {
                     this.homey.app.log(`[Device] ${this.getName()} - shadeUpdate - correct`);
 
-                    this.setCapabilityValues(false, null, shadeData);
+                    await this.sleepByIndex(1000);
+                    await this.setCapabilityValues(false, null, shadeData);
                 }
             });
         } catch (error) {
@@ -266,7 +271,7 @@ class mainDevice extends rootDevice {
                 1: 23,
                 0: 0
             };
-            const { type } = deviceInfo;
+            const { type, capabilities } = deviceInfo;
 
             this.homey.app.log(`[Device] ${this.getName()} - deviceInfo =>`, deviceInfo);
             this.homey.app.log(`[Device] ${this.getName()} - deviceInfo positions =>`, positions);
@@ -277,6 +282,7 @@ class mainDevice extends rootDevice {
                 await this.addOrRemoveCapability(settings.measure_battery, 'measure_battery');
 
                 if (type) await this.setSettings({ type });
+                if (capabilities) await this.setSettings({ capabilities });
             }
 
             // // ------------ Get values --------------
@@ -341,7 +347,7 @@ class mainDevice extends rootDevice {
             const triggers = this.homey.manifest.flow.triggers;
             const triggerExists = triggers.find((trigger) => trigger.id === `${key}_changed`);
 
-            if (triggerExists && oldValue !== value) {
+            if (triggerExists && oldVal !== value) {
                 await this.homey.flow
                     .getDeviceTriggerCard(`${key}_changed`)
                     .trigger(this, { [`${key}`]: value })
@@ -354,7 +360,7 @@ class mainDevice extends rootDevice {
     async getTypes(setSetting = false) {
         // V3 only
         let settings = await this.getSettings();
-        const typeSettings = getDeviceByType(settings.type) || { options: { types: ['primary', 'secondary'] } }; // Fallback
+        const typeSettings = getDeviceByType(settings.type, settings.capabilities)
         const posTypes = ['automatic', 'primary', 'secondary', 'tilt'];
         const posKind1 = settings.posKind1;
         const posKind2 = settings.posKind2;

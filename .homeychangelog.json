@@ -151,5 +151,11 @@
   },
   "2.10.5": {
     "en": "FIX: wrong position when motor settings are changed"
+  },
+  "2.10.6": {
+    "en": "FIX: error"
+  },
+  "2.10.7": {
+    "en": "FIX: timing issue with updating shades"
   }
 }
