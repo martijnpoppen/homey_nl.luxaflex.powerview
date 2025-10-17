@@ -13,10 +13,9 @@ class PowerviewShadeGen3 extends mainDevice {
             let setValue1 = settings.invertPosition1 ? 1 - value : value;
             const setValue2 = settings.invertPosition2 ? 1 - pos2 : pos2;
 
-            if((setValue1 + setValue2) > 1) {
-                setValue1 = 1 - setValue2;
-            }
-
+            // if((setValue1 + setValue2) > 1) {
+            //     setValue1 = 1 - setValue2;
+            // }
 
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_WINDOWCOVERINGS_SET`, value);
             const request = {
@@ -67,9 +66,9 @@ class PowerviewShadeGen3 extends mainDevice {
             let setValue1 = settings.invertPosition1 ? 1 - pos1 : pos1;
             let setValue2 = settings.invertPosition2 ? 1 - value : value;
 
-            if((setValue1 + setValue2) > 1) {
-                setValue2 = 1 - setValue1;
-            }
+            // if((setValue1 + setValue2) > 1) {
+            //     setValue2 = 1 - setValue1;
+            // }
 
             const request = {
                 positions: {

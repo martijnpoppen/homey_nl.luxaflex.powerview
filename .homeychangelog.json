@@ -157,5 +157,11 @@
   },
   "2.10.7": {
     "en": "FIX: timing issue with updating shades"
+  },
+  "2.11.0": {
+    "en": "NEW: add missing device type"
+  },
+  "2.11.1": {
+    "en": "FIX: Gen 3 wrong position"
   }
 }
