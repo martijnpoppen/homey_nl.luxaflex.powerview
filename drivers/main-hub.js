@@ -1,7 +1,7 @@
 'use strict';
 
 const rootDevice = require('./root-device');
-const { getShades, getScenes, getSceneCollection } = require('../lib/api');
+const { getShades, getScenes, getSceneCollection, findPrimaryGateway } = require('../lib/api');
 const { sleep } = require('../lib/helpers');
 
 class mainHub extends rootDevice {
@@ -16,6 +16,8 @@ class mainHub extends rootDevice {
 
             await this.registerCapabilityListener('update_data', this.onCapability_UPDATE_DATA.bind(this));
             await this.setAvailable();
+
+            await this.checkGatewayRole();
 
             await this.setShadeInterval();
         } catch (error) {
@@ -90,6 +92,71 @@ class mainHub extends rootDevice {
         }
     }
 
+    //-------------- Multi-Gateway ----------------
+
+    // A Gen 3 home can run several gateways, but only the primary one serves the /home/* API.
+    // Secondary gateways answer those calls with:
+    //   { errMsg: 'Multi-Gateway environment - this is not the primary gateway' }
+    // Which gateway is primary is decided by the gateways themselves and can change,
+    // so the paired gateway device follows it instead of staying on a fixed IP.
+    getDiscoveredAddresses() {
+        const addresses = [];
+
+        try {
+            const discoveryStrategy = this.homey.discovery.getStrategy('powerview-g3');
+
+            Object.values(discoveryStrategy.getDiscoveryResults()).forEach((result) => {
+                if (result && result.address) {
+                    addresses.push(result.address);
+                }
+            });
+        } catch (error) {
+            this.homey.app.log(`[Device] ${this.getName()} - getDiscoveredAddresses error`, error.message);
+        }
+
+        return addresses;
+    }
+
+    async checkGatewayRole() {
+        if (!this.isV3) {
+            return true;
+        }
+
+        try {
+            const settings = this.getSettings();
+            const addresses = [settings.ip, ...this.getDiscoveredAddresses()];
+            const { details, primary } = await findPrimaryGateway(addresses, this.homey.app.apiClient);
+
+            this.homey.app.log(`[Device] ${this.getName()} - checkGatewayRole - gateways`, details);
+
+            if (!primary) {
+                this.homey.app.log(`[Device] ${this.getName()} - checkGatewayRole - no primary gateway found`);
+                return false;
+            }
+
+            if (primary.address === settings.ip) {
+                return true;
+            }
+
+            this.homey.app.log(`[Device] ${this.getName()} - checkGatewayRole - switching to primary gateway`, { from: settings.ip, to: primary.address });
+
+            await this.setSettings({ ip: primary.address });
+            await this.setAvailable();
+
+            // setSettings does not fire onSettings, so repoint the paired shades at the primary here
+            const shades = await getShades(primary.address, this.homey.app.apiClient, this.isV3);
+
+            if (shades) {
+                await this.updateShadeIps(shades, { ...settings, ip: primary.address });
+            }
+
+            return true;
+        } catch (error) {
+            this.homey.app.log(`[Device] ${this.getName()} - checkGatewayRole error`, error.message);
+            return false;
+        }
+    }
+
     //-------------- PowerView ----------------
 
     async updateData() {
@@ -109,7 +176,13 @@ class mainHub extends rootDevice {
                 this.homey.app.log(`[Device] ${this.getName()} - updateData => no shades found on this Homey`);
             }
         } catch (error) {
-            this.homey.app.log(`[Device] ${this.getName()} - updateData error =>`, error);
+            this.homey.app.log(`[Device] ${this.getName()} - updateData error =>`, error.message);
+
+            if (error.isMultiGatewaySecondary) {
+                this.homey.app.log(`[Device] ${this.getName()} - updateData => gateway is no longer the primary, looking for the primary gateway`);
+
+                await this.checkGatewayRole();
+            }
             // this.setUnavailable(error);
         }
     }

@@ -1,6 +1,5 @@
 const Homey = require('homey');
-const { getShades } = require('../lib/api');
-const { sleep } = require('../lib/helpers');
+const { getShades, findPrimaryGateway } = require('../lib/api');
 const { getDeviceByType } = require('../constants/device-types');
 
 module.exports = class mainDriver extends Homey.Driver {
@@ -18,14 +17,35 @@ module.exports = class mainDriver extends Homey.Driver {
         const discoveryResultsArray = Object.values(discoveryResults);
 
         const currentDevices = this.getDevices();
-        if (currentDevices.length === 1 && discoveryResultsArray.length === 1) {
-            const device = currentDevices[0];
-            const { address } = discoveryResultsArray[0] || {};
+        if (currentDevices.length === 1 && discoveryResultsArray.length) {
+            this.syncSingleDeviceIp(currentDevices[0], discoveryResultsArray);
+        }
+    }
 
-            this.homey.app.log(`[Driver] ${this.id} - setSettings`, { device: device.getName(), address });
-            
-            const deviceSettings = device.getSettings();
-            const deviceIp = deviceSettings.ip;
+    async syncSingleDeviceIp(device, discoveryResultsArray) {
+        try {
+            let address = null;
+
+            if (this.apiVersion() === '3') {
+                // Multiple gateways can be discovered, only the primary one serves the /home/* API
+                const addresses = discoveryResultsArray.map((r) => r.address).filter(Boolean);
+                const { primary } = await findPrimaryGateway(addresses, this.homey.app.apiClient);
+
+                if (!primary) {
+                    this.homey.app.log(`[Driver] ${this.id} - syncSingleDeviceIp - no primary gateway found`, addresses);
+                    return;
+                }
+
+                address = primary.address;
+            } else if (discoveryResultsArray.length === 1) {
+                address = (discoveryResultsArray[0] || {}).address;
+            } else {
+                return;
+            }
+
+            const deviceIp = device.getSettings().ip;
+
+            this.homey.app.log(`[Driver] ${this.id} - syncSingleDeviceIp`, { device: device.getName(), address, deviceIp });
 
             if (address && address !== deviceIp) {
                 this.homey.app.log(`[Driver] ${this.id} - ${device.getName()} - setSettings`, { ip: address });
@@ -33,6 +53,8 @@ module.exports = class mainDriver extends Homey.Driver {
                     ip: address
                 });
             }
+        } catch (error) {
+            this.homey.app.error(`[Driver] ${this.id} - syncSingleDeviceIp error`, error);
         }
     }
 
@@ -78,7 +100,7 @@ module.exports = class mainDriver extends Homey.Driver {
 
             if (view === 'get_data') {
                 this.deviceArray = await this.getDeviceArray();
-                this.devices = await this.waitForResults(this);
+                this.devices = this.findDevices(this, this.deviceArray) || [];
 
                 session.showView('list_devices');
             }
@@ -104,24 +126,73 @@ module.exports = class mainDriver extends Homey.Driver {
         });
     }
 
-    getDeviceArray() {
-        if (this.driverType() === 'shade') {
-            const shades = [];
+    async getDeviceArray() {
+        const isV3 = this.apiVersion() === '3';
+        const targets = isV3 ? await this.resolveGen3Targets(this.results) : this.results;
 
-            this.results.forEach((r) => {
-                const ip = r.address;
-                const isV3 = this.apiVersion() === '3';
-
-                getShades(ip, this.homey.app.apiClient, isV3).then((result) => {
-                    shades.push(...result);
-                    this.homey.app.log(`[Driver] ${this.id} - Found shades - `, result);
-                });
-            });
-
-            return shades;
-        } else {
-            return this.results;
+        if (this.driverType() !== 'shade') {
+            return targets;
         }
+
+        const shades = [];
+        const shadeIds = new Set();
+
+        for (const target of targets) {
+            const ip = target.address;
+
+            try {
+                const result = await getShades(ip, this.homey.app.apiClient, isV3);
+
+                this.homey.app.log(`[Driver] ${this.id} - Found shades on ${ip} - `, result);
+
+                result.forEach((shade) => {
+                    if (shadeIds.has(shade.id)) {
+                        return;
+                    }
+
+                    shadeIds.add(shade.id);
+                    shades.push(shade);
+                });
+            } catch (error) {
+                // never let a single unreachable/secondary gateway reject the whole pairing session
+                this.homey.app.log(`[Driver] ${this.id} - Unable to get shades from ${ip} - `, error.message);
+            }
+        }
+
+        return shades;
+    }
+
+    // A Gen 3 home can run multiple gateways, but only the primary one answers /home/*.
+    // Secondary gateways reply with 'Multi-Gateway environment - this is not the primary gateway',
+    // so everything - shades and the gateway device itself - has to be aimed at the primary.
+    async resolveGen3Targets(results) {
+        const addresses = results.map((r) => r.address).filter(Boolean);
+
+        if (!addresses.length) {
+            return results;
+        }
+
+        const { details, primary } = await findPrimaryGateway(addresses, this.homey.app.apiClient);
+
+        this.homey.app.log(`[Driver] ${this.id} - discovered gateways - `, details);
+
+        if (!primary) {
+            this.homey.app.log(`[Driver] ${this.id} - no primary gateway found, falling back to all discovery results`);
+            return results;
+        }
+
+        this.homey.app.log(`[Driver] ${this.id} - primary gateway - `, primary.address);
+
+        const discovered = results.find((r) => r.address === primary.address) || {};
+
+        return [
+            {
+                ...discovered,
+                address: primary.address,
+                name: primary.name || discovered.name,
+                serialNumber: primary.serialNumber
+            }
+        ];
     }
 
     findDevices(ctx, deviceArray) {
@@ -173,7 +244,8 @@ module.exports = class mainDriver extends Homey.Driver {
                     devices.push({
                         name: device.name || ctx.driverType(),
                         data: {
-                            id: ctx.GetGUID()
+                            // the gateway serial keeps an already paired gateway out of the results
+                            id: device.serialNumber || ctx.GetGUID()
                         },
                         settings: {
                             ip: ip,
@@ -189,21 +261,5 @@ module.exports = class mainDriver extends Homey.Driver {
         } catch (error) {
             console.log(error);
         }
-    }
-
-    async waitForResults(ctx, retry = 10) {
-        for (let i = 1; i <= retry; i++) {
-            ctx.homey.app.log(`[Driver] ${ctx.id} - findDevices - try: ${i}`);
-            await sleep(1000);
-
-            if (ctx.deviceArray.length && i > 5) {
-                const devices = ctx.findDevices(ctx, ctx.deviceArray);
-                return Promise.resolve(devices);
-            } else if (i === 10) {
-                return Promise.resolve([]);
-            }
-        }
-
-        return Promise.resolve([]);
     }
 };

@@ -1888,7 +1888,7 @@
         "protocol": "tcp",
         "name": "_PowerView-G3"
       },
-      "id": "{{txt.id}}"
+      "id": "{{name}}"
     }
   }
 }
